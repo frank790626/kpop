@@ -214,6 +214,57 @@ async function varietyFromChannels(group) {
   return [...fresh, ...curated].slice(0, MAX_VARIETY);
 }
 
+/**
+ * 用 YouTube 的 oEmbed 逐支確認影片狀態：
+ *   404/400 → 已下架或 ID 錯誤，直接移除
+ *   401/403 → 影片存在但不允許嵌入，標記 noEmbed，前端改成點了開 YouTube
+ *   其他錯誤 → 可能只是暫時的，保留原樣（寧可留著也不要誤刪）
+ * 順便用 YouTube 回傳的資料補上沒填的節目名稱。
+ */
+async function verifyList(list) {
+  const out = [];
+
+  for (const v of list) {
+    if (!v.youtubeId) continue;
+    const target = `https://www.youtube.com/watch?v=${v.youtubeId}`;
+    const url = `https://www.youtube.com/oembed?url=${encodeURIComponent(target)}&format=json`;
+
+    try {
+      const res = await fetch(url);
+
+      if (res.status === 404 || res.status === 400) {
+        console.warn(`  - 已下架／找不到，移除：${v.title}（${v.youtubeId}）`);
+        continue;
+      }
+      if (res.status === 401 || res.status === 403) {
+        console.warn(`  ~ 不允許嵌入，改為外連：${v.title}（${v.youtubeId}）`);
+        out.push({ ...v, noEmbed: true });
+        continue;
+      }
+      if (!res.ok) {
+        console.warn(`  ? 狀態 ${res.status}，保留：${v.title}`);
+        out.push(v);
+        continue;
+      }
+
+      const meta = await res.json();
+      out.push({
+        ...v,
+        noEmbed: false,
+        title: v.title || meta.title || '',
+        show: v.show || meta.author_name || '',
+        kind: v.kind || v.show || meta.author_name || ''
+      });
+    } catch (err) {
+      // 網路出狀況時不要把清單清掉
+      console.warn(`  ? 驗證失敗，保留：${v.title}（${err.message}）`);
+      out.push(v);
+    }
+  }
+
+  return out;
+}
+
 async function writeIfChanged(outPath, videos, label) {
   const payload = { groupId: label.groupId, updatedAt: new Date().toISOString().slice(0, 10), videos };
   const before = await readFile(outPath, 'utf8').catch(() => '');
@@ -242,7 +293,7 @@ async function main() {
     }
 
     try {
-      const videos = apiKey ? await fromApi(group, apiKey) : await fromRss(group);
+      const videos = await verifyList(apiKey ? await fromApi(group, apiKey) : await fromRss(group));
       await writeIfChanged(path.join(OUT_DIR, `${group.id}-videos.json`), videos, {
         groupId: group.id,
         kind: '影片'
@@ -255,7 +306,7 @@ async function main() {
 
     if (group.varietyChannels?.length) {
       try {
-        const variety = await varietyFromChannels(group);
+        const variety = await verifyList(await varietyFromChannels(group));
         await writeIfChanged(path.join(OUT_DIR, `${group.id}-variety.json`), variety, {
           groupId: group.id,
           kind: '綜藝'

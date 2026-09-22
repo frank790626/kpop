@@ -71,6 +71,20 @@ h1, h2, h3 {
 .release-date,
 .release-flag,
 .timeline-date,
+.video-external {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px 14px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: right;
+}
+
 .video-badge { font-family: var(--font-display); }
 
 /* 小字與按鈕維持易讀的 UI 字體，數字對齊 */
@@ -593,6 +607,20 @@ code {
 }
 .video-frame:hover .video-play { transform: scale(1.1); }
 .video-play svg { width: 28px; height: 28px; fill: currentColor; }
+
+.video-external {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px 14px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: right;
+}
 
 .video-badge {
   position: absolute;

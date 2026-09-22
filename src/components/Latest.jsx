@@ -17,7 +17,12 @@ export default function Latest({ group }) {
         <div className="release-grid">
           {latest.map((r, i) => (
             <article className={`release-card${i === 0 ? ' is-newest' : ''}`} key={`${r.date}-${r.title}`}>
-              <YouTubeEmbed youtubeId={r.youtubeId} title={r.title} badge={i === 0 ? '最新' : ''} />
+              <YouTubeEmbed
+                youtubeId={r.youtubeId}
+                title={r.title}
+                badge={i === 0 ? '最新' : ''}
+                noEmbed={r.noEmbed}
+              />
 
               <div className="release-body">
                 <div className="release-head">

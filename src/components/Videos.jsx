@@ -3,7 +3,12 @@ import YouTubeEmbed from './YouTubeEmbed.jsx';
 export function VideoCard({ video }) {
   return (
     <article className="video-card">
-      <YouTubeEmbed youtubeId={video.youtubeId} title={video.title} badge={video.badge} />
+      <YouTubeEmbed
+        youtubeId={video.youtubeId}
+        title={video.title}
+        badge={video.badge}
+        noEmbed={video.noEmbed}
+      />
       <div className="video-meta">
         <h3 className="video-title">{video.title}</h3>
         <p className="video-sub">
