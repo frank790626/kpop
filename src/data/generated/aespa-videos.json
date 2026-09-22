@@ -1,0 +1,78 @@
+{
+  "groupId": "aespa",
+  "updatedAt": "2026-09-22",
+  "videos": [
+    {
+      "title": "Supernova",
+      "youtubeId": "phuiiNCxRMg",
+      "date": "2024.05.13",
+      "kind": "正規一輯先行曲 M/V",
+      "note": "2024 年最具代表性的韓語歌曲之一。",
+      "noEmbed": false,
+      "show": "SMTOWN"
+    },
+    {
+      "title": "Next Level",
+      "youtubeId": "4TWR90KJl84",
+      "date": "2021.05.17",
+      "kind": "單曲 M/V",
+      "note": "讓 aespa 一舉成名的現象級熱曲。",
+      "noEmbed": false,
+      "show": "SMTOWN"
+    },
+    {
+      "title": "Savage",
+      "youtubeId": "WPdWvnAAurg",
+      "date": "2021.10.05",
+      "kind": "迷你一輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "SMTOWN"
+    },
+    {
+      "title": "Armageddon",
+      "youtubeId": "nFYwcndNuOY",
+      "date": "2024.05.27",
+      "kind": "正規一輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "SMTOWN"
+    },
+    {
+      "title": "Whiplash",
+      "youtubeId": "jWQx2f-CErU",
+      "date": "2024.10.21",
+      "kind": "迷你五輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "SMTOWN"
+    },
+    {
+      "title": "Black Mamba",
+      "youtubeId": "i0_gM5bifeo",
+      "date": "2020.11.17",
+      "kind": "出道曲 M/V",
+      "note": "出道曲，aespa 世界觀的起點。",
+      "noEmbed": false,
+      "show": "JXS_BP Official"
+    },
+    {
+      "title": "WDA (Whole Different Animal) feat. G-DRAGON",
+      "youtubeId": "iTJSbJtS8MU",
+      "date": "2026.05.11",
+      "kind": "正規二輯先行曲 M/V",
+      "note": "與 BIGBANG G-DRAGON 合作。",
+      "noEmbed": false,
+      "show": "SMTOWN"
+    },
+    {
+      "title": "Dirty Work",
+      "youtubeId": "M2WTUoy4y6E",
+      "date": "2025.06.27",
+      "kind": "單曲 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "SMTOWN"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "groupId": "ive",
+  "updatedAt": "2026-09-22",
+  "videos": [
+    {
+      "title": "LOVE DIVE",
+      "youtubeId": "Y8JFxS1HlDo",
+      "date": "2022.04.05",
+      "kind": "單曲二輯主打 M/V",
+      "note": "橫掃各大年度獎項的代表作。",
+      "noEmbed": false,
+      "show": "STARSHIP"
+    },
+    {
+      "title": "After LIKE",
+      "youtubeId": "F0B7HDiY-10",
+      "date": "2022.08.22",
+      "kind": "單曲三輯主打 M/V",
+      "note": "取樣 Gloria Gaynor〈I Will Survive〉。",
+      "noEmbed": false,
+      "show": "STARSHIP"
+    },
+    {
+      "title": "Baddie",
+      "youtubeId": "Da4P2uT4mVc",
+      "date": "2023.10.13",
+      "kind": "改版專輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "STARSHIP"
+    },
+    {
+      "title": "REBEL HEART",
+      "youtubeId": "g36q0ZLvygQ",
+      "date": "2025",
+      "kind": "正規專輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "STARSHIP"
+    },
+    {
+      "title": "BLACKHOLE",
+      "youtubeId": "1Lmy7qwmSMc",
+      "date": "2026.02.23",
+      "kind": "正規二輯主打 M/V",
+      "note": "《REVIVE+》雙主打之一。",
+      "noEmbed": false,
+      "show": "STARSHIP"
+    },
+    {
+      "title": "BANG BANG",
+      "youtubeId": "9qkpcLK422o",
+      "date": "2026.02.09",
+      "kind": "先行曲 M/V",
+      "note": "《REVIVE+》先行公開。",
+      "noEmbed": false,
+      "show": "STARSHIP"
+    }
+  ]
+}

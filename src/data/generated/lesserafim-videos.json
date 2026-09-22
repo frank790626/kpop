@@ -1,0 +1,69 @@
+{
+  "groupId": "lesserafim",
+  "updatedAt": "2026-09-22",
+  "videos": [
+    {
+      "title": "ANTIFRAGILE",
+      "youtubeId": "pyf8cbqyfPs",
+      "date": "2022.10.17",
+      "kind": "迷你二輯主打 M/V",
+      "note": "奠定團體風格的代表作。",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    },
+    {
+      "title": "FEARLESS",
+      "youtubeId": "4vbDFu0PUew",
+      "date": "2022.05.02",
+      "kind": "出道主打 M/V",
+      "note": "出道曲，團名同名歌曲。",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    },
+    {
+      "title": "UNFORGIVEN (feat. Nile Rodgers)",
+      "youtubeId": "UBURTj20HXI",
+      "date": "2023.05.01",
+      "kind": "正規一輯主打 M/V",
+      "note": "與傳奇吉他手 Nile Rodgers 合作。",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    },
+    {
+      "title": "CRAZY",
+      "youtubeId": "n6B5gQXlB-0",
+      "date": "2024.08.30",
+      "kind": "迷你四輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    },
+    {
+      "title": "HOT",
+      "youtubeId": "r9AEGPB6qIU",
+      "date": "2025.03.14",
+      "kind": "迷你五輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    },
+    {
+      "title": "BOOMPALA",
+      "youtubeId": "V1Lr-_AxeR8",
+      "date": "2026.05.22",
+      "kind": "正規二輯主打 M/V",
+      "note": "《PUREFLOW pt.1》主打歌。",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    },
+    {
+      "title": "YOU JUST MADE MY NIGHT",
+      "youtubeId": "OPgr9Gc5oZk",
+      "date": "2026.09.11",
+      "kind": "單曲二輯主打 M/V",
+      "note": "最新作品。",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    }
+  ]
+}
