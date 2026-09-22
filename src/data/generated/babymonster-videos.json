@@ -8,7 +8,9 @@
       "date": "2024.04.01",
       "kind": "出道主打 M/V",
       "badge": "破 4 億觀看",
-      "note": "上線 10 天破 1 億，創下 K-POP 女團出道曲最快紀錄。"
+      "note": "上線 10 天破 1 億，創下 K-POP 女團出道曲最快紀錄。",
+      "noEmbed": false,
+      "show": "BABYMONSTER"
     },
     {
       "title": "BATTER UP",
@@ -16,7 +18,9 @@
       "date": "2023.11.27",
       "kind": "出道前單曲 M/V",
       "badge": "破 3 億觀看",
-      "note": "七人首次完整亮相的先行單曲。"
+      "note": "七人首次完整亮相的先行單曲。",
+      "noEmbed": false,
+      "show": "BABYMONSTER"
     },
     {
       "title": "DRIP",
@@ -24,7 +28,9 @@
       "date": "2024.11.01",
       "kind": "正規一輯主打 M/V",
       "badge": "",
-      "note": "AHYEON 回歸後的完整體出擊。"
+      "note": "AHYEON 回歸後的完整體出擊。",
+      "noEmbed": false,
+      "show": "BABYMONSTER"
     },
     {
       "title": "PSYCHO",
@@ -32,7 +38,9 @@
       "date": "2025.11.19",
       "kind": "B-side M/V",
       "badge": "破 2 億觀看",
-      "note": "以「惡夢」為題的黑暗概念，上線當日拿下 YouTube 全球 24 小時觀看第一。"
+      "note": "以「惡夢」為題的黑暗概念，上線當日拿下 YouTube 全球 24 小時觀看第一。",
+      "noEmbed": false,
+      "show": "BABYMONSTER"
     },
     {
       "title": "춤 (CHOOM)",
@@ -40,7 +48,9 @@
       "date": "2026.05.04",
       "kind": "迷你三輯主打 M/V",
       "badge": "14 天破 1 億",
-      "note": "2026 年最快破億的 K-POP MV，團體第 11 支破億作品。"
+      "note": "2026 年最快破億的 K-POP MV，團體第 11 支破億作品。",
+      "noEmbed": false,
+      "show": "BABYMONSTER"
     },
     {
       "title": "WE GO UP",
@@ -48,7 +58,9 @@
       "date": "2025.10.10",
       "kind": "迷你二輯主打 M/V",
       "badge": "4 天破 5000 萬",
-      "note": "第二張迷你專輯的同名主打。"
+      "note": "第二張迷你專輯的同名主打。",
+      "noEmbed": false,
+      "show": "BABYMONSTER"
     },
     {
       "title": "CLIK CLAK",
@@ -56,7 +68,9 @@
       "date": "2024.11",
       "kind": "正規一輯雙主打 M/V",
       "badge": "",
-      "note": "《DRIP》專輯中節奏最強烈的一首。"
+      "note": "《DRIP》專輯中節奏最強烈的一首。",
+      "noEmbed": false,
+      "show": "BABYMONSTER"
     },
     {
       "title": "FOREVER",
@@ -64,7 +78,9 @@
       "date": "2024.07.01",
       "kind": "先行單曲 M/V",
       "badge": "",
-      "note": "夏日感十足的先行曲。"
+      "note": "夏日感十足的先行曲。",
+      "noEmbed": false,
+      "show": "BABYMONSTER"
     }
   ]
 }

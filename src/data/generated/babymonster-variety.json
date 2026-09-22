@@ -8,7 +8,8 @@
       "show": "런닝맨 Ep.759",
       "date": "",
       "note": "SBS 런닝맨 출연분",
-      "kind": "런닝맨 Ep.759"
+      "kind": "런닝맨 Ep.759",
+      "noEmbed": false
     },
     {
       "title": "〈Dangerously〉부터〈SHEESH〉까지 라이브 퍼포먼스 모음",
@@ -16,7 +17,8 @@
       "show": "아는 형님",
       "date": "2024.04.13",
       "note": "JTBC 아는 형님 429회",
-      "kind": "아는 형님"
+      "kind": "아는 형님",
+      "noEmbed": false
     },
     {
       "title": "아현의 운동 루틴 공개",
@@ -24,7 +26,8 @@
       "show": "아는 형님",
       "date": "2024.04.13",
       "note": "복근에게 자비 없는 매운맛",
-      "kind": "아는 형님"
+      "kind": "아는 형님",
+      "noEmbed": false
     },
     {
       "title": "BABYMONSTER 편",
@@ -32,7 +35,8 @@
       "show": "아이돌 인간극장",
       "date": "",
       "note": "대본 없는 리얼 다큐 예능",
-      "kind": "아이돌 인간극장"
+      "kind": "아이돌 인간극장",
+      "noEmbed": false
     },
     {
       "title": "춤 (CHOOM) LIVE",
@@ -40,7 +44,8 @@
       "show": "두시탈출 컬투쇼",
       "date": "2026.06.17",
       "note": "SBS 파워FM 라디오 라이브",
-      "kind": "두시탈출 컬투쇼"
+      "kind": "두시탈출 컬투쇼",
+      "noEmbed": false
     }
   ]
 }
