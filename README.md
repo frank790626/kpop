@@ -1,7 +1,7 @@
 # K-POP HUB
 
-一個 K-POP 團體介紹網站，首發團體是 **BABYMONSTER**。
-以 **React 19 + Vite** 打造，部署在 GitHub Pages。
+一個 K-POP 團體介紹網站，目前收錄 **BABYMONSTER**、**LE SSERAFIM**、**IVE**、**aespa**，
+用頁首的 tab 切換。以 **React 19 + Vite** 打造，部署在 GitHub Pages。
 
 ## 功能
 
