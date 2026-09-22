@@ -24,9 +24,23 @@ python3 -m http.server 8000
 直接雙擊 `index.html` 也可以（沒有使用 ES module，不會被 file:// 擋住）。
 部署到 GitHub Pages / Netlify / Vercel 時，整個資料夾就是網站根目錄。
 
+## 上線（GitHub Pages）
+
+`.github/workflows/deploy-pages.yml` 會在 **push 到 `main`** 時自動把整個 repo 發佈到 GitHub Pages
+（workflow 裡的 `enablement: true` 會順手把 repo 的 Pages 開起來，來源設成 GitHub Actions）。
+
+上線後網址：`https://<帳號>.github.io/kpop/`
+
+也可以到 repo 的 **Actions → Deploy to GitHub Pages → Run workflow** 手動觸發。
+站內所有路徑都是相對路徑，放在子目錄（`/kpop/`）底下也能正常運作。
+
+> `.nojekyll` 不能刪：GitHub Pages 預設會用 Jekyll 處理，而 Jekyll 會忽略底線開頭的檔案，
+> 那會讓 `data/groups/_template.js` 消失。
+
 ## 目錄結構
 
 ```
+.github/workflows/         GitHub Pages 自動部署
 index.html                 頁面外框 + 載入資料檔的地方
 assets/css/style.css       全站樣式（主題色用 CSS 變數，由 JS 依團體注入）
 assets/js/core.js          KPOP.register()：團體資料註冊中心
