@@ -98,7 +98,7 @@ export default {
     { title: 'Whiplash', youtubeId: 'jWQx2f-CErU', date: '2024.10.21', kind: '迷你五輯主打 M/V', note: '' },
     { title: 'Black Mamba', youtubeId: 'i0_gM5bifeo', date: '2020.11.17', kind: '出道曲 M/V', note: '出道曲，aespa 世界觀的起點。' },
     { title: 'WDA (Whole Different Animal) feat. G-DRAGON', youtubeId: 'iTJSbJtS8MU', date: '2026.05.11', kind: '正規二輯先行曲 M/V', note: '與 BIGBANG G-DRAGON 合作。' },
-    { title: 'LEMONADE', youtubeId: 'wdGletTtrPM', date: '2026.06.03', kind: '正規二輯主打 M/V', note: '' },
+    { title: 'LEMONADE', youtubeId: '83C3TZ4Zm_o', date: '2026.05.29', kind: '正規二輯主打 M/V', note: '' },
     { title: 'Dirty Work', youtubeId: 'M2WTUoy4y6E', date: '2025.06.27', kind: '單曲 M/V', note: '' }
   ],
 
@@ -115,6 +115,6 @@ export default {
     { date: '2024.05.27', title: 'Armageddon', type: '正規一輯', note: '主打〈Armageddon〉，先行曲〈Supernova〉', youtubeId: 'nFYwcndNuOY' },
     { date: '2024.10.21', title: 'Whiplash', type: '迷你五輯', note: '主打〈Whiplash〉', youtubeId: 'jWQx2f-CErU' },
     { date: '2025.09.05', title: 'Rich Man', type: '迷你六輯', note: '主打〈Rich Man〉' },
-    { date: '2026.05.29', title: 'LEMONADE', type: '正規二輯', note: '主打〈LEMONADE〉，先行曲〈WDA〉feat. G-DRAGON', youtubeId: 'wdGletTtrPM' }
+    { date: '2026.05.29', title: 'LEMONADE', type: '正規二輯', note: '主打〈LEMONADE〉，先行曲〈WDA〉feat. G-DRAGON', youtubeId: '83C3TZ4Zm_o' }
   ]
 };
