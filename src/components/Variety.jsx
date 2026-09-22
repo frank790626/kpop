@@ -5,7 +5,7 @@ export default function Variety({ group }) {
   if (!group.variety.length) return null;
 
   return (
-    <section className="section" id="variety">
+    <section className="section section--alt" id="variety">
       <div className="wrap">
         <header className="section-head">
           <h2>綜藝節目</h2>

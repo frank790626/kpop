@@ -88,9 +88,9 @@ export default function App() {
           <>
             <Hero group={group} />
             <Members group={group} memberId={member?.id} onSelect={selectMember} />
+            <Variety group={group} />
             <Latest group={group} />
             <Videos group={group} />
-            <Variety group={group} />
             <Social group={group} />
             <Timeline group={group} />
           </>
