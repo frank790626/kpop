@@ -38,6 +38,13 @@
     return before ? age - 1 : age;
   }
 
+  /** 把 YYYY.MM.DD / YYYY.MM 轉成可排序的數字 */
+  function dateValue(text) {
+    var m = String(text || '').match(/(\d{4})(?:[.\-/](\d{1,2}))?(?:[.\-/](\d{1,2}))?/);
+    if (!m) return 0;
+    return new Date(+m[1], (+m[2] || 1) - 1, +m[3] || 1).getTime();
+  }
+
   var ICONS = {
     instagram:
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2m0 2c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.2.77-.3.3-.6.7-.8 1.2-.2.4-.3 1-.4 2.1C2.8 9.9 2.8 10.3 2.8 12s0 2.1.07 3.3c.05 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.3.3.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.2 2.1-.4.5-.2.9-.5 1.2-.8.3-.3.6-.7.8-1.2.2-.4.3-1 .4-2.1.06-1.2.07-1.6.07-3.3s0-2.1-.07-3.3c-.05-1.1-.2-1.7-.4-2.1-.2-.5-.5-.9-.8-1.2-.3-.3-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4-1.2-.06-1.6-.07-4.7-.07z"/><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4z"/><circle cx="17.2" cy="6.8" r="1.2"/></svg>',
@@ -254,6 +261,49 @@
     );
   }
 
+  // ── 區塊：近期發行 ────────────────────────────────────────
+  function latestSectionHTML(g) {
+    if (!g.releases.length) return '';
+
+    var latest = g.releases
+      .slice()
+      .sort(function (a, b) { return dateValue(b.date) - dateValue(a.date); })
+      .slice(0, 3);
+
+    var cards = latest
+      .map(function (r, i) {
+        var mv = r.youtubeId
+          ? '<a class="release-link" href="https://www.youtube.com/watch?v=' + encodeURIComponent(r.youtubeId) +
+            '" target="_blank" rel="noopener noreferrer">看 M/V →</a>'
+          : '';
+        return (
+          '<article class="release-card' + (i === 0 ? ' is-newest' : '') + '">' +
+            '<div class="release-head">' +
+              '<span class="release-date">' + esc(r.date) + '</span>' +
+              (i === 0 ? '<span class="release-flag">最新</span>' : '') +
+            '</div>' +
+            '<h3 class="release-title">' + esc(r.title) + '</h3>' +
+            (r.type ? '<p class="release-type">' + esc(r.type) + '</p>' : '') +
+            (r.note ? '<p class="release-note">' + esc(r.note) + '</p>' : '') +
+            mv +
+          '</article>'
+        );
+      })
+      .join('');
+
+    return (
+      '<section class="section" id="latest">' +
+        '<div class="wrap">' +
+          '<header class="section-head">' +
+            '<h2>近期發行</h2>' +
+            '<p class="section-sub">最新的專輯與單曲，依發行日排序。</p>' +
+          '</header>' +
+          '<div class="release-grid">' + cards + '</div>' +
+        '</div>' +
+      '</section>'
+    );
+  }
+
   // ── 區塊：熱門影片 ────────────────────────────────────────
   function videosSectionHTML(g) {
     if (!g.videos.length) return '';
@@ -382,7 +432,12 @@
     document.title = g.name + '｜K-POP HUB';
 
     main.innerHTML =
-      heroHTML(g) + membersSectionHTML(g) + videosSectionHTML(g) + socialSectionHTML(g) + releasesSectionHTML(g);
+      heroHTML(g) +
+      membersSectionHTML(g) +
+      latestSectionHTML(g) +
+      videosSectionHTML(g) +
+      socialSectionHTML(g) +
+      releasesSectionHTML(g);
 
     syncGroupNav();
     selectMember(g, memberId, { replace: true });

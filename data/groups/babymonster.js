@@ -28,7 +28,8 @@ KPOP.register({
   intro: [
     'BABYMONSTER（베이비몬스터）是 YG Entertainment 在 BLACKPINK 之後推出的新女團，由生存實境節目《BABYMONSTERS》選出，成員橫跨韓國、日本與泰國三個國籍。',
     '2023 年 11 月 27 日以先行單曲〈BATTER UP〉出道前亮相，2024 年 4 月 1 日帶著首張迷你專輯《BABYMONS7ER》與主打歌〈SHEESH〉正式出道；〈SHEESH〉MV 上線 10 天即突破 1 億觀看，創下 K-POP 女團出道曲的最快紀錄。',
-    '2024 年 11 月推出首張正規專輯《DRIP》，李彩英（AHYEON）回歸後完整七人體制登場；2025 年 10 月的第二張迷你專輯《WE GO UP》與後續 B-side MV〈PSYCHO〉再次刷新團體成績。'
+    '2024 年 11 月推出首張正規專輯《DRIP》，李彩英（AHYEON）回歸後完整七人體制登場；2025 年 10 月的第二張迷你專輯《WE GO UP》與後續 B-side MV〈PSYCHO〉再次刷新團體成績。',
+    '2026 年 5 月 4 日發行第三張迷你專輯《CHOOM》，主打歌〈춤 (CHOOM)〉MV 僅花 14 天破 1 億觀看，是 2026 年最快達標的 K-POP MV，也是團體第 11 支破億 MV。'
   ],
 
   facts: [
@@ -40,14 +41,29 @@ KPOP.register({
 
   links: {
     instagram: 'https://www.instagram.com/babymonster_ygofficial/',
-    youtube: 'https://www.youtube.com/@BABYMONSTER_YG',
-    x: 'https://x.com/YG_BABYMONSTER',
-    tiktok: 'https://www.tiktok.com/@babymonster_ygofficial',
+    youtube: 'https://www.youtube.com/@BABYMONSTER',
+    x: 'https://x.com/YGBABYMONSTER_',
+    tiktok: 'https://www.tiktok.com/@babymonster_yg_tiktok',
     website: 'https://ygfamily.com/'
   },
 
   // ─── 成員（依隊內年齡排序） ───────────────────────────────
   members: [
+    {
+      id: 'asa',
+      stageName: 'ASA',
+      nameZh: '麻紗',
+      nameKo: '아사',
+      nameEn: 'Enami Asa',
+      birth: '2006.04.17',
+      nationality: '日本',
+      roles: ['Rapper', 'Dancer'],
+      color: '#ffd23d',
+      bio: '以爆發力十足的 rap 與舞台掌控力著稱，是團內舞蹈與 rap 雙線的主力。',
+      facts: ['Rap Line', 'Dance Line'],
+      photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
+      instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
+    },
     {
       id: 'ruka',
       stageName: 'RUKA',
@@ -79,21 +95,6 @@ KPOP.register({
       instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
     },
     {
-      id: 'asa',
-      stageName: 'ASA',
-      nameZh: '麻紗',
-      nameKo: '아사',
-      nameEn: 'Enami Asa',
-      birth: '2006.04.17',
-      nationality: '日本',
-      roles: ['Rapper', 'Dancer'],
-      color: '#ffd23d',
-      bio: '以爆發力十足的 rap 與舞台掌控力著稱，是團內舞蹈與 rap 雙線的主力。',
-      facts: ['Rap Line', 'Dance Line'],
-      photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
-      instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
-    },
-    {
       id: 'ahyeon',
       stageName: 'AHYEON',
       nameZh: '娥賢',
@@ -105,21 +106,6 @@ KPOP.register({
       color: '#4dd8ff',
       bio: '唱、跳、rap 三項皆能的全能型成員。出道前曾因健康因素暫停活動，於 2024 年正規專輯《DRIP》回歸，完成七人完整體制。',
       facts: ['All-rounder', '《DRIP》回歸'],
-      photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
-      instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
-    },
-    {
-      id: 'rami',
-      stageName: 'RAMI',
-      nameZh: '拉米',
-      nameKo: '라미',
-      nameEn: 'Seo Rami',
-      birth: '2007.10.17',
-      nationality: '韓國',
-      roles: ['Vocalist'],
-      color: '#7c4dff',
-      bio: '乾淨透亮的嗓音是團內抒情段落的定心丸，現場演唱穩定度極高。',
-      facts: ['Vocal Line', '高音擔當'],
       photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
       instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
     },
@@ -150,6 +136,21 @@ KPOP.register({
       color: '#3ddc97',
       bio: '隊內最年幼的忙內，年紀小但舞台上的自信與 rap 存在感十足。',
       facts: ['忙內', '泰國籍成員'],
+      photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
+      instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
+    },
+    {
+      id: 'rami',
+      stageName: 'RAMI',
+      nameZh: '拉米',
+      nameKo: '라미',
+      nameEn: 'Seo Rami',
+      birth: '2007.10.17',
+      nationality: '韓國',
+      roles: ['Vocalist'],
+      color: '#7c4dff',
+      bio: '乾淨透亮的嗓音是團內抒情段落的定心丸，現場演唱穩定度極高。',
+      facts: ['Vocal Line', '高音擔當'],
       photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
       instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
     }
@@ -190,6 +191,14 @@ KPOP.register({
       note: '以「惡夢」為題的黑暗概念，上線當日拿下 YouTube 全球 24 小時觀看第一。'
     },
     {
+      title: '춤 (CHOOM)',
+      youtubeId: 'x3eqqoZPV_E',
+      date: '2026.05.04',
+      kind: '迷你三輯主打 M/V',
+      badge: '14 天破 1 億',
+      note: '2026 年最快破億的 K-POP MV，團體第 11 支破億作品。'
+    },
+    {
       title: 'WE GO UP',
       youtubeId: 'wlHwjkYpSr0',
       date: '2025.10.10',
@@ -217,10 +226,11 @@ KPOP.register({
 
   // ─── 作品年表 ─────────────────────────────────────────
   releases: [
-    { date: '2023.11.27', title: 'BATTER UP', type: '數位單曲', note: '出道前先行曲' },
-    { date: '2024.04.01', title: 'BABYMONS7ER', type: '迷你一輯', note: '主打歌〈SHEESH〉' },
-    { date: '2024.07.01', title: 'FOREVER', type: '先行單曲', note: '正規一輯先行曲' },
-    { date: '2024.11.01', title: 'DRIP', type: '正規一輯', note: '主打〈DRIP〉、〈CLIK CLAK〉' },
-    { date: '2025.10.10', title: 'WE GO UP', type: '迷你二輯', note: '主打〈WE GO UP〉，B-side〈PSYCHO〉MV 於 11.19 公開' }
+    { date: '2023.11.27', title: 'BATTER UP', type: '數位單曲', note: '出道前先行曲', youtubeId: 'olDWm2veCrM' },
+    { date: '2024.04.01', title: 'BABYMONS7ER', type: '迷你一輯', note: '主打歌〈SHEESH〉', youtubeId: '2wA_b6YHjqQ' },
+    { date: '2024.07.01', title: 'FOREVER', type: '先行單曲', note: '正規一輯先行曲', youtubeId: 'eJCHKjt0MPw' },
+    { date: '2024.11.01', title: 'DRIP', type: '正規一輯', note: '主打〈DRIP〉、〈CLIK CLAK〉', youtubeId: 'Zp-Jhuhq0bQ' },
+    { date: '2025.10.10', title: 'WE GO UP', type: '迷你二輯', note: '主打〈WE GO UP〉，B-side〈PSYCHO〉MV 於 11.19 公開', youtubeId: 'wlHwjkYpSr0' },
+    { date: '2026.05.04', title: 'CHOOM', type: '迷你三輯', note: '主打歌〈춤 (CHOOM)〉，MV 14 天破 1 億觀看', youtubeId: 'x3eqqoZPV_E' }
   ]
 });

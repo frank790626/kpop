@@ -75,8 +75,14 @@ KPOP.register({
     }
   ],
 
-  // 作品年表
+  // 作品年表。最新的三筆會自動出現在「近期發行」區塊（在熱門影片上方）
   releases: [
-    { date: '2020.01.01', title: '專輯名', type: '迷你一輯', note: '主打歌〈XXX〉' }
+    {
+      date: '2020.01.01',
+      title: '專輯名',
+      type: '迷你一輯',
+      note: '主打歌〈XXX〉',
+      youtubeId: 'dQw4w9WgXcQ' // 選填；有填「近期發行」卡片就會出現看 M/V 連結
+    }
   ]
 });
