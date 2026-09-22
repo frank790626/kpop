@@ -1,5 +1,42 @@
 {
   "groupId": "lesserafim",
   "updatedAt": "2026-09-22",
-  "videos": []
+  "videos": [
+    {
+      "title": "「綜藝天才」活躍片段合輯",
+      "youtubeId": "NkNb09NGhUA",
+      "show": "아는 형님",
+      "date": "2023.04.29",
+      "note": "JTBC 아는 형님 出演精華",
+      "kind": "아는 형님",
+      "noEmbed": false
+    },
+    {
+      "title": "從芭蕾舞者到青春期 K 學生，什麼都準備好了",
+      "youtubeId": "m2gpYGhQIG8",
+      "show": "아는 형님",
+      "date": "2023.04.29",
+      "note": "아형 하이라이트",
+      "kind": "아는 형님",
+      "noEmbed": false
+    },
+    {
+      "title": "團名「I’M FEARLESS」的由來",
+      "youtubeId": "vT_EuUTw4S8",
+      "show": "아는 형님 332회",
+      "date": "2022.05.14",
+      "note": "出道初期首次上節目",
+      "kind": "아는 형님 332회",
+      "noEmbed": false
+    },
+    {
+      "title": "〈FEARLESS〉現場舞台",
+      "youtubeId": "mA-4g4XPLBs",
+      "show": "아는 형님 332회",
+      "date": "2022.05.14",
+      "note": "出道曲節目表演",
+      "kind": "아는 형님 332회",
+      "noEmbed": false
+    }
+  ]
 }
