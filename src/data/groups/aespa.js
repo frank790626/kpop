@@ -102,7 +102,29 @@ export default {
     { title: 'Dirty Work', youtubeId: 'M2WTUoy4y6E', date: '2025.06.27', kind: '單曲 M/V', note: '' }
   ],
 
-  variety: [],
+  variety: [
+    {
+      title: '「其實我跟 OO 有點尷尬」真心話大冒險',
+      youtubeId: 'EbOspOKYk5s',
+      show: '아이돌 인간극장',
+      date: '',
+      note: '沒有劇本的真實紀錄型綜藝'
+    },
+    {
+      title: '〈I’m〉開頭是 KARINA，〈Drama〉換 WINTER 負責',
+      youtubeId: 'DutiwizDLaY',
+      show: '아는 형님 410회',
+      date: '2023.11.25',
+      note: ''
+    },
+    {
+      title: 'KARINA 的《頂樓》千瑞真模仿秀',
+      youtubeId: '0Xav2_Lk8R4',
+      show: '아는 형님 283회',
+      date: '2021.06.05',
+      note: '出道初期的個人才藝'
+    }
+  ],
   varietyChannels: [
     'UCOHM2N1YQdb-cHWxJxwBMLQ', // 아는형님 Knowingbros
     'UCaKod3X1Tn4c7Ci0iUKcvzQ', // 런닝맨 SBS

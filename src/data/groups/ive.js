@@ -125,7 +125,43 @@ export default {
     { title: 'BANG BANG', youtubeId: '9qkpcLK422o', date: '2026.02.09', kind: '先行曲 M/V', note: '《REVIVE+》先行公開。' }
   ],
 
-  variety: [],
+  variety: [
+    {
+      title: '張員瑛 VS 安兪真，冰箱首度公開',
+      youtubeId: '8lMbrQq8Tic',
+      show: '냉장고를 부탁해',
+      date: '2026.03.01',
+      note: 'JTBC 拜託了冰箱'
+    },
+    {
+      title: '掉進 IVE 的多彩魅力裡',
+      youtubeId: 'Ab3mIm2TlXU',
+      show: '아는 형님',
+      date: '2022.08.27',
+      note: '아형 하이라이트'
+    },
+    {
+      title: '被形님們發掘的綜藝寶石 REI',
+      youtubeId: '25nCaL33DoM',
+      show: '아는 형님',
+      date: '2022.08.27',
+      note: 'REI 活躍片段'
+    },
+    {
+      title: '毫不留情的爆料大會',
+      youtubeId: 'd0GgXSrrIjA',
+      show: '아는 형님',
+      date: '2023.04.15',
+      note: '아형 하이라이트'
+    },
+    {
+      title: '什麼都偷看過的張員瑛',
+      youtubeId: 'S29S7vyPgbc',
+      show: '아는 형님',
+      date: '2022.08.29',
+      note: ''
+    }
+  ],
   varietyChannels: [
     'UCOHM2N1YQdb-cHWxJxwBMLQ', // 아는형님 Knowingbros
     'UCaKod3X1Tn4c7Ci0iUKcvzQ', // 런닝맨 SBS
