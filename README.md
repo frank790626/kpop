@@ -94,6 +94,8 @@ data/groups/_template.js   新增團體用的範本（底線開頭 = 不會被�
 成員頭像依序嘗試三個來源，前一個失敗就自動換下一個：
 
 1. `members[].photo` — 自己放的照片（`assets/img/` 或任何圖片網址），最穩定。
+   BABYMONSTER 七位成員的路徑已經接好，把檔案放進 `assets/img/` 即可，
+   檔名見 `assets/img/README.txt`。
 2. `members[].instagram` — 該 IG 帳號的大頭貼。Instagram 官方不允許直接連圖，所以透過
    `assets/js/core.js` 最上方的 `config.igAvatarProxy`（預設 `unavatar.io`）取得；
    若哪天這個服務失效，只要改這一行就能整站換來源。
