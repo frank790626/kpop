@@ -10,6 +10,48 @@
   var groups = [];
   var byId = Object.create(null);
 
+  /**
+   * 頭像設定
+   * igAvatarProxy：把 Instagram 帳號換成大頭貼圖片網址的服務。
+   * Instagram 官方不允許直接連圖，所以透過代理服務取得；
+   * 之後若這個服務失效，只要改這一行，全站頭像就會跟著換來源。
+   * {handle} 會被替換成 Instagram 帳號（不含 @）。
+   */
+  var config = {
+    igAvatarProxy: 'https://unavatar.io/instagram/{handle}?fallback=false'
+  };
+
+  /** 從網址或 @帳號 取出乾淨的 Instagram 帳號 */
+  function igHandle(value) {
+    if (!value) return '';
+    var v = String(value).trim();
+    var m = v.match(/instagram\.com\/([^/?#]+)/i);
+    if (m) return m[1];
+    return v.replace(/^@/, '');
+  }
+
+  /** 把帳號轉成 Instagram 個人頁網址 */
+  function igUrl(value) {
+    var handle = igHandle(value);
+    return handle ? 'https://www.instagram.com/' + handle + '/' : '';
+  }
+
+  /** 由帳號取得大頭貼網址 */
+  function igAvatar(value) {
+    var handle = igHandle(value);
+    return handle ? config.igAvatarProxy.replace('{handle}', encodeURIComponent(handle)) : '';
+  }
+
+  /**
+   * 頭像來源的優先順序：
+   *   1. photo（自己放在 assets/img/ 的照片，最穩定）
+   *   2. Instagram 大頭貼（有填 instagram 時自動抓）
+   *   3. 都沒有 → 用代表色漸層 + 名字首字母
+   */
+  function avatarSources(entity) {
+    return [entity.photo, igAvatar(entity.instagram)].filter(Boolean);
+  }
+
   function slug(text) {
     return String(text || '')
       .toLowerCase()
@@ -87,6 +129,11 @@
       groups.push(group);
       return group;
     },
+    config: config,
+    igHandle: igHandle,
+    igUrl: igUrl,
+    igAvatar: igAvatar,
+    avatarSources: avatarSources,
     all: function () {
       return groups.slice();
     },

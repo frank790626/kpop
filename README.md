@@ -7,11 +7,12 @@
 
 - **團體切換**：頁首的膠囊列，之後加入新團體會自動出現。
 - **成員介紹**：頭像列一鍵切換，也支援鍵盤左右鍵；每位成員有代表色、角色標籤、生日（自動算年齡）、簡介與 Instagram 連結。
+- **Instagram 大頭貼**：填了 IG 帳號就自動把該帳號的大頭貼當成頭像，抓不到會退回本地照片或代表色首字母頭像。
 - **熱門影片**：依人氣排序的 YouTube 影片牆，點縮圖才載入 iframe（用 `youtube-nocookie.com`），不會一進站就拖慢速度。
 - **官方社群**：Instagram / YouTube / X / TikTok / 官網連結卡。
 - **作品年表**：專輯與單曲時間軸。
 - **可分享網址**：`#/babymonster/ahyeon` 這種網址會直接開到指定成員。
-- RWD、深色主題，主題色由各團體資料自訂。
+- RWD、深色主題，主題色由各團體資料自訂；字體使用 Space Grotesk（英數標題）＋ Plus Jakarta Sans／Noto Sans TC（內文）。
 
 ## 本機預覽
 
@@ -61,10 +62,24 @@ data/groups/_template.js   新增團體用的範本（底線開頭 = 不會被�
 | --- | --- |
 | `theme.accent` / `theme.accent2` | 團體主題色，會套用到漸層、按鈕、標籤 |
 | `members[].color` | 成員代表色，沒放照片時會變成漸層頭像底色 |
-| `members[].photo` | 照片路徑，例如 `assets/img/ahyeon.jpg`；留空就用首字母頭像 |
-| `members[].instagram` | 個人 IG 網址；留空會改成用藝名搜尋 Instagram |
+| `members[].photo` | 照片路徑或圖片網址，例如 `assets/img/ahyeon.jpg`；優先度最高 |
+| `members[].instagram` | IG 帳號或網址；填了就自動抓該帳號大頭貼，按鈕也會直連本人頁面 |
 | `videos[].youtubeId` | YouTube 網址 `watch?v=` 後面那一串 |
 | `videos[].badge` | 縮圖左上角徽章，例如觀看數里程碑 |
+
+## 頭像是怎麼來的
+
+成員頭像依序嘗試三個來源，前一個失敗就自動換下一個：
+
+1. `members[].photo` — 自己放的照片（`assets/img/` 或任何圖片網址），最穩定。
+2. `members[].instagram` — 該 IG 帳號的大頭貼。Instagram 官方不允許直接連圖，所以透過
+   `assets/js/core.js` 最上方的 `config.igAvatarProxy`（預設 `unavatar.io`）取得；
+   若哪天這個服務失效，只要改這一行就能整站換來源。
+3. 都沒有或都失敗 → 用成員代表色漸層 ＋ 名字首字母。
+
+> BABYMONSTER 目前**只有團體官方帳號** `@babymonster_ygofficial`（已用在首頁上方大頭貼），
+> 成員沒有官方個人 IG，因此成員頭像維持首字母樣式。官方開通後，在
+> `data/groups/babymonster.js` 對應成員填上 `instagram: '帳號'` 即可，不用改程式。
 
 ## 資料來源與維護
 

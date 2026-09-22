@@ -99,10 +99,18 @@
       })
       .join('');
 
+    var avatar = g.links.instagram
+      ? '<div class="hero-avatar">' +
+        avatarHTML({ stageName: g.name, photo: g.photo, instagram: g.links.instagram, color: g.theme.accent }, 'md') +
+        '<span class="hero-avatar-tag">@' + esc(KPOP.igHandle(g.links.instagram)) + '</span>' +
+        '</div>'
+      : '';
+
     return (
       '<section class="hero">' +
         '<div class="wrap hero-inner">' +
           '<div class="hero-copy">' +
+            avatar +
             '<p class="eyebrow">' + esc(g.agency) + (g.debut ? ' ・ ' + esc(g.debut) + ' 出道' : '') + '</p>' +
             '<h1 class="hero-title">' + esc(g.name) + '</h1>' +
             '<p class="hero-sub">' + esc(g.nameKo) + (g.nameZh ? '　' + esc(g.nameZh) : '') + '</p>' +
@@ -121,22 +129,47 @@
   }
 
   // ── 區塊：成員 ───────────────────────────────────────────
-  function avatarHTML(m, size) {
-    var initial = esc((m.stageName || '?').charAt(0));
-    var style = 'style="--m-color:' + esc(m.color) + '"';
-    if (m.photo) {
-      return (
-        '<span class="avatar avatar--' + size + '" ' + style + '>' +
-        '<img src="' + esc(m.photo) + '" alt="' + esc(m.stageName) + '" loading="lazy" ' +
-        'onerror="this.remove()">' +
-        '<span class="avatar-initial">' + initial + '</span></span>'
-      );
+  /**
+   * 頭像：依序嘗試 photo → Instagram 大頭貼，都失敗就留下漸層首字母。
+   * 失敗的接手邏輯在下面的 avatar error 監聽器。
+   */
+  function avatarHTML(entity, size) {
+    var initial = esc((entity.stageName || entity.name || '?').charAt(0));
+    var sources = KPOP.avatarSources(entity);
+    var img = '';
+
+    if (sources.length) {
+      img =
+        '<img src="' + esc(sources[0]) + '" alt="' + esc(entity.stageName || entity.name) + ' 的頭像" ' +
+        'loading="lazy" referrerpolicy="no-referrer" ' +
+        'data-avatar-fallbacks="' + esc(JSON.stringify(sources.slice(1))) + '">';
     }
+
     return (
-      '<span class="avatar avatar--' + size + '" ' + style + '>' +
-      '<span class="avatar-initial">' + initial + '</span></span>'
+      '<span class="avatar avatar--' + size + '" style="--m-color:' + esc(entity.color || 'var(--accent)') + '">' +
+      '<span class="avatar-initial">' + initial + '</span>' +
+      img +
+      '</span>'
     );
   }
+
+  // 圖片載不到時換下一個來源，全部失敗就移除圖片，露出底下的首字母頭像
+  document.addEventListener(
+    'error',
+    function (e) {
+      var img = e.target;
+      if (!img || img.tagName !== 'IMG' || !img.closest('.avatar')) return;
+      var next = [];
+      try { next = JSON.parse(img.dataset.avatarFallbacks || '[]'); } catch (err) { next = []; }
+      if (next.length) {
+        img.dataset.avatarFallbacks = JSON.stringify(next.slice(1));
+        img.src = next[0];
+      } else {
+        img.remove();
+      }
+    },
+    true
+  );
 
   function memberTabsHTML(g) {
     return (
@@ -166,10 +199,12 @@
       m.nameKo ? { label: '韓文名', value: m.nameKo } : null
     ].filter(Boolean);
 
-    var ig = m.instagram || 'https://www.instagram.com/explore/tags/' + encodeURIComponent(
-      (m.stageName || '').toLowerCase().replace(/[^a-z0-9]/g, '') + g.id.replace(/[^a-z0-9]/g, '')
-    ) + '/';
-    var igLabel = m.instagram ? '個人 Instagram' : '在 Instagram 找 ' + m.stageName;
+    var ig = m.instagram
+      ? KPOP.igUrl(m.instagram)
+      : 'https://www.instagram.com/explore/tags/' +
+        encodeURIComponent((m.stageName || '').toLowerCase().replace(/[^a-z0-9]/g, '') + g.id.replace(/[^a-z0-9]/g, '')) +
+        '/';
+    var igLabel = m.instagram ? '@' + KPOP.igHandle(m.instagram) : '在 Instagram 找 ' + m.stageName;
 
     return (
       '<article class="member-card" style="--m-color:' + esc(m.color) + '">' +

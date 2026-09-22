@@ -2,6 +2,11 @@
  * BABYMONSTER 資料檔
  * 整理時間：2026-09（資料來自公開報導與官方社群，若官方有更新請直接修改本檔）
  * 欄位說明請見 data/groups/_template.js
+ *
+ * 【成員頭像】優先序：photo（本地照片或圖片網址）→ instagram 帳號的大頭貼 → 代表色首字母。
+ * BABYMONSTER 目前官方只開了團體帳號 @babymonster_ygofficial，成員沒有官方個人 IG，
+ * 所以下面每位成員的 instagram 先留空；官方開通後填上帳號（例：instagram: 'ahyeon_xxx'），
+ * 大頭貼與連結就會自動換成本人的。想直接用照片就填 photo。
  */
 KPOP.register({
   id: 'babymonster',
@@ -54,7 +59,9 @@ KPOP.register({
       roles: ['隊長', 'Rapper', 'Dancer'],
       color: '#ff2d6f',
       bio: '隊內最年長的成員，也是帶著團隊往前走的隊長。低沉厚實的 rap 音色與穩定台風，是 BABYMONSTER 舞台上的重心。',
-      facts: ['隊長', '隊內最年長', 'Rap Line']
+      facts: ['隊長', '隊內最年長', 'Rap Line'],
+      photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
+      instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
     },
     {
       id: 'pharita',
@@ -67,7 +74,9 @@ KPOP.register({
       roles: ['Vocalist'],
       color: '#ff8a3d',
       bio: '來自泰國的主唱之一，音色明亮帶有辨識度，訪談與綜藝中常是氣氛的潤滑劑。',
-      facts: ['Vocal Line', '泰國籍成員']
+      facts: ['Vocal Line', '泰國籍成員'],
+      photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
+      instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
     },
     {
       id: 'asa',
@@ -80,7 +89,9 @@ KPOP.register({
       roles: ['Rapper', 'Dancer'],
       color: '#ffd23d',
       bio: '以爆發力十足的 rap 與舞台掌控力著稱，是團內舞蹈與 rap 雙線的主力。',
-      facts: ['Rap Line', 'Dance Line']
+      facts: ['Rap Line', 'Dance Line'],
+      photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
+      instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
     },
     {
       id: 'ahyeon',
@@ -93,7 +104,9 @@ KPOP.register({
       roles: ['Vocalist', 'Rapper', 'Dancer'],
       color: '#4dd8ff',
       bio: '唱、跳、rap 三項皆能的全能型成員。出道前曾因健康因素暫停活動，於 2024 年正規專輯《DRIP》回歸，完成七人完整體制。',
-      facts: ['All-rounder', '《DRIP》回歸']
+      facts: ['All-rounder', '《DRIP》回歸'],
+      photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
+      instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
     },
     {
       id: 'rami',
@@ -106,7 +119,9 @@ KPOP.register({
       roles: ['Vocalist'],
       color: '#7c4dff',
       bio: '乾淨透亮的嗓音是團內抒情段落的定心丸，現場演唱穩定度極高。',
-      facts: ['Vocal Line', '高音擔當']
+      facts: ['Vocal Line', '高音擔當'],
+      photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
+      instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
     },
     {
       id: 'rora',
@@ -119,7 +134,9 @@ KPOP.register({
       roles: ['Vocalist', 'Dancer'],
       color: '#ff5fd2',
       bio: '甜而不膩的音色搭配俐落的舞蹈線條，是舞台上視覺與歌聲反差感的來源。',
-      facts: ['Vocal Line', 'Dance Line']
+      facts: ['Vocal Line', 'Dance Line'],
+      photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
+      instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
     },
     {
       id: 'chiquita',
@@ -132,7 +149,9 @@ KPOP.register({
       roles: ['忙內', 'Rapper', 'Vocalist'],
       color: '#3ddc97',
       bio: '隊內最年幼的忙內，年紀小但舞台上的自信與 rap 存在感十足。',
-      facts: ['忙內', '泰國籍成員']
+      facts: ['忙內', '泰國籍成員'],
+      photo: '',       // 放本地照片或圖片網址，例：'assets/img/ruka.jpg'
+      instagram: ''    // 官方個人 IG 帳號，填了就自動抓大頭貼
     }
   ],
 

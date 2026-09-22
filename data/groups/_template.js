@@ -55,8 +55,9 @@ KPOP.register({
       nationality: '韓國',
       roles: ['隊長', 'Vocalist'],   // 顯示成標籤
       color: '#ff2d6f',              // 個人代表色（頭像漸層用）
-      photo: 'assets/img/xxx.jpg',   // 選填；留空會自動用名字首字母漸層頭像
-      instagram: 'https://www.instagram.com/xxx/', // 選填；留空會改成以藝名搜尋 IG
+      // 頭像優先序：photo → instagram 大頭貼 → 代表色首字母
+      photo: 'assets/img/xxx.jpg',   // 本地照片或任何圖片網址；最穩定
+      instagram: 'xxx',              // IG 帳號（或完整網址）；填了就自動抓該帳號大頭貼
       bio: '成員介紹文字。',
       facts: ['特色標籤一', '特色標籤二']
     }

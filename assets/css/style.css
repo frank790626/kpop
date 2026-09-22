@@ -13,6 +13,9 @@
   --line: rgba(255, 255, 255, 0.1);
   --text: #f4f4f7;
   --text-dim: #a5a5b5;
+  --font-display: "Space Grotesk", "Plus Jakarta Sans", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-body: "Plus Jakarta Sans", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+
   --radius: 18px;
   --radius-sm: 12px;
   --wrap: 1120px;
@@ -27,8 +30,9 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
-  line-height: 1.7;
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -48,7 +52,25 @@ body > * { position: relative; z-index: 1; }
 
 a { color: inherit; }
 
-h1, h2, h3 { line-height: 1.25; letter-spacing: 0.01em; }
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+/* 英數與日期用 display 字體，字寬對齊比較整齊 */
+.eyebrow,
+.brand,
+.group-chip,
+.fact dd,
+.member-eyebrow,
+.timeline-date,
+.video-sub,
+.video-link,
+.social,
+.btn,
+.tag { font-family: var(--font-display); font-feature-settings: "tnum" 1; }
 
 code {
   background: var(--surface-2);
@@ -155,6 +177,30 @@ code {
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 40px;
   align-items: end;
+}
+
+/* Hero 上的官方 Instagram 大頭貼 */
+.hero-avatar {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 6px 16px 6px 6px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.hero-avatar .avatar {
+  border-radius: 50%;
+  outline: 2px solid color-mix(in srgb, var(--accent) 65%, transparent);
+  outline-offset: 2px;
+}
+.hero-avatar-tag {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
 }
 
 .eyebrow {
@@ -303,6 +349,7 @@ code {
 }
 .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .avatar--sm { width: 52px; height: 52px; font-size: 1.2rem; }
+.avatar--md { width: 72px; height: 72px; font-size: 1.7rem; border-radius: 22px; }
 .avatar--lg { width: 148px; height: 148px; font-size: 3.4rem; border-radius: 24px; }
 
 .member-panel { margin-top: 20px; }
@@ -343,7 +390,13 @@ code {
   gap: 12px;
   flex-wrap: wrap;
 }
-.member-name-zh { font-size: 1rem; font-weight: 500; color: var(--text-dim); letter-spacing: 0.1em; }
+.member-name-zh {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
 
 .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; padding: 0; list-style: none; }
 
@@ -392,6 +445,7 @@ code {
 .btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
 .btn svg { width: 17px; height: 17px; fill: currentColor; }
 .btn--ig { background: linear-gradient(120deg, #f9ce34, #ee2a7b 45%, #6228d7); color: #fff; }
+.btn--ig span { letter-spacing: 0.01em; }
 .btn--ghost { border: 1px solid var(--line); background: var(--surface-2); color: var(--text); }
 
 /* ── 影片 ─────────────────────────────────────────────── */
