@@ -87,6 +87,7 @@ function normalizeGroup(raw) {
     members: [],
     videos: [],
     releases: [],
+    videosUpdatedAt: '',
     ...raw,
     theme: { accent: '#ff3d7f', accent2: '#8b5cf6', ...raw.theme }
   };
@@ -123,6 +124,22 @@ function normalizeGroup(raw) {
 
 const modules = import.meta.glob('../data/groups/*.js', { eager: true });
 
+/**
+ * 每天由 GitHub Actions（scripts/update-videos.mjs）產生的影片清單。
+ * 有產生檔就用它取代資料檔裡手寫的 videos，沒有就維持原樣。
+ */
+const generatedVideos = import.meta.glob('../data/generated/*-videos.json', { eager: true });
+
+function applyGeneratedVideos(group) {
+  const entry = Object.values(generatedVideos).find((m) => (m.default || m).groupId === group.id);
+  const payload = entry?.default || entry;
+  if (payload?.videos?.length) {
+    group.videos = payload.videos;
+    group.videosUpdatedAt = payload.updatedAt || '';
+  }
+  return group;
+}
+
 export const groups = Object.entries(modules)
   .filter(([path]) => !path.split('/').pop().startsWith('_'))
   .map(([path, mod]) => {
@@ -130,7 +147,7 @@ export const groups = Object.entries(modules)
       console.warn(`[KPOP] ${path} 沒有 export default 或缺少 name，已略過`);
       return null;
     }
-    return normalizeGroup(mod.default);
+    return applyGeneratedVideos(normalizeGroup(mod.default));
   })
   .filter(Boolean)
   .sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));

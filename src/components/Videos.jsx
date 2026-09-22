@@ -32,7 +32,10 @@ export default function Videos({ group }) {
       <div className="wrap">
         <header className="section-head">
           <h2>熱門影片</h2>
-          <p className="section-sub">依人氣排序，點縮圖即可直接在頁面播放。</p>
+          <p className="section-sub">
+            依人氣排序，點縮圖即可直接在頁面播放。
+            {group.videosUpdatedAt && <span className="section-stamp">資料更新於 {group.videosUpdatedAt}</span>}
+          </p>
         </header>
         <div className="video-grid">
           {group.videos.map((v) => (
