@@ -99,9 +99,9 @@ data/groups/_template.js   新增團體用的範本（底線開頭 = 不會被�
    若哪天這個服務失效，只要改這一行就能整站換來源。
 3. 都沒有或都失敗 → 用成員代表色漸層 ＋ 名字首字母。
 
-> BABYMONSTER 目前**只有團體官方帳號** `@babymonster_ygofficial`（已用在首頁上方大頭貼），
-> 成員沒有官方個人 IG，因此成員頭像維持首字母樣式。官方開通後，在
-> `data/groups/babymonster.js` 對應成員填上 `instagram: '帳號'` 即可，不用改程式。
+> BABYMONSTER 七位成員的 IG 帳號都已填在 `data/groups/babymonster.js`，
+> 頭像即為各自的 IG 大頭貼；首頁上方則是團體官方帳號 `@babymonster_ygofficial` 的大頭貼。
+> 帳號換了只要改該成員的 `instagram` 欄位，不用動程式。
 
 ## 資料來源與維護
 
