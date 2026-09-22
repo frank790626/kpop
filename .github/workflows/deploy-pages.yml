@@ -23,10 +23,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # enablement: true 會在 repo 尚未開啟 Pages 時自動開啟（來源設為 GitHub Actions）
+      # 需要先在 repo Settings → Pages 把 Source 設成「GitHub Actions」（一次即可）。
+      # Actions 的 GITHUB_TOKEN 沒有開啟 Pages 的權限，所以這裡不做 enablement。
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       # 純靜態站，整個 repo 直接當網站根目錄上傳
       - uses: actions/upload-pages-artifact@v3

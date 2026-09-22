@@ -26,8 +26,11 @@ python3 -m http.server 8000
 
 ## 上線（GitHub Pages）
 
-`.github/workflows/deploy-pages.yml` 會在 **push 到 `main`** 時自動把整個 repo 發佈到 GitHub Pages
-（workflow 裡的 `enablement: true` 會順手把 repo 的 Pages 開起來，來源設成 GitHub Actions）。
+第一次要先手動開啟一次 Pages：
+**Settings → Pages → Build and deployment → Source 選「GitHub Actions」**
+（Actions 的 GITHUB_TOKEN 沒有開啟 Pages 的權限，這步只能由 repo 管理員做，且只需做一次）。
+
+之後 `.github/workflows/deploy-pages.yml` 會在 **push 到 `main`** 時自動把整個 repo 發佈上去。
 
 上線後網址：`https://<帳號>.github.io/kpop/`
 
