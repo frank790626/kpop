@@ -476,12 +476,19 @@ code {
 .release-card {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 22px;
+  overflow: hidden;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   background: var(--surface);
   transition: transform 0.25s, border-color 0.25s;
+}
+
+.release-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  padding: 20px 22px 22px;
 }
 .release-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
 
@@ -492,7 +499,7 @@ code {
     var(--surface);
 }
 
-.release-head { display: flex; align-items: center; gap: 10px; }
+.release-head { display: flex; align-items: center; gap: 10px; min-height: 22px; }
 
 .release-date {
   font-family: var(--font-display);
