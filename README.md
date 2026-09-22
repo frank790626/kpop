@@ -13,7 +13,9 @@
 - **官方社群**：Instagram / YouTube / X / TikTok / 官網連結卡。
 - **作品年表**：專輯與單曲時間軸。
 - **可分享網址**：`#/babymonster/ahyeon` 這種網址會直接開到指定成員。
-- RWD、深色主題，主題色由各團體資料自訂；字體使用 Space Grotesk（英數標題）＋ Plus Jakarta Sans／Noto Sans TC（內文）。
+- RWD、深色主題，主題色由各團體資料自訂。
+- 字體全部自架（`@fontsource`，不依賴外部 CDN）：標題 **Unbounded**、內文 **Plus Jakarta Sans** ＋ **Noto Sans TC**，
+  三套都是可變字體，中文有 unicode-range 分包，瀏覽器只會下載用得到的部分。
 
 ## 本機開發
 

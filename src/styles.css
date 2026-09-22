@@ -13,8 +13,11 @@
   --line: rgba(255, 255, 255, 0.1);
   --text: #f4f4f7;
   --text-dim: #a5a5b5;
-  --font-display: "Space Grotesk", "Plus Jakarta Sans", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-  --font-body: "Plus Jakarta Sans", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  /* 字體：全部自帶（@fontsource），不依賴外部 CDN
+     display = 標題與數字用的寬體 Unbounded；ui/body = 內文與小字 */
+  --font-display: "Unbounded Variable", "Noto Sans TC Variable", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-ui: "Plus Jakarta Sans Variable", "Noto Sans TC Variable", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --font-body: var(--font-ui);
 
   --radius: 18px;
   --radius-sm: 12px;
@@ -54,23 +57,31 @@ a { color: inherit; }
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
   font-weight: 700;
 }
 
-/* 英數與日期用 display 字體，字寬對齊比較整齊 */
-.eyebrow,
+/* 標題感的元素用寬體 Unbounded */
 .brand,
 .group-chip,
-.fact dd,
+.eyebrow,
 .member-eyebrow,
+.fact dd,
+.release-date,
+.release-flag,
 .timeline-date,
+.video-badge { font-family: var(--font-display); }
+
+/* 小字與按鈕維持易讀的 UI 字體，數字對齊 */
 .video-sub,
 .video-link,
+.release-link,
+.hero-avatar-tag,
 .social,
 .btn,
-.tag { font-family: var(--font-display); font-feature-settings: "tnum" 1; }
+.tag,
+.member-meta dd { font-family: var(--font-ui); font-feature-settings: "tnum" 1; }
 
 code {
   background: var(--surface-2);
@@ -121,8 +132,8 @@ code {
   gap: 10px;
   text-decoration: none;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  font-size: 0.82rem;
 }
 
 .brand-mark {
@@ -154,9 +165,9 @@ code {
   border: 1px solid var(--line);
   background: var(--surface);
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.01em;
   transition: border-color 0.2s, background 0.2s, transform 0.2s;
 }
 .group-chip:hover { transform: translateY(-1px); background: var(--surface-2); }
@@ -205,22 +216,29 @@ code {
 
 .eyebrow {
   margin: 0 0 12px;
-  font-size: 0.8rem;
-  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-dim);
 }
 
 .hero-title {
   margin: 0;
-  font-size: clamp(2.3rem, 6.6vw, 4.4rem);
+  font-size: clamp(1.9rem, 5vw, 3.5rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   overflow-wrap: anywhere;
-  background: linear-gradient(120deg, #fff 20%, var(--accent) 60%, var(--accent-2));
+  background: linear-gradient(110deg, #fff 8%, var(--accent) 38%, var(--accent-2) 62%, #fff 95%);
+  background-size: 260% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: title-sweep 9s ease-in-out infinite;
+}
+
+@keyframes title-sweep {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .hero-sub {
@@ -268,7 +286,7 @@ code {
   background: var(--surface);
 }
 .fact dt { font-size: 0.75rem; letter-spacing: 0.14em; color: var(--text-dim); }
-.fact dd { margin: 4px 0 0; font-size: 1.05rem; font-weight: 700; }
+.fact dd { margin: 4px 0 0; font-size: 0.95rem; font-weight: 700; letter-spacing: -0.02em; }
 
 .intro {
   margin-top: 42px;
@@ -286,7 +304,7 @@ code {
 .section-head { margin-bottom: 28px; }
 .section-head h2 {
   margin: 0;
-  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  font-size: clamp(1.25rem, 2.8vw, 1.75rem);
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -384,7 +402,7 @@ code {
 
 .member-name {
   margin: 4px 0 14px;
-  font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+  font-size: clamp(1.4rem, 3.4vw, 2rem);
   display: flex;
   align-items: baseline;
   gap: 12px;
@@ -478,7 +496,7 @@ code {
 
 .release-date {
   font-family: var(--font-display);
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--accent);
   letter-spacing: 0.04em;
@@ -495,7 +513,7 @@ code {
   color: #fff;
 }
 
-.release-title { margin: 2px 0 0; font-size: 1.35rem; }
+.release-title { margin: 4px 0 0; font-size: 1.15rem; }
 .release-type { margin: 0; font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.06em; }
 .release-note { margin: 8px 0 0; font-size: 0.9rem; color: #cfcfdb; }
 
@@ -573,7 +591,7 @@ code {
 }
 
 .video-meta { padding: 18px; }
-.video-title { margin: 0; font-size: 1.15rem; }
+.video-title { margin: 0; font-size: 1rem; }
 .video-sub { margin: 4px 0 0; font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.06em; }
 .video-note { margin: 10px 0 0; font-size: 0.88rem; color: #cfcfdb; }
 .video-link {
@@ -642,8 +660,8 @@ code {
 }
 .timeline-item:last-child { border-bottom: 0; }
 
-.timeline-date { color: var(--accent); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.04em; }
-.timeline-body h3 { margin: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.timeline-date { color: var(--accent); font-weight: 700; font-size: 0.8rem; letter-spacing: -0.01em; }
+.timeline-body h3 { margin: 0; font-size: 1rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .timeline-type {
   font-size: 0.72rem;
   font-weight: 600;
