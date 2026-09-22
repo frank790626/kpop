@@ -15,8 +15,8 @@
   --text-dim: #a5a5b5;
   /* 字體：全部自帶（@fontsource），不依賴外部 CDN
      display = 標題與數字用的寬體 Unbounded；ui/body = 內文與小字 */
-  --font-display: "Unbounded Variable", "Noto Sans TC Variable", "PingFang TC", "Microsoft JhengHei", sans-serif;
-  --font-ui: "Plus Jakarta Sans Variable", "Noto Sans TC Variable", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --font-display: "Unbounded Variable", "Noto Sans TC Variable", "Noto Sans KR Variable", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-ui: "Geist Variable", "Noto Sans TC Variable", "Noto Sans KR Variable", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
   --font-body: var(--font-ui);
 
   --radius: 18px;

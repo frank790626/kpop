@@ -14,8 +14,9 @@
 - **作品年表**：專輯與單曲時間軸。
 - **可分享網址**：`#/babymonster/ahyeon` 這種網址會直接開到指定成員。
 - RWD、深色主題，主題色由各團體資料自訂。
-- 字體全部自架（`@fontsource`，不依賴外部 CDN）：標題 **Unbounded**、內文 **Plus Jakarta Sans** ＋ **Noto Sans TC**，
-  三套都是可變字體，中文有 unicode-range 分包，瀏覽器只會下載用得到的部分。
+- 字體全部自架（`@fontsource`，不依賴外部 CDN），四套都是可變字體：
+  標題 **Unbounded**、內文與 UI **Geist**、中文 **Noto Sans TC**、韓文 **Noto Sans KR**。
+  中韓文有 unicode-range 分包，瀏覽器只會下載實際用到的區段。
 
 ## 本機開發
 
