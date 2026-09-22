@@ -141,7 +141,7 @@ export default {
       note: '아형 하이라이트'
     },
     {
-      title: '被形님們發掘的綜藝寶石 REI',
+      title: '被哥哥們發掘的綜藝寶石 REI',
       youtubeId: '25nCaL33DoM',
       show: '아는 형님',
       date: '2022.08.27',
