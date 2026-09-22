@@ -1,7 +1,7 @@
 # K-POP HUB
 
-一個純靜態的 K-POP 團體介紹網站，首發團體是 **BABYMONSTER**。
-沒有任何建置流程與相依套件 — 直接打開 `index.html` 就能看。
+一個 K-POP 團體介紹網站，首發團體是 **BABYMONSTER**。
+以 **React 19 + Vite** 打造，部署在 GitHub Pages。
 
 ## 功能
 
@@ -15,15 +15,17 @@
 - **可分享網址**：`#/babymonster/ahyeon` 這種網址會直接開到指定成員。
 - RWD、深色主題，主題色由各團體資料自訂；字體使用 Space Grotesk（英數標題）＋ Plus Jakarta Sans／Noto Sans TC（內文）。
 
-## 本機預覽
+## 本機開發
 
 ```bash
-python3 -m http.server 8000
-# 開 http://localhost:8000
+npm install
+npm run dev       # http://localhost:5173
+npm run build     # 產出 dist/
+npm run preview   # 預覽 build 結果
 ```
 
-直接雙擊 `index.html` 也可以（沒有使用 ES module，不會被 file:// 擋住）。
-部署到 GitHub Pages / Netlify / Vercel 時，整個資料夾就是網站根目錄。
+`npm run build` 會把 `assets/img/`（成員照片）一併複製進 `dist/`。
+部署到子目錄時用 `BASE_PATH` 指定，例如 GitHub Pages：`BASE_PATH=/kpop/ npm run build`。
 
 ## 上線（GitHub Pages）
 
@@ -47,14 +49,18 @@ python3 -m http.server 8000
 ## 目錄結構
 
 ```
-.github/workflows/         GitHub Pages 自動部署
-index.html                 頁面外框 + 載入資料檔的地方
-assets/css/style.css       全站樣式（主題色用 CSS 變數，由 JS 依團體注入）
-assets/js/core.js          KPOP.register()：團體資料註冊中心
-assets/js/app.js           路由與畫面渲染（新增團體不需要動這支）
-assets/img/                成員照片放這裡
-data/groups/babymonster.js BABYMONSTER 資料
-data/groups/_template.js   新增團體用的範本（底線開頭 = 不會被載入）
+.github/workflows/            GitHub Pages 自動部署（npm ci → build → 上傳 dist）
+index.html                    Vite 進入點（字體與 meta 都在這）
+vite.config.js                base path 由 BASE_PATH 環境變數決定
+scripts/copy-assets.mjs       build 後把 assets/img 複製進 dist
+assets/img/                   成員照片放這裡
+src/main.jsx                  React 進入點
+src/App.jsx                   路由（hash）與頁面組裝
+src/styles.css                全站樣式（主題色用 CSS 變數，依團體注入）
+src/lib/registry.js           自動載入 src/data/groups/ 的資料並補預設值
+src/components/               Header / Hero / Members / Latest / Videos / Social / Timeline / Avatar
+src/data/groups/babymonster.js  BABYMONSTER 資料
+src/data/groups/_template.js    新增團體用的範本（底線開頭 = 不會被載入）
 ```
 
 ## 新增一個團體
@@ -62,20 +68,16 @@ data/groups/_template.js   新增團體用的範本（底線開頭 = 不會被�
 1. 複製範本：
 
    ```bash
-   cp data/groups/_template.js data/groups/blackpink.js
+   cp src/data/groups/_template.js src/data/groups/blackpink.js
    ```
 
-2. 編輯 `data/groups/blackpink.js`，填入團名、成員、影片、社群連結等資料。
+2. 編輯 `src/data/groups/blackpink.js`，填入團名、成員、影片、社群連結等資料。
    欄位說明都寫在範本的註解裡；沒有的欄位可以整個刪掉，程式會自動補預設值。
 
-3. 在 `index.html` 的「團體資料」區塊加一行：
+3. 存檔。**就這樣** —— `src/data/groups/` 底下的檔案會被自動掃描載入
+   （`import.meta.glob`），不用 import、不用改任何畫面程式。
 
-   ```html
-   <script src="data/groups/babymonster.js"></script>
-   <script src="data/groups/blackpink.js"></script>   <!-- 新增這行 -->
-   ```
-
-   script 的順序就是頁首團體切換列的順序。完成，不需要改任何畫面程式。
+頁首切換列的順序由資料裡的 `order` 決定（數字小的在前，沒填預設 100）。
 
 ## 資料怎麼填
 
@@ -83,6 +85,7 @@ data/groups/_template.js   新增團體用的範本（底線開頭 = 不會被�
 | --- | --- |
 | `theme.accent` / `theme.accent2` | 團體主題色，會套用到漸層、按鈕、標籤 |
 | `members[].color` | 成員代表色，沒放照片時會變成漸層頭像底色 |
+| `order` | 團體切換列的排序，數字小的在前 |
 | `members[].photo` | 照片路徑或圖片網址，例如 `assets/img/ahyeon.jpg`；優先度最高 |
 | `members[].instagram` | IG 帳號或網址；填了就自動抓該帳號大頭貼，按鈕也會直連本人頁面 |
 | `videos[].youtubeId` | YouTube 網址 `watch?v=` 後面那一串 |
@@ -97,7 +100,7 @@ data/groups/_template.js   新增團體用的範本（底線開頭 = 不會被�
    BABYMONSTER 七位成員的路徑已經接好，把檔案放進 `assets/img/` 即可，
    檔名見 `assets/img/README.txt`。
 2. `members[].instagram` — 該 IG 帳號的大頭貼。Instagram 官方不允許直接連圖，所以透過
-   `assets/js/core.js` 最上方的 `config.igAvatarProxy`（預設 `unavatar.io`）取得；
+   `src/lib/registry.js` 最上方的 `config.igAvatarProxy`（預設 `unavatar.io`）取得；
    若哪天這個服務失效，只要改這一行就能整站換來源。
 3. 都沒有或都失敗 → 用成員代表色漸層 ＋ 名字首字母。
 

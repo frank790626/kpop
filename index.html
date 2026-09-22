@@ -15,37 +15,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<a class="skip-link" href="#main">跳到主要內容</a>
-
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="#/">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-text">K-POP<strong>HUB</strong></span>
-    </a>
-    <nav class="group-nav" id="group-nav" aria-label="團體切換"></nav>
-  </div>
-</header>
-
-<main id="main" class="app" aria-live="polite"></main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <p class="footer-note">本站為非官方粉絲介紹頁，所有圖片、影片與商標版權屬於原經紀公司與各平台所有。</p>
-    <p class="footer-note muted">資料整理自公開報導與官方社群，若有更新或誤植，請直接修改 <code>data/groups/</code> 內的資料檔。</p>
-  </div>
-</footer>
-
-<!-- ───── 核心程式 ───── -->
-<script src="assets/js/core.js"></script>
-
-<!-- ───── 團體資料：新增團體時，在這裡多加一行 script 即可 ───── -->
-<script src="data/groups/babymonster.js"></script>
-
-<!-- ───── 畫面渲染（務必放最後） ───── -->
-<script src="assets/js/app.js"></script>
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

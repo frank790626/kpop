@@ -23,15 +23,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # GitHub Pages 會放在 /<repo>/ 底下，build 時要帶上對應的 base path
+      - name: Build
+        run: |
+          export BASE_PATH="/${GITHUB_REPOSITORY#*/}/"
+          echo "base path: $BASE_PATH"
+          npm run build
+
       # 前置作業（只需做一次）：Settings → Pages → Source 選「GitHub Actions」。
-      # Actions 的 GITHUB_TOKEN 無法用 enablement 自動開啟 Pages
-      # （會回 Resource not accessible by integration），所以這步只能手動。
       - uses: actions/configure-pages@v5
 
-      # 純靜態站，整個 repo 直接當網站根目錄上傳
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: dist
 
       - id: deployment
         uses: actions/deploy-pages@v4

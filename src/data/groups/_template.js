@@ -1,16 +1,17 @@
 /**
  * 新增團體範本
  * ──────────────────────────────────────────────────────────
- * 1. 複製這個檔案，改名成團體 id，例如 data/groups/blackpink.js
+ * 1. 複製這個檔案，改名成團體 id，例如 src/data/groups/blackpink.js
  * 2. 填好下面的資料（沒有的欄位可以直接刪掉，程式會補預設值）
- * 3. 到 index.html 的「團體資料」區塊多加一行：
- *      <script src="data/groups/blackpink.js"></script>
- *    順序就是網站上方團體切換列的順序。
+ * 3. 存檔，就這樣 —— src/data/groups/ 底下的檔案會被自動掃描載入，
+ *    不需要去 import 或改任何程式。
  *
- * 注意：這個檔名以 _ 開頭，代表它只是範本，不會被 index.html 載入。
+ * 切換列的順序由 order 欄位決定（數字小的在前，沒填預設 100）。
+ * 注意：檔名以 _ 開頭代表這只是範本，不會被載入。
  */
-KPOP.register({
+export default {
   id: 'group-id',            // 網址用的英文 id（#/group-id），不可重複
+  order: 2,                  // 團體切換列的排序，數字小的在前
   name: 'GROUP NAME',        // 團名（英文／羅馬拼音）
   nameKo: '그룹 이름',        // 韓文團名，選填
   nameZh: '中文團名',         // 選填
@@ -85,4 +86,4 @@ KPOP.register({
       youtubeId: 'dQw4w9WgXcQ' // 選填；有填「近期發行」卡片就會出現看 M/V 連結
     }
   ]
-});
+};

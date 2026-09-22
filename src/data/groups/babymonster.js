@@ -1,14 +1,15 @@
 /**
  * BABYMONSTER 資料檔
  * 整理時間：2026-09（資料來自公開報導與官方社群，若官方有更新請直接修改本檔）
- * 欄位說明請見 data/groups/_template.js
+ * 欄位說明請見 src/data/groups/_template.js
  *
  * 【成員頭像】優先序：photo → instagram 帳號的大頭貼 → 代表色首字母。
  * photo 已先指向 assets/img/<成員id>.jpg，把照片放進去就會自動顯示；
  * 檔案不存在時會自動往下退到 IG 大頭貼，再退到首字母頭像，不會出現破圖。
  */
-KPOP.register({
+export default {
   id: 'babymonster',
+  order: 1,
   name: 'BABYMONSTER',
   nameKo: '베이비몬스터',
   nameZh: '寶貝怪獸',
@@ -232,4 +233,4 @@ KPOP.register({
     { date: '2025.10.10', title: 'WE GO UP', type: '迷你二輯', note: '主打〈WE GO UP〉，B-side〈PSYCHO〉MV 於 11.19 公開', youtubeId: 'wlHwjkYpSr0' },
     { date: '2026.05.04', title: 'CHOOM', type: '迷你三輯', note: '主打歌〈춤 (CHOOM)〉，MV 14 天破 1 億觀看', youtubeId: 'x3eqqoZPV_E' }
   ]
-});
+};
