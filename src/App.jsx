@@ -5,6 +5,7 @@ import Hero from './components/Hero.jsx';
 import Members from './components/Members.jsx';
 import Latest from './components/Latest.jsx';
 import Videos from './components/Videos.jsx';
+import Variety from './components/Variety.jsx';
 import Social from './components/Social.jsx';
 import Timeline from './components/Timeline.jsx';
 
@@ -89,6 +90,7 @@ export default function App() {
             <Members group={group} memberId={member?.id} onSelect={selectMember} />
             <Latest group={group} />
             <Videos group={group} />
+            <Variety group={group} />
             <Social group={group} />
             <Timeline group={group} />
           </>

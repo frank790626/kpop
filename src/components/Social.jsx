@@ -5,7 +5,7 @@ export default function Social({ group }) {
   if (!keys.length) return null;
 
   return (
-    <section className="section" id="social">
+    <section className="section section--alt" id="social">
       <div className="wrap">
         <header className="section-head">
           <h2>官方社群</h2>

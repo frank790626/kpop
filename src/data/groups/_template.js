@@ -76,6 +76,21 @@ export default {
     }
   ],
 
+  // 綜藝節目片段（選填）
+  variety: [
+    {
+      title: '片段標題',
+      youtubeId: 'dQw4w9WgXcQ',
+      show: '節目名稱',
+      date: '2020.01.01',
+      note: '一句話說明。'
+    }
+  ],
+
+  // 想自動追蹤綜藝片段就填要監看的頻道（UC 開頭的 channelId 或 @handle 皆可）。
+  // 每天會掃這些頻道的 RSS，把標題提到團名的新片補到綜藝清單最前面。
+  varietyChannels: [],
+
   // 作品年表。最新的三筆會自動出現在「近期發行」區塊（在熱門影片上方）
   releases: [
     {

@@ -33,8 +33,13 @@ npm run preview   # 預覽 build 結果
 ## 影片每天自動更新
 
 `.github/workflows/update-videos.yml` 每天台北時間早上 6 點跑一次
-`scripts/update-videos.mjs`，把結果寫到 `src/data/generated/<團體id>-videos.json`，
+`scripts/update-videos.mjs`，把結果寫到 `src/data/generated/`，
 有變化才 commit，並自動觸發重新部署。也可以到 Actions 手動執行。
+
+產出兩份清單：
+
+- `<團體id>-videos.json` — 官方頻道的 M/V
+- `<團體id>-variety.json` — 綜藝節目片段
 
 腳本有兩種模式，會自動判斷：
 
@@ -51,6 +56,21 @@ npm run preview   # 預覽 build 結果
 腳本只會挑標題含 `M/V`／`MUSIC VIDEO`／`PERFORMANCE VIDEO` 的影片，
 並排除 MAKING FILM、TEASER、REACTION 等衍生內容。任一團體抓取失敗都不會影響其他團體，
 網站也會自動退回資料檔裡的清單。
+
+### 綜藝節目片段
+
+綜藝片段在電視台／節目自己的頻道上，不在團體頻道，所以改成**監看那些頻道的 RSS**，
+撿出標題提到團名的影片（不需要 API key）。要追蹤哪些頻道寫在團體資料的 `varietyChannels`：
+
+```js
+varietyChannels: [
+  'UCOHM2N1YQdb-cHWxJxwBMLQ', // 아는형님 Knowingbros
+  '@idolhumandocu'            // 也可以直接填 @handle
+]
+```
+
+新撿到的排在最前面，資料檔裡 `variety` 手動整理的內容永遠保留在後面，不會被洗掉。
+會自動略過直拍（직캠／FANCAM）。單一頻道抓失敗只會警告，不影響其他頻道。
 
 ## 上線（GitHub Pages）
 

@@ -1,6 +1,6 @@
 import YouTubeEmbed from './YouTubeEmbed.jsx';
 
-function VideoCard({ video }) {
+export function VideoCard({ video }) {
   return (
     <article className="video-card">
       <YouTubeEmbed youtubeId={video.youtubeId} title={video.title} badge={video.badge} />

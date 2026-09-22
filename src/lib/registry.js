@@ -86,8 +86,11 @@ function normalizeGroup(raw) {
     links: {},
     members: [],
     videos: [],
+    variety: [],
+    varietyChannels: [],
     releases: [],
     videosUpdatedAt: '',
+    varietyUpdatedAt: '',
     ...raw,
     theme: { accent: '#ff3d7f', accent2: '#8b5cf6', ...raw.theme }
   };
@@ -109,15 +112,10 @@ function normalizeGroup(raw) {
     ...m
   }));
 
-  group.videos = (raw.videos || []).map((v) => ({
-    title: '',
-    youtubeId: '',
-    date: '',
-    badge: '',
-    note: '',
-    kind: 'M/V',
-    ...v
-  }));
+  const video = (v, kind) => ({ title: '', youtubeId: '', date: '', badge: '', note: '', kind, ...v });
+
+  group.videos = (raw.videos || []).map((v) => video(v, 'M/V'));
+  group.variety = (raw.variety || []).map((v) => video(v, v.show || '綜藝'));
 
   return group;
 }
@@ -128,15 +126,30 @@ const modules = import.meta.glob('../data/groups/*.js', { eager: true });
  * 每天由 GitHub Actions（scripts/update-videos.mjs）產生的影片清單。
  * 有產生檔就用它取代資料檔裡手寫的 videos，沒有就維持原樣。
  */
-const generatedVideos = import.meta.glob('../data/generated/*-videos.json', { eager: true });
+const generated = import.meta.glob('../data/generated/*.json', { eager: true });
 
-function applyGeneratedVideos(group) {
-  const entry = Object.values(generatedVideos).find((m) => (m.default || m).groupId === group.id);
-  const payload = entry?.default || entry;
-  if (payload?.videos?.length) {
-    group.videos = payload.videos;
-    group.videosUpdatedAt = payload.updatedAt || '';
+function generatedFor(groupId, kind) {
+  const entry = Object.entries(generated).find(([path, mod]) => {
+    const payload = mod.default || mod;
+    return path.endsWith(`${kind}.json`) && payload.groupId === groupId;
+  });
+  const mod = entry?.[1];
+  return mod ? mod.default || mod : null;
+}
+
+function applyGenerated(group) {
+  const videos = generatedFor(group.id, 'videos');
+  if (videos?.videos?.length) {
+    group.videos = videos.videos;
+    group.videosUpdatedAt = videos.updatedAt || '';
   }
+
+  const variety = generatedFor(group.id, 'variety');
+  if (variety?.videos?.length) {
+    group.variety = variety.videos.map((v) => ({ ...v, kind: v.kind || v.show || '綜藝' }));
+    group.varietyUpdatedAt = variety.updatedAt || '';
+  }
+
   return group;
 }
 
@@ -147,7 +160,7 @@ export const groups = Object.entries(modules)
       console.warn(`[KPOP] ${path} 沒有 export default 或缺少 name，已略過`);
       return null;
     }
-    return applyGeneratedVideos(normalizeGroup(mod.default));
+    return applyGenerated(normalizeGroup(mod.default));
   })
   .filter(Boolean)
   .sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));

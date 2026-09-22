@@ -224,6 +224,54 @@ export default {
     }
   ],
 
+  // ─── 綜藝節目片段 ─────────────────────────────────────
+  // 每天由 scripts/update-videos.mjs 監看下面 varietyChannels 的 RSS，
+  // 標題含團名的新片會自動補到最前面；這裡手動整理的不會被覆蓋。
+  variety: [
+    {
+      title: 'BABYMONSTER & 주현영, 공포 체험에 도전',
+      youtubeId: 'PJCjiVWcaxI',
+      show: '런닝맨 Ep.759',
+      date: '',
+      note: 'SBS 런닝맨 출연분'
+    },
+    {
+      title: '〈Dangerously〉부터〈SHEESH〉까지 라이브 퍼포먼스 모음',
+      youtubeId: 'tfTIFCZN3JU',
+      show: '아는 형님',
+      date: '2024.04.13',
+      note: 'JTBC 아는 형님 429회'
+    },
+    {
+      title: '아현의 운동 루틴 공개',
+      youtubeId: '8bLIQEZnTrY',
+      show: '아는 형님',
+      date: '2024.04.13',
+      note: '복근에게 자비 없는 매운맛'
+    },
+    {
+      title: 'BABYMONSTER 편',
+      youtubeId: 'Zge2dQ-wEJg',
+      show: '아이돌 인간극장',
+      date: '',
+      note: '대본 없는 리얼 다큐 예능'
+    },
+    {
+      title: '춤 (CHOOM) LIVE',
+      youtubeId: '_OlChAuPciw',
+      show: '두시탈출 컬투쇼',
+      date: '2026.06.17',
+      note: 'SBS 파워FM 라디오 라이브'
+    }
+  ],
+
+  // 要自動撿綜藝片段的頻道：填 UC 開頭的 channelId 或 @handle 都可以
+  varietyChannels: [
+    'UCOHM2N1YQdb-cHWxJxwBMLQ', // 아는형님 Knowingbros
+    'UCaKod3X1Tn4c7Ci0iUKcvzQ', // 런닝맨 SBS
+    '@idolhumandocu'            // 아이돌 인간극장
+  ],
+
   // ─── 作品年表 ─────────────────────────────────────────
   releases: [
     { date: '2023.11.27', title: 'BATTER UP', type: '數位單曲', note: '出道前先行曲', youtubeId: 'olDWm2veCrM' },
