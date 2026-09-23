@@ -1,0 +1,78 @@
+{
+  "groupId": "illit",
+  "updatedAt": "2026-09-23",
+  "videos": [
+    {
+      "title": "Magnetic",
+      "youtubeId": "Vk5-c_v4gMU",
+      "date": "2024.03.25",
+      "kind": "出道主打 M/V",
+      "note": "出道即登上國際排行榜的代表作。",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    },
+    {
+      "title": "Lucky Girl Syndrome",
+      "youtubeId": "UCmgGZbfjmk",
+      "date": "2024.03.25",
+      "kind": "出道專輯收錄曲 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    },
+    {
+      "title": "Cherish (My Love)",
+      "youtubeId": "repxDl9wybU",
+      "date": "2024.10.21",
+      "kind": "迷你二輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "Nix Xenoverse Ent"
+    },
+    {
+      "title": "Tick-Tack (Performance ver.)",
+      "youtubeId": "1yMzV0NdB9g",
+      "date": "2024.11.17",
+      "kind": "Performance M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    },
+    {
+      "title": "jellyous",
+      "youtubeId": "GkG60kISnfc",
+      "date": "2025.07.07",
+      "kind": "迷你三輯收錄曲 M/V",
+      "note": "《Bomb》專輯收錄曲。",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    },
+    {
+      "title": "NOT CUTE ANYMORE",
+      "youtubeId": "x_RYZsOfpKY",
+      "date": "2025.11.24",
+      "kind": "單曲專輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    },
+    {
+      "title": "It’s Me",
+      "youtubeId": "bMhDJ0S0OBA",
+      "date": "2026.04.30",
+      "kind": "迷你四輯主打 M/V",
+      "note": "轉向電子曲風的轉型之作。",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    },
+    {
+      "title": "I Got Your Back (Feat. JISOO, MOMOKA of HANA)",
+      "youtubeId": "_Pk6xfju3l0",
+      "date": "2026.07.26",
+      "kind": "日本單曲 M/V",
+      "note": "第二張日本單曲。",
+      "noEmbed": false,
+      "show": "HYBE LABELS"
+    }
+  ]
+}
