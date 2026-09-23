@@ -1,6 +1,6 @@
 # K-POP HUB
 
-一個 K-POP 團體介紹網站，目前收錄 **BABYMONSTER**、**IU**、**LE SSERAFIM**、**IVE**、**aespa**、**ILLIT**、**TWS**，
+一個 K-POP 團體介紹網站，目前收錄 **BABYMONSTER**、**IU**、**LE SSERAFIM**、**IVE**、**aespa**、**ILLIT**、**TWS**、**NMIXX**，
 用頁首的 tab 切換。以 **React 19 + Vite** 打造，部署在 GitHub Pages。
 
 ## 功能
