@@ -1,4 +1,4 @@
-# K-POP HUB
+# Frank 的私房 K-POP
 
 一個 K-POP 團體介紹網站，目前收錄 **BABYMONSTER**、**IU**、**LE SSERAFIM**、**IVE**、**aespa**、**ILLIT**、**TWS**、**NMIXX**，
 用頁首的 tab 切換。以 **React 19 + Vite** 打造，部署在 GitHub Pages。
@@ -12,7 +12,9 @@
 - **熱門影片**：依人氣排序的 YouTube 影片牆，點縮圖才載入 iframe，不會一進站就拖慢速度。嵌入用 `youtube.com`，瀏覽器已登入 YouTube Premium 就不會有廣告。
 - **官方社群**：Instagram / YouTube / X / TikTok / 官網連結卡。
 - **作品年表**：專輯與單曲時間軸。
-- **可分享網址**：`#/babymonster/ahyeon` 這種網址會直接開到指定成員。
+- **可分享網址**：每個團體、每位成員都有自己的網址，例如 `/kpop/babymonster/ahyeon/`（舊的 `#/babymonster/ahyeon` 會自動轉過去）。
+- **搜尋引擎友善**：`npm run build` 最後會跑 `scripts/prerender.mjs`，替每一頁產生有專屬標題、描述、分享預覽的 HTML，
+  並輸出 `sitemap.xml`。網站名稱與 Google Search Console 驗證碼放在 `src/lib/site.js`。
 - RWD、深色主題，主題色由各團體資料自訂。
 - 字體全部自架（`@fontsource`，不依賴外部 CDN），四套都是可變字體：
   標題 **Unbounded**、內文與 UI **Geist**、中文 **Noto Sans TC**、韓文 **Noto Sans KR**。
@@ -141,7 +143,7 @@ scripts/update-videos.mjs     每日抓取影片清單（API 或 RSS）
 scripts/fetch-wiki-photos.mjs 一次性下載成員照片（Wikipedia／Commons）
 assets/img/                   成員照片與 credits.json（作者／授權）
 src/main.jsx                  React 進入點
-src/App.jsx                   路由（hash）與頁面組裝
+src/App.jsx                   路由（網址路徑）與頁面組裝
 src/styles.css                全站樣式（主題色用 CSS 變數，依團體注入）
 src/lib/registry.js           自動載入 src/data/groups/ 的資料並補預設值
 src/components/               Header / Hero / Members / Latest / Videos / Social / Timeline / Avatar

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Avatar from './Avatar.jsx';
 import { ICONS } from './icons.jsx';
-import { ageFrom, igHandle, igUrl } from '../lib/registry.js';
+import { ageFrom, assetUrl, igHandle, igUrl } from '../lib/registry.js';
 
 /** Commons 的照片多為 CC BY／CC BY-SA，依授權必須標註作者與授權條款 */
 function PhotoCredit({ credit }) {
@@ -33,7 +33,7 @@ function PhotoCredit({ credit }) {
 
 function MemberCard({ group, member }) {
   const [activeSrc, setActiveSrc] = useState('');
-  const showCredit = member.photoCredit && activeSrc && activeSrc === member.wikiPhoto;
+  const showCredit = member.photoCredit && activeSrc && activeSrc === assetUrl(member.wikiPhoto);
   const age = ageFrom(member.birth);
   const meta = [
     member.birth && { label: '生日', value: `${member.birth}${age != null ? `（${age} 歲）` : ''}` },

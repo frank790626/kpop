@@ -47,7 +47,13 @@ export function igAvatar(value) {
  *   4. 都沒有／都失敗 → 代表色漸層 + 名字首字母
  */
 export function avatarSources(entity) {
-  return [entity.photo, entity.wikiPhoto, igAvatar(entity.instagram)].filter(Boolean);
+  return [assetUrl(entity.photo), assetUrl(entity.wikiPhoto), igAvatar(entity.instagram)].filter(Boolean);
+}
+
+/** 站內圖片（assets/img/...）一律從網站根目錄算，子頁面（/kpop/nmixx/lily/）才不會找不到 */
+export function assetUrl(src) {
+  if (!src || /^(https?:|data:|\/)/.test(src)) return src || '';
+  return `${import.meta.env.BASE_URL}${src}`;
 }
 
 /** 由生日推算目前年齡 */

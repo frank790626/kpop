@@ -759,3 +759,8 @@ code {
   * { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* 建置時預先放進 #root 的純文字內容（給搜尋引擎），React 載入後就會被取代 */
+.prerender { padding: 96px 16px 48px; color: var(--text-dim); line-height: 1.8; }
+.prerender h1 { color: var(--text); font-family: var(--font-display); margin: 16px 0 8px; }
+.prerender a { color: var(--text); }
