@@ -25,7 +25,17 @@ const MAX_VARIETY = 8;
 
 // 只要正片，排除幕後、預告等衍生內容
 const EXCLUDE = /(MAKING FILM|TEASER|SPOILER|HIGHLIGHT|REACTION|BEHIND|ANNOUNCEMENT|CAM|SHORTS|EP\.\d|TRAILER)/i;
-const IS_MV = /(M\/V|MUSIC VIDEO|PERFORMANCE VIDEO)/i;
+const IS_MV = /(M\/V|\bMV\b|MUSIC VIDEO|PERFORMANCE VIDEO)/i;
+
+/**
+ * 共用頻道（例如 SMTOWN 放了公司所有歌手的 MV）：資料檔設 sharedChannel: true，
+ * 就只收標題有提到這位歌手／團體的影片
+ */
+function belongsTo(group, title) {
+  if (!group.sharedChannel) return true;
+  const names = [group.name, group.nameKo].filter(Boolean).map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  return new RegExp(`(?<![A-Za-z])(?:${names.join('|')})(?![A-Za-z])`, 'i').test(title);
+}
 
 function formatViews(count) {
   const n = Number(count);
@@ -121,7 +131,7 @@ async function fromApi(group, apiKey) {
     );
     for (const item of list.items || []) {
       const title = item.snippet?.title || '';
-      if (IS_MV.test(title) && !EXCLUDE.test(title)) ids.push(item.snippet.resourceId.videoId);
+      if (IS_MV.test(title) && !EXCLUDE.test(title) && belongsTo(group, title)) ids.push(item.snippet.resourceId.videoId);
     }
     pageToken = list.nextPageToken;
     if (!pageToken) break;
@@ -160,7 +170,7 @@ async function fromRss(group) {
     const title = entry.match(/<title>([^<]+)<\/title>/)?.[1];
     const published = entry.match(/<published>([^<]+)<\/published>/)?.[1];
     if (!id || !title) continue;
-    if (!IS_MV.test(title) || EXCLUDE.test(title)) continue;
+    if (!IS_MV.test(title) || EXCLUDE.test(title) || !belongsTo(group, title)) continue;
     found.push({
       title: cleanTitle(title, group.name),
       youtubeId: id,

@@ -122,7 +122,7 @@ code {
   align-items: center;
   gap: 20px;
   min-height: 64px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* 團體變多時切換列在同一行橫向捲動，不要擠成兩行 */
   padding-block: 10px;
 }
 
@@ -153,6 +153,7 @@ code {
   overflow-x: auto;
   scrollbar-width: none;
   margin-left: auto;
+  min-width: 0;
 }
 .group-nav::-webkit-scrollbar { display: none; }
 
@@ -757,7 +758,7 @@ code {
 }
 
 @media (max-width: 520px) {
-  .header-inner { min-height: 56px; }
+  .header-inner { min-height: 56px; flex-wrap: wrap; }
   .group-nav { width: 100%; margin-left: 0; }
   .fact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .member-tab { width: 78px; }
