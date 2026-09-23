@@ -1,17 +1,7 @@
-成員照片放這裡。檔名必須跟 data/groups/<團體>.js 裡 photo 欄位的路徑一致。
+成員照片放這裡，並在 src/data/groups/<團體>.js 對應成員的 photo 欄位填入路徑，
+例如 photo: 'assets/img/asa.jpg'。自己放的照片優先度最高。
 
-BABYMONSTER 目前對應的檔名（放進來就會自動顯示，不用改任何程式）：
+wiki/ 資料夾是每日排程從 Wikimedia Commons 自動抓的自由授權照片，請不要手動修改；
+作者與授權記錄在 src/data/generated/photos.json，網站會自動標註出處。
 
-  assets/img/asa.jpg
-  assets/img/ruka.jpg
-  assets/img/pharita.jpg
-  assets/img/ahyeon.jpg
-  assets/img/rora.jpg
-  assets/img/chiquita.jpg
-  assets/img/rami.jpg
-
-建議：正方形、400x400 以上、每張 300KB 以內。
-頭像是圓形／圓角裁切，臉放中間效果最好。
-
-若想用 .png 或 .webp，記得同步改 data/groups/babymonster.js 裡的 photo 副檔名。
-檔案不存在時會自動退回 IG 大頭貼，再退回代表色首字母頭像，不會出現破圖。
+建議：正方形、400x400 以上、每張 300KB 以內，臉放在畫面上半部效果最好。

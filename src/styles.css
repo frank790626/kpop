@@ -378,12 +378,30 @@ code {
   font-weight: 800;
   flex: 0 0 auto;
 }
-.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%; /* 人像照的臉多在上半部 */
+}
 .avatar--sm { width: 52px; height: 52px; font-size: 1.2rem; }
 .avatar--md { width: 72px; height: 72px; font-size: 1.7rem; border-radius: 22px; }
 .avatar--lg { width: 148px; height: 148px; font-size: 3.4rem; border-radius: 24px; }
 
 .member-panel { margin-top: 20px; }
+
+.member-portrait { display: flex; flex-direction: column; gap: 8px; max-width: 148px; }
+.photo-credit {
+  margin: 0;
+  font-size: 0.66rem;
+  line-height: 1.45;
+  color: var(--text-dim);
+  word-break: break-word;
+}
+.photo-credit a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); }
+.photo-credit a:hover { color: var(--text); }
 .member-panel:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: var(--radius); }
 
 .member-card {
@@ -719,7 +737,7 @@ code {
   .hero { padding-top: 44px; }
   .hero-inner { grid-template-columns: 1fr; gap: 28px; align-items: start; }
   .member-card { grid-template-columns: 1fr; gap: 20px; padding: 22px; }
-  .member-portrait { display: flex; }
+  .member-portrait { max-width: 220px; }
   .avatar--lg { width: 110px; height: 110px; font-size: 2.6rem; }
   .timeline-item { grid-template-columns: 1fr; gap: 6px; }
   .section { padding: 48px 0; }

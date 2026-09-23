@@ -84,6 +84,20 @@ varietyChannels: [
 
 電視台的綜藝片段很常禁止嵌入，這個機制可以避免使用者點下去只看到「無法播放」。
 
+### 成員照片（Wikipedia）
+
+每日排程也會跑 `scripts/fetch-wiki-photos.mjs`，從英文維基百科的人物條目取主圖當頭像，
+存到 `assets/img/wiki/`，作者與授權寫進 `src/data/generated/photos.json`。
+
+- **只收 Wikimedia Commons 上的自由授權圖**（CC BY／CC BY-SA 等）；英文維基本地的
+  「合理使用」非自由圖一律不抓
+- **確認是本人**：條目要同時提到團名與成員名、是人物條目，而且不能是團體本身的條目
+  （避免抓到團體合照或同名的人）
+- 成員卡在顯示維基照片時會自動標註作者與授權，這是 CC 授權的使用條件，請勿移除
+- 找錯人或想指定條目：在成員資料加 `wiki: '條目標題'`；想用自己的照片就填 `photo`，
+  優先順序最高
+- 已抓過的不會重抓；要全部重來可執行 `node scripts/fetch-wiki-photos.mjs --refresh`
+
 ## 上線（GitHub Pages）
 
 第一次要手動開啟 Pages（只需一次）：
@@ -156,12 +170,11 @@ src/data/generated/             每日自動產生的影片清單（不要手改
 成員頭像依序嘗試三個來源，前一個失敗就自動換下一個：
 
 1. `members[].photo` — 自己放的照片（`assets/img/` 或任何圖片網址），最穩定。
-   BABYMONSTER 七位成員的路徑已經接好，把檔案放進 `assets/img/` 即可，
-   檔名見 `assets/img/README.txt`。
-2. `members[].instagram` — 該 IG 帳號的大頭貼。Instagram 官方不允許直接連圖，所以透過
+2. 維基照片 — 每日排程自動從 Wikimedia Commons 抓取（見下方「成員照片」）。
+3. `members[].instagram` — 該 IG 帳號的大頭貼。Instagram 官方不允許直接連圖，所以透過
    `src/lib/registry.js` 最上方的 `config.igAvatarProxy`（預設 `unavatar.io`）取得；
    若哪天這個服務失效，只要改這一行就能整站換來源。
-3. 都沒有或都失敗 → 用成員代表色漸層 ＋ 名字首字母。
+4. 都沒有或都失敗 → 用成員代表色漸層 ＋ 名字首字母。
 
 > BABYMONSTER 七位成員的 IG 帳號都已填在 `data/groups/babymonster.js`，
 > 頭像即為各自的 IG 大頭貼；首頁上方則是團體官方帳號 `@babymonster_ygofficial` 的大頭貼。

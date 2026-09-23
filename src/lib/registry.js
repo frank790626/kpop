@@ -41,12 +41,13 @@ export function igAvatar(value) {
 
 /**
  * 頭像來源優先序：
- *   1. photo（assets/img 內的照片或任何圖片網址）
- *   2. Instagram 大頭貼
- *   3. 都沒有／都失敗 → 代表色漸層 + 名字首字母
+ *   1. photo（自己放在 assets/img 的照片或任何圖片網址）
+ *   2. wikiPhoto（scripts/fetch-wiki-photos.mjs 從 Wikimedia Commons 抓的自由授權照片）
+ *   3. Instagram 大頭貼
+ *   4. 都沒有／都失敗 → 代表色漸層 + 名字首字母
  */
 export function avatarSources(entity) {
-  return [entity.photo, igAvatar(entity.instagram)].filter(Boolean);
+  return [entity.photo, entity.wikiPhoto, igAvatar(entity.instagram)].filter(Boolean);
 }
 
 /** 由生日推算目前年齡 */
@@ -137,7 +138,18 @@ function generatedFor(groupId, kind) {
   return mod ? mod.default || mod : null;
 }
 
+const photoFiles = import.meta.glob('../data/generated/photos.json', { eager: true });
+const wikiPhotos = (() => {
+  const mod = Object.values(photoFiles)[0];
+  return (mod?.default || mod)?.photos || {};
+})();
+
 function applyGenerated(group) {
+  group.members = group.members.map((m) => {
+    const wiki = wikiPhotos[`${group.id}/${m.id}`];
+    return wiki ? { ...m, wikiPhoto: wiki.src, photoCredit: wiki } : m;
+  });
+
   const videos = generatedFor(group.id, 'videos');
   if (videos?.videos?.length) {
     group.videos = videos.videos;

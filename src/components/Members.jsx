@@ -1,8 +1,36 @@
+import { useState } from 'react';
 import Avatar from './Avatar.jsx';
 import { ICONS } from './icons.jsx';
 import { ageFrom, igHandle, igUrl } from '../lib/registry.js';
 
+/** Commons 的照片多為 CC BY／CC BY-SA，依授權必須標註作者與授權條款 */
+function PhotoCredit({ credit }) {
+  return (
+    <p className="photo-credit">
+      照片：
+      <a href={credit.source} target="_blank" rel="noopener noreferrer">
+        {credit.artist}
+      </a>
+      {credit.license && (
+        <>
+          {' · '}
+          {credit.licenseUrl ? (
+            <a href={credit.licenseUrl} target="_blank" rel="noopener noreferrer">
+              {credit.license}
+            </a>
+          ) : (
+            credit.license
+          )}
+        </>
+      )}
+      {' · Wikimedia Commons'}
+    </p>
+  );
+}
+
 function MemberCard({ group, member }) {
+  const [activeSrc, setActiveSrc] = useState('');
+  const showCredit = member.photoCredit && activeSrc && activeSrc === member.wikiPhoto;
   const age = ageFrom(member.birth);
   const meta = [
     member.birth && { label: '生日', value: `${member.birth}${age != null ? `（${age} 歲）` : ''}` },
@@ -20,7 +48,8 @@ function MemberCard({ group, member }) {
   return (
     <article className="member-card" style={{ '--m-color': member.color }}>
       <div className="member-portrait">
-        <Avatar entity={member} size="lg" />
+        <Avatar entity={member} size="lg" onActiveChange={setActiveSrc} />
+        {showCredit && <PhotoCredit credit={member.photoCredit} />}
       </div>
       <div className="member-body">
         <p className="member-eyebrow">{group.name}</p>
