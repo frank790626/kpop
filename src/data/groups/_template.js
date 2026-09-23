@@ -12,6 +12,7 @@
 export default {
   id: 'group-id',            // 網址用的英文 id（#/group-id），不可重複
   order: 2,                  // 團體切換列的排序，數字小的在前
+  type: 'group',             // 個人歌手填 'solo'：成員區改成單人版面（members 只放一位）
   name: 'GROUP NAME',        // 團名（英文／羅馬拼音）
   nameKo: '그룹 이름',        // 韓文團名，選填
   nameZh: '中文團名',         // 選填

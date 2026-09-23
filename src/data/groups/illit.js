@@ -5,7 +5,7 @@
  */
 export default {
   id: 'illit',
-  order: 5,
+  order: 6,
   name: 'ILLIT',
   nameKo: '아일릿',
   agency: 'BELIFT LAB（HYBE）',

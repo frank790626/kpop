@@ -1,6 +1,6 @@
 # K-POP HUB
 
-一個 K-POP 團體介紹網站，目前收錄 **BABYMONSTER**、**LE SSERAFIM**、**IVE**、**aespa**、**ILLIT**、**TWS**，
+一個 K-POP 團體介紹網站，目前收錄 **BABYMONSTER**、**IU**、**LE SSERAFIM**、**IVE**、**aespa**、**ILLIT**、**TWS**，
 用頁首的 tab 切換。以 **React 19 + Vite** 打造，部署在 GitHub Pages。
 
 ## 功能
@@ -173,6 +173,7 @@ src/data/generated/             每日自動產生的影片清單（不要手改
 | `theme.accent` / `theme.accent2` | 團體主題色，會套用到漸層、按鈕、標籤 |
 | `members[].color` | 成員代表色，沒放照片時會變成漸層頭像底色 |
 | `order` | 團體切換列的排序，數字小的在前 |
+| `type` | 個人歌手填 `'solo'`：成員區改成單人「藝人介紹」版面，不顯示切換列 |
 | `members[].photo` | 照片路徑或圖片網址，例如 `assets/img/ahyeon.jpg`；優先度最高 |
 | `members[].instagram` | IG 帳號或網址；填了就自動抓該帳號大頭貼，按鈕也會直連本人頁面 |
 | `videos[].youtubeId` | YouTube 網址 `watch?v=` 後面那一串 |

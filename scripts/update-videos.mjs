@@ -201,7 +201,8 @@ function parseFeed(xml) {
  */
 async function varietyFromChannels(group) {
   const names = [group.name, group.nameKo].filter(Boolean).map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-  const nameRe = new RegExp(names.join('|'), 'i');
+  // 前後不能緊接英文字母，避免短團名誤判（例：IU 不該配到 stadIUm、premIUm）
+  const nameRe = new RegExp(`(?<![A-Za-z])(?:${names.join('|')})(?![A-Za-z])`, 'i');
   const found = [];
 
   for (const channel of group.varietyChannels || []) {

@@ -55,7 +55,7 @@ function MemberCard({ group, member }) {
         {showCredit && <PhotoCredit credit={member.photoCredit} />}
       </div>
       <div className="member-body">
-        <p className="member-eyebrow">{group.name}</p>
+        <p className="member-eyebrow">{group.type === 'solo' ? 'Solo Artist' : group.name}</p>
         <h3 className="member-name">
           {member.stageName}
           {member.nameZh && <span className="member-name-zh">{member.nameZh}</span>}
@@ -123,6 +123,22 @@ export default function Members({ group, memberId, onSelect }) {
     const next = ids[(i + (e.key === 'ArrowRight' ? 1 : ids.length - 1)) % ids.length];
     onSelect(next);
     document.querySelector(`.member-tab[data-member="${next}"]`)?.focus();
+  }
+
+  // 個人歌手只有一位成員，不需要切換列
+  if (group.type === 'solo') {
+    return (
+      <section className="section" id="members">
+        <div className="wrap">
+          <header className="section-head">
+            <h2>藝人介紹</h2>
+          </header>
+          <div className="member-panel">
+            <MemberCard key={member.id} group={group} member={member} />
+          </div>
+        </div>
+      </section>
+    );
   }
 
   return (

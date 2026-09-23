@@ -5,7 +5,7 @@
  */
 export default {
   id: 'aespa',
-  order: 4,
+  order: 5,
   name: 'aespa',
   nameKo: '에스파',
   agency: 'SM Entertainment',

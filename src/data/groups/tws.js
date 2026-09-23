@@ -5,7 +5,7 @@
  */
 export default {
   id: 'tws',
-  order: 6,
+  order: 7,
   name: 'TWS',
   nameKo: '투어스',
   agency: 'PLEDIS Entertainment（HYBE）',

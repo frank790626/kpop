@@ -5,7 +5,7 @@
  */
 export default {
   id: 'lesserafim',
-  order: 2,
+  order: 3,
   name: 'LE SSERAFIM',
   nameKo: '르세라핌',
   agency: 'Source Music（HYBE）',

@@ -62,9 +62,9 @@ function isThisMember(s, group, member) {
   if (!s || s.type !== 'standard') return false;
   const text = `${s.description || ''} ${s.extract || ''}`;
 
-  // 不能是團體本身的條目
+  // 不能是團體本身的條目（個人歌手的「團體」就是本人，不用排除）
   const bare = (s.title || '').replace(/\s*\(.*\)$/, '').toLowerCase();
-  if (bare === group.name.toLowerCase()) return false;
+  if (group.type !== 'solo' && bare === group.name.toLowerCase()) return false;
 
   if (!wordRe(group.name).test(text)) return false;
   if (!PERSON.test(s.description || s.extract || '')) return false;
@@ -252,6 +252,8 @@ async function findInCommonsCategory(group, member) {
     if (!/\.(jpe?g|png|webp)$/i.test(title)) return false;
     if (/\b(logo|group|members)\b/i.test(base)) return false;
     if (searched && !groupRe.test(base)) return false;
+    // 個人歌手的分類本身就是本人，分類裡的檔案都算（藝名太短，例如 IU，檔名比對不可靠）
+    if (group.type === 'solo' && !searched) return true;
     const inMemberCategory = category && mine.some((re) => re.test(norm(category))) && !others.some((re) => re.test(norm(category)));
     const namedInFile = mine.some((re) => re.test(base));
     if (!inMemberCategory && !namedInFile) return false;

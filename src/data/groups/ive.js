@@ -5,7 +5,7 @@
  */
 export default {
   id: 'ive',
-  order: 3,
+  order: 4,
   name: 'IVE',
   nameKo: '아이브',
   agency: 'Starship Entertainment',
