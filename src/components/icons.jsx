@@ -41,3 +41,10 @@ export const LINK_LABEL = {
   tiktok: 'TikTok',
   website: '官方網站'
 };
+
+/** 我的最愛愛心（收藏時用 CSS 把 fill 填滿） */
+export const HEART = (
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 21s-7.5-4.6-9.6-9.4C1 8.3 3 4.5 6.7 4.5c2.1 0 3.9 1.2 5.3 3 1.4-1.8 3.2-3 5.3-3 3.7 0 5.7 3.8 4.3 7.1C19.5 16.4 12 21 12 21z" />
+  </svg>
+);

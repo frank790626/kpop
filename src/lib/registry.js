@@ -175,6 +175,10 @@ function applyGenerated(group) {
 export const groups = Object.entries(modules)
   .filter(([path]) => !path.split('/').pop().startsWith('_'))
   .map(([path, mod]) => {
+    if (mod.default?.id === 'favorites') {
+      console.warn(`[KPOP] ${path} 的 id 不能叫 favorites（已保留給我的最愛頁），已略過`);
+      return null;
+    }
     if (!mod.default?.name) {
       console.warn(`[KPOP] ${path} 沒有 export default 或缺少 name，已略過`);
       return null;

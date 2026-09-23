@@ -11,6 +11,9 @@ export const SITE_ALT_NAMES = ['Frank的私房KPOP', 'Frank 私房 KPOP', "Frank
 // Google Search Console 的「HTML 標記」驗證碼：貼上 content="..." 裡的那串即可
 export const GOOGLE_SITE_VERIFICATION = 'Agf-lnI56Icir3z1r3PRZqH0i1lBsqV3a2pQV2Ig9DQ';
 
+/** 我的最愛頁的網址（/kpop/favorites/）；團體 id 不能用這個名字 */
+export const FAVORITES_PATH = 'favorites';
+
 /** 網址路徑（不含 base）：'' 首頁、'nmixx/' 團體頁、'nmixx/lily/' 成員頁 */
 export function pagePath(group, member) {
   if (!group) return '';
@@ -25,7 +28,13 @@ const clip = (text, max = 150) => {
 const nameWithKo = (name, ko) => (ko ? `${name}（${ko}）` : name);
 
 /** 各頁的 <title> 與 meta description */
-export function pageMeta({ groups = [], group = null, member = null }) {
+export function pageMeta({ groups = [], group = null, member = null, favorites = false }) {
+  if (favorites) {
+    return {
+      title: `我的最愛｜${SITE_NAME}`,
+      description: `${SITE_NAME} 的我的最愛：收藏喜歡的團體、成員與影片，存在自己的瀏覽器裡，不用登入。`
+    };
+  }
   if (!group) {
     const names = groups.map((g) => g.name).join('、');
     return {

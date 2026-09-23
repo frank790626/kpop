@@ -1,6 +1,9 @@
 import YouTubeEmbed from './YouTubeEmbed.jsx';
+import FavButton from './FavButton.jsx';
+import { favKey, favSnapshot } from '../lib/favorites.js';
 
-export function VideoCard({ video }) {
+/** showGroup：收藏頁混著各團體的影片，在類型前面加上團名 */
+export function VideoCard({ video, group, showGroup = false }) {
   return (
     <article className="video-card">
       <YouTubeEmbed
@@ -10,9 +13,18 @@ export function VideoCard({ video }) {
         noEmbed={video.noEmbed}
       />
       <div className="video-meta">
-        <h3 className="video-title">{video.title}</h3>
+        <div className="video-title-row">
+          <h3 className="video-title">{video.title}</h3>
+          <FavButton
+            type="video"
+            variant="icon"
+            favKey={favKey.video(video)}
+            snapshot={favSnapshot.video(video, group)}
+            label={video.title}
+          />
+        </div>
         <p className="video-sub">
-          {video.kind}
+          {[showGroup && group?.name, video.kind].filter(Boolean).join('・')}
           {video.date ? `　${video.date}` : ''}
         </p>
         {video.note && <p className="video-note">{video.note}</p>}
@@ -44,7 +56,7 @@ export default function Videos({ group }) {
         </header>
         <div className="video-grid">
           {group.videos.map((v) => (
-            <VideoCard key={v.youtubeId || v.title} video={v} />
+            <VideoCard key={v.youtubeId || v.title} video={v} group={group} />
           ))}
         </div>
       </div>

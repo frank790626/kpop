@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Avatar from './Avatar.jsx';
+import FavButton from './FavButton.jsx';
+import { favKey, favSnapshot } from '../lib/favorites.js';
 import { ICONS } from './icons.jsx';
 import { ageFrom, assetUrl, igHandle, igUrl } from '../lib/registry.js';
 
@@ -66,6 +68,15 @@ function MemberCard({ group, member }) {
             {ICONS.instagram}
             <span>{igLabel}</span>
           </a>
+          {/* 個人歌手在頁首收藏整個「團體」就好，不重複放 */}
+          {group.type !== 'solo' && (
+            <FavButton
+              type="member"
+              favKey={favKey.member(group, member)}
+              snapshot={favSnapshot.member(group, member)}
+              label={`${group.name} ${member.stageName}`}
+            />
+          )}
         </div>
 
         {member.roles.length > 0 && (

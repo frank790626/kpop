@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { groups, getGroup } from './lib/registry.js';
-import { pageMeta, pagePath } from './lib/site.js';
+import { FAVORITES_PATH, pageMeta, pagePath } from './lib/site.js';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import Members from './components/Members.jsx';
@@ -9,6 +9,7 @@ import Videos from './components/Videos.jsx';
 import Variety from './components/Variety.jsx';
 import Social from './components/Social.jsx';
 import Timeline from './components/Timeline.jsx';
+import Favorites from './components/Favorites.jsx';
 
 /**
  * 路由格式（真正的網址路徑，每一頁都有建置時預先產生的 HTML，搜尋引擎抓得到）：
@@ -54,31 +55,35 @@ export default function App() {
   const [parts, navigate] = useRoute();
   const prevGroupId = useRef(null);
 
-  const routeGroup = getGroup(parts[0]);
+  const isFavorites = parts[0] === FAVORITES_PATH;
+  const routeGroup = isFavorites ? null : getGroup(parts[0]);
   const group = routeGroup || groups[0] || null;
   const routeMember = routeGroup?.members.find((m) => m.id === parts[1]) || null;
   const member = routeMember || group?.members[0] || null;
 
   // 找不到的團體或成員：把網址修正成實際顯示的那一頁
   useEffect(() => {
-    if (parts.length && !routeGroup) navigate('', { replace: true });
+    if (isFavorites) {
+      if (parts.length > 1) navigate(`${FAVORITES_PATH}/`, { replace: true });
+    } else if (parts.length && !routeGroup) navigate('', { replace: true });
     else if (parts.length > 1 && !routeMember && routeGroup) navigate(pagePath(routeGroup), { replace: true });
-  }, [parts, routeGroup, routeMember, navigate]);
+  }, [parts, isFavorites, routeGroup, routeMember, navigate]);
 
   // 主題色與標題跟著頁面走
   useEffect(() => {
     if (!group) return;
     document.documentElement.style.setProperty('--accent', group.theme.accent);
     document.documentElement.style.setProperty('--accent-2', group.theme.accent2);
-    document.title = pageMeta({ groups, group: routeGroup, member: routeMember }).title;
-  }, [group, routeGroup, routeMember]);
+    document.title = pageMeta({ groups, group: routeGroup, member: routeMember, favorites: isFavorites }).title;
+  }, [group, routeGroup, routeMember, isFavorites]);
 
   // 換團體時回到頁首（第一次載入不動）
   useEffect(() => {
     if (!group) return;
-    if (prevGroupId.current && prevGroupId.current !== group.id) window.scrollTo({ top: 0 });
-    prevGroupId.current = group.id;
-  }, [group]);
+    const pageId = isFavorites ? FAVORITES_PATH : group.id;
+    if (prevGroupId.current && prevGroupId.current !== pageId) window.scrollTo({ top: 0 });
+    prevGroupId.current = pageId;
+  }, [group, isFavorites]);
 
   /** 站內連結：一般點擊就不重新載入頁面，Ctrl／Cmd＋點擊照樣開新分頁 */
   const linkTo = useCallback(
@@ -108,10 +113,12 @@ export default function App() {
         跳到主要內容
       </a>
 
-      <Header currentId={routeGroup?.id} linkTo={linkTo} />
+      <Header currentId={isFavorites ? FAVORITES_PATH : routeGroup?.id} linkTo={linkTo} />
 
       <main id="main" className="app" aria-live="polite">
-        {group ? (
+        {isFavorites ? (
+          <Favorites linkTo={linkTo} />
+        ) : group ? (
           <>
             <Hero group={group} />
             <Members group={group} memberId={member?.id} onSelect={selectMember} />

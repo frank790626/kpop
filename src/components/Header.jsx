@@ -1,9 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { groups } from '../lib/registry.js';
-import { pagePath } from '../lib/site.js';
+import { FAVORITES_PATH, pagePath } from '../lib/site.js';
+import { HEART } from './icons.jsx';
+import { useFavorites } from '../lib/favorites.js';
 
 export default function Header({ currentId, linkTo }) {
   const navRef = useRef(null);
+  const { items: favorites } = useFavorites();
 
   // 切換列放不下時，把目前團體捲進可視範圍（只動切換列，不動整頁）
   useEffect(() => {
@@ -46,6 +49,16 @@ export default function Header({ currentId, linkTo }) {
             </span>
           )}
         </nav>
+        <a
+          className={`fav-link${currentId === FAVORITES_PATH ? ' is-active' : ''}`}
+          {...linkTo(`${FAVORITES_PATH}/`)}
+          aria-current={currentId === FAVORITES_PATH ? 'page' : undefined}
+          aria-label={`我的最愛（${favorites.length} 項）`}
+        >
+          {HEART}
+          <span className="fav-link-text">我的最愛</span>
+          {favorites.length > 0 && <span className="fav-count">{favorites.length}</span>}
+        </a>
       </div>
     </header>
   );

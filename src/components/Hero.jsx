@@ -1,4 +1,6 @@
 import Avatar from './Avatar.jsx';
+import FavButton from './FavButton.jsx';
+import { favKey, favSnapshot } from '../lib/favorites.js';
 import { ICONS, LINK_LABEL } from './icons.jsx';
 import { igHandle } from '../lib/registry.js';
 
@@ -35,6 +37,15 @@ export default function Hero({ group }) {
             {group.nameZh ? `　${group.nameZh}` : ''}
           </p>
           {group.tagline && <p className="hero-tagline">{group.tagline}</p>}
+
+          <div className="hero-actions">
+            <FavButton
+              type="group"
+              favKey={favKey.group(group)}
+              snapshot={favSnapshot.group(group)}
+              label={group.name}
+            />
+          </div>
 
           {linkKeys.length > 0 && (
             <div className="social-row">

@@ -13,7 +13,7 @@
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { SITE_NAME, SITE_ALT_NAMES, GOOGLE_SITE_VERIFICATION, pageMeta, pagePath } from '../src/lib/site.js';
+import { SITE_NAME, SITE_ALT_NAMES, GOOGLE_SITE_VERIFICATION, FAVORITES_PATH, pageMeta, pagePath } from '../src/lib/site.js';
 
 const DIST = 'dist';
 const GROUPS_DIR = 'src/data/groups';
@@ -100,9 +100,9 @@ function staticBody(groups, group, member) {
   return parts.join('');
 }
 
-function render(template, groups, group, member, { noindex = false } = {}) {
-  const { title, description } = pageMeta({ groups, group, member });
-  const url = absUrl(pagePath(group, member));
+function render(template, groups, group, member, { noindex = false, favorites = false } = {}) {
+  const { title, description } = pageMeta({ groups, group, member, favorites });
+  const url = absUrl(favorites ? `${FAVORITES_PATH}/` : pagePath(group, member));
   const image = absUrl((member || group?.members?.[0])?.image || groups[0]?.members?.[0]?.image);
 
   const head = [
@@ -112,6 +112,8 @@ function render(template, groups, group, member, { noindex = false } = {}) {
     noindex && '<meta name="robots" content="noindex">',
     GOOGLE_SITE_VERIFICATION && `<meta name="google-site-verification" content="${esc(GOOGLE_SITE_VERIFICATION)}">`,
     !group &&
+      !favorites &&
+      !noindex &&
       `<script type="application/ld+json">${JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebSite',
@@ -150,6 +152,8 @@ const urls = [''];
 
 await writePage('', render(template, groups, null, null));
 await writeFile(path.join(DIST, '404.html'), render(template, groups, null, null, { noindex: true }));
+// 我的最愛：每個人內容不同，不讓搜尋引擎收錄
+await writePage(`${FAVORITES_PATH}/`, render(template, groups, null, null, { noindex: true, favorites: true }));
 
 for (const g of groups) {
   await writePage(pagePath(g), render(template, groups, g, null));

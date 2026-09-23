@@ -16,7 +16,7 @@ export default function Variety({ group }) {
         </header>
         <div className="video-grid">
           {group.variety.map((v) => (
-            <VideoCard key={v.youtubeId || v.title} video={v} />
+            <VideoCard key={v.youtubeId || v.title} video={v} group={group} />
           ))}
         </div>
       </div>
