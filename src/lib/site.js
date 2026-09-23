@@ -9,7 +9,7 @@ export const SITE_NAME = 'Frank 的私房 K-POP';
 export const SITE_ALT_NAMES = ['Frank的私房KPOP', 'Frank 私房 KPOP', "Frank's K-POP"];
 
 // Google Search Console 的「HTML 標記」驗證碼：貼上 content="..." 裡的那串即可
-export const GOOGLE_SITE_VERIFICATION = '';
+export const GOOGLE_SITE_VERIFICATION = 'Agf-lnI56Icir3z1r3PRZqH0i1lBsqV3a2pQV2Ig9DQ';
 
 /** 網址路徑（不含 base）：'' 首頁、'nmixx/' 團體頁、'nmixx/lily/' 成員頁 */
 export function pagePath(group, member) {
