@@ -1,9 +1,11 @@
 import Avatar from './Avatar.jsx';
+import AccountPanel from './AccountPanel.jsx';
 import FavButton from './FavButton.jsx';
 import { VideoCard } from './Videos.jsx';
 import { getGroup } from '../lib/registry.js';
 import { pagePath } from '../lib/site.js';
 import { useFavorites } from '../lib/favorites.js';
+import { useAccount } from '../lib/account.js';
 
 /** 收藏當下存的是 snapshot；能在目前資料找到就用最新的（照片、noEmbed 等），找不到才用 snapshot */
 function resolve(item) {
@@ -24,6 +26,7 @@ function resolve(item) {
 
 export default function Favorites({ linkTo }) {
   const { items } = useFavorites();
+  const { status } = useAccount();
   const groups = items.filter((x) => x.type === 'group').map((x) => ({ item: x, ...resolve(x) }));
   const members = items.filter((x) => x.type === 'member').map((x) => ({ item: x, ...resolve(x) }));
   const videos = items.filter((x) => x.type === 'video').map((x) => ({ item: x, ...resolve(x) }));
@@ -32,13 +35,16 @@ export default function Favorites({ linkTo }) {
     <>
       <section className="hero hero--compact">
         <div className="wrap">
-          <p className="eyebrow">只存在這台裝置的瀏覽器裡，不用登入</p>
+          <p className="eyebrow">
+            {status === 'signedIn' ? '已登入，收藏同步到雲端' : '存在這台裝置的瀏覽器裡，不用登入也能用'}
+          </p>
           <h1 className="hero-title">我的最愛</h1>
           <p className="hero-tagline">
             {items.length
               ? `收藏了 ${groups.length} 個團體、${members.length} 位成員、${videos.length} 支影片。`
               : '還沒有收藏。在團體頁、成員卡或影片旁按愛心，就會出現在這裡。'}
           </p>
+          <AccountPanel />
         </div>
       </section>
 

@@ -1,0 +1,19 @@
+rules_version = '2';
+
+// 我的最愛：每個人只能讀寫自己的那一份 users/{uid}
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid} {
+      allow read, delete: if request.auth != null && request.auth.uid == uid;
+      allow create, update: if request.auth != null
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['items', 'updatedAt'])
+        && request.resource.data.items is list
+        && request.resource.data.items.size() <= 1000;
+    }
+    // 其他路徑一律不開放
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

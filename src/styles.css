@@ -866,3 +866,26 @@ code {
   .group-nav { order: 3; }
   .fav-link-text { display: none; }
 }
+
+/* 登入／雲端同步 */
+.account-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  max-width: 720px;
+}
+.account-text { margin: 0; flex: 1 1 260px; color: #dcdce6; font-size: 0.92rem; }
+.account-warn { display: block; margin-top: 6px; color: #ffcf6e; font-size: 0.82rem; }
+.account-error { flex-basis: 100%; margin: 0; color: #ff8a8a; font-size: 0.85rem; }
+.account-user { display: flex; align-items: center; gap: 12px; flex: 1 1 260px; }
+.account-sub { display: block; color: var(--text-dim); font-size: 0.8rem; }
+.account-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
+.account-photo--letter { display: grid; place-items: center; background: linear-gradient(145deg, var(--accent), var(--accent-2)); font-weight: 800; }
+.btn--google { background: #fff; color: #1f1f1f; }
+.btn--google svg { width: 18px; height: 18px; }

@@ -212,5 +212,21 @@ src/data/generated/             每日自動產生的影片清單（不要手改
 - 每筆收藏的 key：團體 `g:<groupId>`、成員 `m:<groupId>/<memberId>`、影片 `v:<youtubeId>`，另外存一份名稱、標題等 snapshot，
   影片被擠出熱門清單後收藏頁仍然顯示得出來。之後接雲端同步（例如 Firebase）可以直接沿用這個格式。
 - **團體與成員的 `id` 上線後不要改名**，否則大家收藏的項目會對不上；`favorites` 已保留給收藏頁，不能當團體 id。
-- 換裝置、清除瀏覽器資料或使用無痕模式時，收藏不會跟著走。
+- 沒登入時收藏只存在這台裝置；換裝置、清除瀏覽器資料或使用無痕模式時不會跟著走。
+
+### 雲端同步（Firebase，選用）
+
+收藏頁可以用 Google 登入，把收藏存到 Firestore 的 `users/{uid}`，手機、電腦同步。
+程式在 `src/lib/cloud-sync.js`（只在設定好 Firebase 時才載入，不影響首頁速度），權限規則在 `firestore.rules`。
+
+- 這台裝置第一次登入：本機收藏和雲端**合併**；之後以雲端為準，每次回到分頁會重新抓一次。
+- 登出：清掉這台裝置的收藏（資料在雲端，下次登入就回來），共用裝置時不會被下一個人看到。
+- LINE、Instagram 等 App 內建瀏覽器 Google 不允許登入，頁面會提示改用 Safari／Chrome。
+
+設定步驟：
+1. [Firebase 主控台](https://console.firebase.google.com/) 建立專案（Google Analytics 可以不開）。
+2. 專案設定 → 一般 → 新增「網頁」應用程式，把 `firebaseConfig` 的 `apiKey`、`authDomain`、`projectId`、`appId`
+   填進 `src/lib/firebase-config.js`（這些值本來就公開在前端，不是密碼）。
+3. Authentication → 登入方式 → 啟用 **Google**；Authentication → 設定 → 授權網域 → 新增 `frank790626.github.io`。
+4. Firestore Database → 建立資料庫（正式版模式，地區選 `asia-east1` 台灣）→ 規則 → 貼上 `firestore.rules` 的內容並發布。
 

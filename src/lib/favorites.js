@@ -1,5 +1,6 @@
 /**
- * 我的最愛（免登入版）：存在這台裝置的瀏覽器 localStorage。
+ * 我的最愛：一律先存在這台裝置的瀏覽器 localStorage；
+ * 用 Google 登入後由 cloud-sync.js 同步到 Firestore（沒設定 Firebase 時就只有本機）。
  *
  * 每筆收藏都有固定的 key，之後接雲端同步時可以直接沿用：
  *   group  → 'g:<groupId>'
@@ -15,6 +16,7 @@ const EMPTY = [];
 
 let cache = null;
 const listeners = new Set();
+let remoteWriter = null; // 登入後由 cloud-sync.js 接上：本機有變動就寫回雲端
 
 function read() {
   if (cache) return cache;
@@ -27,8 +29,9 @@ function read() {
   return cache;
 }
 
-function write(items) {
+function write(items, { fromRemote = false } = {}) {
   cache = items;
+  if (!fromRemote && remoteWriter) remoteWriter(items);
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, items }));
   } catch {
@@ -51,6 +54,35 @@ function subscribe(fn) {
     listeners.delete(fn);
     window.removeEventListener('storage', onStorage);
   };
+}
+
+const TYPES = new Set(['group', 'member', 'video']);
+
+/** 雲端來的資料不一定可靠（舊版本、手動改過），只留格式正確的 */
+export function sanitizeItems(list) {
+  if (!Array.isArray(list)) return [];
+  const seen = new Set();
+  return list.filter((x) => {
+    if (!x || !TYPES.has(x.type) || typeof x.key !== 'string' || seen.has(x.key)) return false;
+    seen.add(x.key);
+    return true;
+  });
+}
+
+/** 合併兩份收藏（同一個 key 以 primary 為準），新收藏的排前面 */
+export function mergeItems(primary, secondary) {
+  const map = new Map();
+  for (const x of [...sanitizeItems(secondary), ...sanitizeItems(primary)]) map.set(x.key, x);
+  return [...map.values()].sort((a, b) => String(b.addedAt || '').localeCompare(String(a.addedAt || '')));
+}
+
+export const localItems = () => read();
+export const replaceAll = (items) => write(sanitizeItems(items), { fromRemote: true });
+export function connectRemote(writer) {
+  remoteWriter = writer;
+}
+export function disconnectRemote() {
+  remoteWriter = null;
 }
 
 export const favKey = {
@@ -80,21 +112,23 @@ export const favSnapshot = {
   })
 };
 
+export function toggleFavorite(type, key, snapshot) {
+  const current = read();
+  if (current.some((x) => x.key === key)) {
+    write(current.filter((x) => x.key !== key));
+  } else {
+    write([{ type, key, addedAt: new Date().toISOString(), snapshot }, ...current]);
+  }
+}
+
+export function removeFavorite(key) {
+  write(read().filter((x) => x.key !== key));
+}
+
 export function useFavorites() {
   const items = useSyncExternalStore(subscribe, read, () => EMPTY);
 
   const has = useCallback((key) => items.some((x) => x.key === key), [items]);
 
-  const toggle = useCallback((type, key, snapshot) => {
-    const current = read();
-    if (current.some((x) => x.key === key)) {
-      write(current.filter((x) => x.key !== key));
-    } else {
-      write([{ type, key, addedAt: new Date().toISOString(), snapshot }, ...current]);
-    }
-  }, []);
-
-  const remove = useCallback((key) => write(read().filter((x) => x.key !== key)), []);
-
-  return { items, has, toggle, remove };
+  return { items, has, toggle: toggleFavorite, remove: removeFavorite };
 }
