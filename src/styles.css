@@ -147,13 +147,51 @@ code {
 
 .brand-text strong { color: var(--accent); margin-left: 2px; }
 
+.group-nav-wrap {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  margin-left: auto;
+}
 .group-nav {
   display: flex;
   gap: 8px;
   overflow-x: auto;
   scrollbar-width: none;
-  margin-left: auto;
   min-width: 0;
+  scroll-behavior: smooth;
+}
+/* 還有沒顯示的團體時，邊緣淡出 */
+.group-nav-wrap.can-right .group-nav { mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
+.group-nav-wrap.can-left .group-nav { mask-image: linear-gradient(to left, #000 calc(100% - 56px), transparent); }
+.group-nav-wrap.can-left.can-right .group-nav {
+  mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent);
+}
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  padding: 0 0 2px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 88%, #fff 6%);
+  color: var(--text);
+  font: 700 1.2rem/1 var(--font-ui);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  transition: background 0.2s, border-color 0.2s;
+}
+.nav-arrow:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 22%, var(--bg)); }
+.nav-arrow--left { left: -6px; }
+.nav-arrow--right { right: -6px; }
+/* 觸控裝置用手指滑就好，不顯示箭頭（邊緣淡出仍在） */
+@media (hover: none) {
+  .nav-arrow { display: none; }
 }
 .group-nav::-webkit-scrollbar { display: none; }
 
@@ -759,7 +797,7 @@ code {
 
 @media (max-width: 520px) {
   .header-inner { min-height: 56px; flex-wrap: wrap; }
-  .group-nav { width: 100%; margin-left: 0; }
+  .group-nav-wrap { width: 100%; margin-left: 0; }
   .fact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .member-tab { width: 78px; }
   .avatar--sm { width: 46px; height: 46px; }
@@ -863,7 +901,7 @@ code {
 
 @media (max-width: 520px) {
   .fav-link { order: 2; margin-left: auto; }
-  .group-nav { order: 3; }
+  .group-nav-wrap { order: 3; }
   .fav-link-text { display: none; }
 }
 
