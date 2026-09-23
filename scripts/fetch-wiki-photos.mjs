@@ -72,13 +72,24 @@ function isThisMember(s, group, member) {
   return nameHints.some((n) => wordRe(n).test(hay) || hay.toLowerCase().includes(n.toLowerCase()));
 }
 
-/** 只接受 Commons 上的圖；回傳 { thumb, fileName } */
+// 維基 API 會在圖片網址後加 ?utm_source=... 之類的參數，解析前一律去掉
+const stripQuery = (url) => String(url || '').split('?')[0];
+
+/** 只接受 Commons 上的圖；回傳 { thumb, original, fileName } */
 function commonsImage(s) {
-  const original = s.originalimage?.source || '';
-  const thumb = s.thumbnail?.source || '';
+  const original = stripQuery(s.originalimage?.source);
+  const thumb = stripQuery(s.thumbnail?.source);
   if (!original.includes('/wikipedia/commons/')) return null; // 非自由圖（en 本地）直接略過
   const fileName = decodeURIComponent(original.split('/').pop());
+  if (!/\.(jpe?g|png|webp)$/i.test(fileName)) return null;
   return { thumb, original, fileName };
+}
+
+/** 用檔頭確認下載到的真的是圖片，而不是錯誤頁 */
+function isImage(buf) {
+  if (buf.length < 2000) return false;
+  const hex = buf.subarray(0, 4).toString('hex');
+  return hex.startsWith('ffd8') || hex === '89504e47' || buf.subarray(8, 12).toString() === 'WEBP';
 }
 
 async function commonsCredit(fileName) {
@@ -90,9 +101,12 @@ async function commonsCredit(fileName) {
   const info = page?.imageinfo?.[0];
   const meta = info?.extmetadata || {};
   const strip = (html) => String(html || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const artist = strip(meta.Artist?.value);
+  const license = strip(meta.LicenseShortName?.value);
+  if (!artist || !license) return null;
   return {
-    artist: strip(meta.Artist?.value) || '不明',
-    license: strip(meta.LicenseShortName?.value) || '',
+    artist,
+    license,
     licenseUrl: meta.LicenseUrl?.value || '',
     source: info?.descriptionurl || `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(fileName)}`
   };
@@ -102,10 +116,10 @@ async function download(urls, dest) {
   for (const url of urls) {
     if (!url) continue;
     await sleep(120);
-    const res = await fetch(url, { headers: { 'user-agent': UA } });
+    const res = await fetch(url, { headers: { 'user-agent': UA }, redirect: 'follow' });
     if (!res.ok) continue;
     const buf = Buffer.from(await res.arrayBuffer());
-    if (buf.length < 2000) continue; // 太小多半是錯誤頁
+    if (!isImage(buf)) continue;
     await writeFile(dest, buf);
     return true;
   }
@@ -176,16 +190,25 @@ async function main() {
         }
 
         const img = commonsImage(article);
-        const ext = (path.extname(img.fileName) || '.jpg').toLowerCase().replace('.jpeg', '.jpg');
+
+        // 先確認拿得到作者與授權：CC 授權必須標註，拿不到就不使用
+        const credit = await commonsCredit(img.fileName);
+        if (!credit) {
+          console.log(`  ! ${member.stageName}：查不到作者或授權，為了合規不使用（${img.fileName}）`);
+          delete photos[key];
+          missing += 1;
+          continue;
+        }
+
+        const ext = path.extname(img.fileName).toLowerCase().replace('.jpeg', '.jpg');
         const dest = path.join(IMG_DIR, `${group.id}-${member.id}${ext}`);
-        const bigger = img.thumb.replace(/\/\d+px-/, '/480px-');
-        if (!(await download([bigger, img.thumb], dest))) {
+        const filePath = `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(img.fileName)}?width=480`;
+        if (!(await download([filePath, img.thumb, img.original], dest))) {
           console.log(`  ! ${member.stageName}：圖片下載失敗`);
           missing += 1;
           continue;
         }
 
-        const credit = await commonsCredit(img.fileName);
         photos[key] = {
           src: dest.split(path.sep).join('/'),
           article: article.title,
