@@ -59,6 +59,7 @@ export default {
       nationality: '韓國',
       roles: ['隊長', 'Vocalist'],
       color: '#ff3b5c',
+      photoFocus: { position: '50% 38%', zoom: 1 }, // 維基照片是臉部特寫，不放大
       bio: '隊長，IZ*ONE 出身。反應快、口條好，長期擔任音樂節目主持，是團體的對外門面。',
       facts: ['隊長', 'IZ*ONE 出身']
     },

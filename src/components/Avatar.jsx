@@ -5,6 +5,19 @@ import { avatarSources } from '../lib/registry.js';
  * 頭像：依序嘗試 photo → Instagram 大頭貼，全部失敗就只留漸層首字母，
  * 不會出現破圖。
  */
+/**
+ * 個別照片的構圖修正：photoFocus: { position: '50% 40%', zoom: 1 }
+ *   position → 裁切時對準的位置（CSS object-position）
+ *   zoom     → 小頭像的放大倍率（預設 1.3，臉部特寫的照片可設成 1）
+ */
+function focusStyle(focus) {
+  if (!focus) return undefined;
+  return {
+    ...(focus.position && { objectPosition: focus.position }),
+    ...(focus.zoom != null && { '--avatar-zoom': focus.zoom })
+  };
+}
+
 export default function Avatar({ entity, size, onActiveChange }) {
   const sources = avatarSources(entity);
   const [index, setIndex] = useState(0);
@@ -29,6 +42,7 @@ export default function Avatar({ entity, size, onActiveChange }) {
           alt={`${label} 的頭像`}
           loading="lazy"
           referrerPolicy="no-referrer"
+          style={focusStyle(entity.photoFocus)}
           onError={() => setIndex((i) => i + 1)}
         />
       )}
