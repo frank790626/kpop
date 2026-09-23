@@ -50,8 +50,10 @@ export default function YouTubeEmbed({ youtubeId, title, badge, noEmbed = false 
       onClick={() => setPlaying(true)}
     >
       {playing ? (
+        // 用 youtube.com（非 nocookie）才會帶到瀏覽器的 YouTube 登入狀態，Premium 會員看嵌入影片就沒有廣告；
+        // 點了縮圖才載入，所以沒按播放前不會設定任何 YouTube cookie
         <iframe
-          src={`https://www.youtube-nocookie.com/embed/${encodeURIComponent(youtubeId)}?autoplay=1&rel=0`}
+          src={`https://www.youtube.com/embed/${encodeURIComponent(youtubeId)}?autoplay=1&rel=0`}
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
