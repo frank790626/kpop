@@ -260,6 +260,72 @@
       "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Huh_Yunjin_of_Le_Sserafim,_January_10,_2025.png"
     },
+    "nmixx/bae": {
+      "src": "assets/img/nmixx-bae.jpg",
+      "file": "250627 Bae (NMIXX) Airport Departure.jpg",
+      "article": "",
+      "articleUrl": "",
+      "artist": "티비텐 TV10",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:250627_Bae_(NMIXX)_Airport_Departure.jpg"
+    },
+    "nmixx/haewon": {
+      "src": "assets/img/nmixx-haewon.jpg",
+      "file": "Haewon_for_Marie_Claire_Korea.jpg",
+      "article": "Haewon (singer)",
+      "articleUrl": "https://en.wikipedia.org/wiki/Haewon_(singer)",
+      "artist": "Marie Claire Korea",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Haewon_for_Marie_Claire_Korea.jpg"
+    },
+    "nmixx/jiwoo": {
+      "src": "assets/img/nmixx-jiwoo.jpg",
+      "file": "Jiwoo Nmixx in Happy Jiwoo Day livestream.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "DrinksOrCoffee",
+      "artistUrl": "",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source": "https://commons.wikimedia.org/wiki/File:Jiwoo_Nmixx_in_Happy_Jiwoo_Day_livestream.png"
+    },
+    "nmixx/kyujin": {
+      "src": "assets/img/nmixx-kyujin.jpg",
+      "file": "NMIXX Kyujin 251225 (3).jpg",
+      "article": "",
+      "articleUrl": "",
+      "artist": "Kyusav",
+      "artistUrl": "",
+      "license": "CC BY 1.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/1.0",
+      "source": "https://commons.wikimedia.org/wiki/File:NMIXX_Kyujin_251225_(3).jpg"
+    },
+    "nmixx/lily": {
+      "src": "assets/img/nmixx-lily.jpg",
+      "file": "NMIXX_in_Oakland_-_Lily_focus.jpg",
+      "article": "Lily (singer, born 2002)",
+      "articleUrl": "https://en.wikipedia.org/wiki/Lily_(singer%2C_born_2002)",
+      "artist": "David Lee",
+      "artistUrl": "",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:NMIXX_in_Oakland_-_Lily_focus.jpg"
+    },
+    "nmixx/sullyoon": {
+      "src": "assets/img/nmixx-sullyoon.jpg",
+      "file": "Sullyoon of NMIXX, July 23, 2024.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "티비텐",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Sullyoon_of_NMIXX,_July_23,_2024.png"
+    },
     "tws/dohoon": {
       "src": "assets/img/tws-dohoon.jpg",
       "file": "DOHOON of TWS at Commencement 20240208.png",
