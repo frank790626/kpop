@@ -28,9 +28,12 @@ jobs:
 
       # 成員照片：從 Wikipedia／Commons 抓自由授權的人像，已抓過的不會重抓
       - name: 抓取維基照片
+        if: ${{ !cancelled() }}
         run: node scripts/fetch-wiki-photos.mjs
 
+      # 前面任一步驟出錯，已經成功產生的部分仍然要 commit
       - name: 有變更才 commit
+        if: ${{ !cancelled() }}
         id: commit
         run: |
           git config user.name  "github-actions[bot]"
@@ -47,7 +50,7 @@ jobs:
 
       # 用 GITHUB_TOKEN 推的 commit 不會觸發其他 workflow，所以這裡手動叫部署
       - name: 觸發部署
-        if: steps.commit.outputs.changed == 'true'
+        if: ${{ !cancelled() && steps.commit.outputs.changed == 'true' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh workflow run deploy-pages.yml --ref main

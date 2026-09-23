@@ -51,12 +51,39 @@ function cleanTitle(raw, groupName) {
   return t.replace(/\s*(M\/V|OFFICIAL|MUSIC VIDEO)\s*/gi, ' ').replace(/\s+/g, ' ').trim() || raw;
 }
 
-async function fetchText(url) {
-  const res = await fetch(url, {
-    headers: { 'user-agent': 'Mozilla/5.0 (compatible; kpop-hub/1.0; +https://github.com/)' }
-  });
-  if (!res.ok) throw new Error(`${res.status} ${res.statusText} — ${url}`);
-  return res.text();
+// 同一次執行裡，多個團體共用的綜藝頻道只抓一次（重試後仍失敗的也記住，不要一直打壞掉的端點）
+const textCache = new Map();
+
+/** YouTube 的 RSS 端點會間歇性回 404／500，失敗就等一下再試 */
+function fetchText(url, attempts = 3) {
+  if (!textCache.has(url)) textCache.set(url, fetchTextUncached(url, attempts));
+  return textCache.get(url);
+}
+
+async function fetchTextUncached(url, attempts) {
+  let lastError;
+  for (let i = 0; i < attempts; i += 1) {
+    if (i > 0) await new Promise((r) => setTimeout(r, 1500 * i));
+    try {
+      const res = await fetch(url, {
+        headers: { 'user-agent': 'Mozilla/5.0 (compatible; kpop-hub/1.0; +https://github.com/)' }
+      });
+      if (res.ok) return res.text();
+      lastError = new Error(`${res.status} ${res.statusText} — ${url}`);
+    } catch (err) {
+      lastError = err;
+    }
+  }
+  throw lastError;
+}
+
+/**
+ * 外部服務暫時出錯時只發警告，不讓整個排程失敗：
+ * 網站會沿用上次的清單，其他團體的更新和後面的照片步驟也能照常進行。
+ */
+function warn(message) {
+  console.warn(message);
+  if (process.env.GITHUB_ACTIONS) console.log(`::warning::${message.replace(/\n/g, ' ')}`);
 }
 
 async function fetchJson(url) {
@@ -199,7 +226,7 @@ async function varietyFromChannels(group) {
         });
       }
     } catch (err) {
-      console.warn(`  ! 頻道 ${channel} 抓取失敗：${err.message}`);
+      warn(`  ! 頻道 ${channel} 抓取失敗：${err.message}`);
     }
   }
 
@@ -299,9 +326,8 @@ async function main() {
         kind: '影片'
       });
     } catch (err) {
-      // 單一團體失敗不該讓整個排程掛掉，網站會繼續用資料檔裡的清單
-      console.error(`✗ ${group.id} 影片：${err.message}`);
-      process.exitCode = 1;
+      // 單一團體失敗不該讓整個排程掛掉，網站會繼續用上次的清單
+      warn(`✗ ${group.id} 影片：${err.message}`);
     }
 
     if (group.varietyChannels?.length) {
@@ -312,8 +338,7 @@ async function main() {
           kind: '綜藝'
         });
       } catch (err) {
-        console.error(`✗ ${group.id} 綜藝：${err.message}`);
-        process.exitCode = 1;
+        warn(`✗ ${group.id} 綜藝：${err.message}`);
       }
     }
   }
