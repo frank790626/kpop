@@ -2,7 +2,7 @@
   "updatedAt": "2026-09-23",
   "photos": {
     "aespa/giselle": {
-      "src": "assets/img/wiki/aespa-giselle.jpg",
+      "src": "assets/img/aespa-giselle.jpg",
       "article": "Giselle (singer)",
       "articleUrl": "https://en.wikipedia.org/wiki/Giselle_(singer)",
       "artist": "티비텐 TV10",
@@ -11,7 +11,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:Giselle_at_Incheon_Airport_on_March_4,_2026.jpg"
     },
     "aespa/karina": {
-      "src": "assets/img/wiki/aespa-karina.png",
+      "src": "assets/img/aespa-karina.jpg",
       "article": "Karina (South Korean singer)",
       "articleUrl": "https://en.wikipedia.org/wiki/Karina_(South_Korean_singer)",
       "artist": "티비텐 TV10",
@@ -20,7 +20,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:Karina_at_Gimpo_Airport_on_April_22,_2026_03.png"
     },
     "aespa/ningning": {
-      "src": "assets/img/wiki/aespa-ningning.png",
+      "src": "assets/img/aespa-ningning.jpg",
       "article": "Ningning",
       "articleUrl": "https://en.wikipedia.org/wiki/Ningning",
       "artist": "티비텐 TV10",
@@ -29,7 +29,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:Ningning_at_Mise-en-Scene_event_on_19022026_(2).png"
     },
     "aespa/winter": {
-      "src": "assets/img/wiki/aespa-winter.png",
+      "src": "assets/img/aespa-winter.jpg",
       "article": "Winter (singer)",
       "articleUrl": "https://en.wikipedia.org/wiki/Winter_(singer)",
       "artist": "K-POPIT 케이팝잇",
@@ -38,7 +38,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:Winter_at_Incheon_Airport_on_July_10,_2026.png"
     },
     "illit/wonhee": {
-      "src": "assets/img/wiki/illit-wonhee.png",
+      "src": "assets/img/illit-wonhee.jpg",
       "article": "Wonhee",
       "articleUrl": "https://en.wikipedia.org/wiki/Wonhee",
       "artist": "티비텐",
@@ -47,7 +47,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:ILLIT_WONHEE_CHANEL_Photo_Call_(cropped).png"
     },
     "ive/gaeul": {
-      "src": "assets/img/wiki/ive-gaeul.png",
+      "src": "assets/img/ive-gaeul.jpg",
       "article": "Gaeul (singer)",
       "articleUrl": "https://en.wikipedia.org/wiki/Gaeul_(singer)",
       "artist": "K-POPIT 케이팝잇",
@@ -56,7 +56,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:Gaeul_of_Ive_at_Senka_Pop-up_Event,_May_19,_2026_(1).png"
     },
     "ive/leeseo": {
-      "src": "assets/img/wiki/ive-leeseo.png",
+      "src": "assets/img/ive-leeseo.jpg",
       "article": "Leeseo",
       "articleUrl": "https://en.wikipedia.org/wiki/Leeseo",
       "artist": "K-POPIT 케이팝잇",
@@ -65,7 +65,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:Leeseo_of_Ive,_March_19,_2026_(3).png"
     },
     "ive/liz": {
-      "src": "assets/img/wiki/ive-liz.png",
+      "src": "assets/img/ive-liz.jpg",
       "article": "Liz (South Korean singer)",
       "articleUrl": "https://en.wikipedia.org/wiki/Liz_(South_Korean_singer)",
       "artist": "K-POPIT 케이팝잇",
@@ -74,7 +74,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:Liz_of_Ive,_July_19,_2026_(1).png"
     },
     "ive/rei": {
-      "src": "assets/img/wiki/ive-rei.png",
+      "src": "assets/img/ive-rei.jpg",
       "article": "Rei (singer)",
       "articleUrl": "https://en.wikipedia.org/wiki/Rei_(singer)",
       "artist": "K-POPIT 케이팝잇",
@@ -83,7 +83,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:Rei_of_Ive_at_the_Valentino_event,_March_20,_2026_(4).png"
     },
     "ive/wonyoung": {
-      "src": "assets/img/wiki/ive-wonyoung.png",
+      "src": "assets/img/ive-wonyoung.jpg",
       "article": "Jang Won-young",
       "articleUrl": "https://en.wikipedia.org/wiki/Jang_Won-young",
       "artist": "K-POPIT 케이팝잇",
@@ -92,7 +92,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:Jang_Won-young_at_the_Bulgari_Eclettica_event_in_Seoul,_May_12,_2026_(1).png"
     },
     "lesserafim/chaewon": {
-      "src": "assets/img/wiki/lesserafim-chaewon.jpg",
+      "src": "assets/img/lesserafim-chaewon.jpg",
       "article": "Kim Chaewon",
       "articleUrl": "https://en.wikipedia.org/wiki/Kim_Chaewon",
       "artist": "K-POPIT 케이팝잇",
@@ -101,7 +101,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:240329_Kim_Chae-won_(1).jpg"
     },
     "lesserafim/eunchae": {
-      "src": "assets/img/wiki/lesserafim-eunchae.jpg",
+      "src": "assets/img/lesserafim-eunchae.jpg",
       "article": "Hong Eunchae",
       "articleUrl": "https://en.wikipedia.org/wiki/Hong_Eunchae",
       "artist": "K-POPIT 케이팝잇",
@@ -110,7 +110,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:221013_Hong_Eun_Chae_(LE_SSERAFIM)_Airport_Departure.jpg"
     },
     "lesserafim/kazuha": {
-      "src": "assets/img/wiki/lesserafim-kazuha.png",
+      "src": "assets/img/lesserafim-kazuha.jpg",
       "article": "Kazuha (singer)",
       "articleUrl": "https://en.wikipedia.org/wiki/Kazuha_(singer)",
       "artist": "티비텐",
@@ -119,7 +119,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:Kazuha_of_Le_Sserafim,_April_5,_2024_(2).png"
     },
     "lesserafim/sakura": {
-      "src": "assets/img/wiki/lesserafim-sakura.png",
+      "src": "assets/img/lesserafim-sakura.jpg",
       "article": "Sakura Miyawaki",
       "articleUrl": "https://en.wikipedia.org/wiki/Sakura_Miyawaki",
       "artist": "티비텐 TV10",
@@ -128,7 +128,7 @@
       "source": "https://commons.wikimedia.org/wiki/File:20260110_Le_Sserafim%27s_Sakura_Miyawaki_01.png"
     },
     "lesserafim/yunjin": {
-      "src": "assets/img/wiki/lesserafim-yunjin.png",
+      "src": "assets/img/lesserafim-yunjin.jpg",
       "article": "Huh Yunjin",
       "articleUrl": "https://en.wikipedia.org/wiki/Huh_Yunjin",
       "artist": "티비텐",

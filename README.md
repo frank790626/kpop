@@ -89,17 +89,20 @@ varietyChannels: [
 
 ### 成員照片（Wikipedia）
 
-每日排程也會跑 `scripts/fetch-wiki-photos.mjs`，從英文維基百科的人物條目取主圖當頭像，
-存到 `assets/img/wiki/`，作者與授權寫進 `src/data/generated/photos.json`。
+成員照片是從英文維基百科人物條目的主圖下載的，就放在 `assets/img/`
+（例如 `assets/img/aespa-karina.jpg`），作者與授權記錄在 `assets/img/credits.json`。
+
+這是**一次性**的步驟，不在每日排程裡。新增團體後到
+**Actions → Fetch member photos → Run workflow** 執行一次即可，
+只會補抓還沒有照片的成員（勾選 refresh 則全部重抓）。
 
 - **只收 Wikimedia Commons 上的自由授權圖**（CC BY／CC BY-SA 等）；英文維基本地的
-  「合理使用」非自由圖一律不抓
+  「合理使用」非自由圖一律不抓，查不到作者或授權的也不用
 - **確認是本人**：條目要同時提到團名與成員名、是人物條目，而且不能是團體本身的條目
   （避免抓到團體合照或同名的人）
-- 成員卡在顯示維基照片時會自動標註作者與授權，這是 CC 授權的使用條件，請勿移除
-- 找錯人或想指定條目：在成員資料加 `wiki: '條目標題'`；想用自己的照片就填 `photo`，
+- 成員卡顯示這些照片時會自動標註作者與授權，這是 CC 授權的使用條件，請勿移除
+- 找錯人或想指定條目：在成員資料加 `wiki: '條目標題'`；想換成自己的照片就在 `photo` 填路徑，
   優先順序最高
-- 已抓過的不會重抓；要全部重來可執行 `node scripts/fetch-wiki-photos.mjs --refresh`
 
 ## 上線（GitHub Pages）
 
@@ -128,7 +131,8 @@ index.html                    Vite 進入點（字體與 meta 都在這）
 vite.config.js                base path 由 BASE_PATH 環境變數決定
 scripts/copy-assets.mjs       build 後把 assets/img 複製進 dist
 scripts/update-videos.mjs     每日抓取影片清單（API 或 RSS）
-assets/img/                   成員照片放這裡
+scripts/fetch-wiki-photos.mjs 一次性下載成員照片（Wikipedia／Commons）
+assets/img/                   成員照片與 credits.json（作者／授權）
 src/main.jsx                  React 進入點
 src/App.jsx                   路由（hash）與頁面組裝
 src/styles.css                全站樣式（主題色用 CSS 變數，依團體注入）
@@ -173,7 +177,7 @@ src/data/generated/             每日自動產生的影片清單（不要手改
 成員頭像依序嘗試三個來源，前一個失敗就自動換下一個：
 
 1. `members[].photo` — 自己放的照片（`assets/img/` 或任何圖片網址），最穩定。
-2. 維基照片 — 每日排程自動從 Wikimedia Commons 抓取（見下方「成員照片」）。
+2. 維基照片 — `assets/img/` 裡從 Wikimedia Commons 下載的照片（見下方「成員照片」）。
 3. `members[].instagram` — 該 IG 帳號的大頭貼。Instagram 官方不允許直接連圖，所以透過
    `src/lib/registry.js` 最上方的 `config.igAvatarProxy`（預設 `unavatar.io`）取得；
    若哪天這個服務失效，只要改這一行就能整站換來源。

@@ -41,8 +41,8 @@ export function igAvatar(value) {
 
 /**
  * 頭像來源優先序：
- *   1. photo（自己放在 assets/img 的照片或任何圖片網址）
- *   2. wikiPhoto（scripts/fetch-wiki-photos.mjs 從 Wikimedia Commons 抓的自由授權照片）
+ *   1. photo（資料檔裡手動指定的照片或圖片網址）
+ *   2. wikiPhoto（assets/img/ 裡從 Wikimedia Commons 下載的自由授權照片）
  *   3. Instagram 大頭貼
  *   4. 都沒有／都失敗 → 代表色漸層 + 名字首字母
  */
@@ -138,7 +138,8 @@ function generatedFor(groupId, kind) {
   return mod ? mod.default || mod : null;
 }
 
-const photoFiles = import.meta.glob('../data/generated/photos.json', { eager: true });
+// scripts/fetch-wiki-photos.mjs 下載到 assets/img/ 的照片，以及各自的作者與授權
+const photoFiles = import.meta.glob('/assets/img/credits.json', { eager: true });
 const wikiPhotos = (() => {
   const mod = Object.values(photoFiles)[0];
   return (mod?.default || mod)?.photos || {};

@@ -9,18 +9,19 @@
  *      「合理使用」非自由圖一律跳過
  *   4. 下載 480px 縮圖到 assets/img/wiki/，並從 Commons 取得作者與授權
  *
- * 產出：assets/img/wiki/<團體id>-<成員id>.jpg
- *       src/data/generated/photos.json（照片路徑 + 作者／授權，網站用來標註出處）
+ * 產出：assets/img/<團體id>-<成員id>.<副檔名>
+ *       assets/img/credits.json（每張照片的作者與授權，網站用來標註出處）
  *
- * 已經抓過的成員不會重抓；加 --refresh 可強制全部重新抓。
+ * 這是一次性的工具，不在每日排程裡：新增團體後到 Actions 手動執行
+ * 「Fetch member photos」即可。已經有照片的成員不會重抓；加 --refresh 可強制全部重來。
  */
 import { readdir, readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
 
 const GROUPS_DIR = 'src/data/groups';
-const IMG_DIR = 'assets/img/wiki';
-const OUT = 'src/data/generated/photos.json';
+const IMG_DIR = 'assets/img';
+const OUT = 'assets/img/credits.json';
 const REFRESH = process.argv.includes('--refresh');
 
 // Wikimedia 要求帶可辨識的 User-Agent
@@ -202,7 +203,7 @@ async function main() {
 
         const ext = path.extname(img.fileName).toLowerCase().replace('.jpeg', '.jpg');
         const dest = path.join(IMG_DIR, `${group.id}-${member.id}${ext}`);
-        const filePath = `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(img.fileName)}?width=480`;
+        const filePath = `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(img.fileName)}?width=400`;
         if (!(await download([filePath, img.thumb, img.original], dest))) {
           console.log(`  ! ${member.stageName}：圖片下載失敗`);
           missing += 1;
