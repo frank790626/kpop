@@ -203,19 +203,3 @@ src/data/generated/             每日自動產生的影片清單（不要手改
 成員生日、影片觀看里程碑等數字會隨時間變動，更新時只要改資料檔即可，不會動到程式。
 
 本站為非官方粉絲介紹頁，圖片、影片與商標版權屬原經紀公司與各平台所有。
-
-## Threads 熱門討論（每 6 小時）
-
-`.github/workflows/update-threads.yml` 每 6 小時執行 `scripts/update-threads.mjs`，用**官方 Threads API**
-（`keyword_search`，`search_type=TOP`）搜尋各團體的熱門貼文，寫進 `src/data/generated/<id>-threads.json`，
-網頁上直接顯示成卡片（文字、圖片、影片都在站內看，不用連出去）。沒有資料時整個區塊自動隱藏。
-
-設定步驟：
-1. 到 [Meta for Developers](https://developers.facebook.com/apps/) 建立 App，使用案例選「存取 Threads API」，
-   權限勾選 `threads_basic`、`threads_keyword_search`。
-2. 用自己的 Threads 帳號授權，換成**長效存取權杖**（60 天有效，每次執行會自動延長）。
-3. GitHub repo → Settings → Secrets and variables → Actions → 新增 `THREADS_ACCESS_TOKEN`。
-4. 到 App 審查申請 `threads_keyword_search` 的進階存取（Advanced Access）。
-   **審查通過前 Meta 只會回傳權杖主人自己的貼文**，所以區塊會是空的（隱藏）。
-
-資料檔可選填 `threadsQuery`（搜尋關鍵字，預設是團名）與 `threadsAliases`（貼文內文要提到的其他名稱）。

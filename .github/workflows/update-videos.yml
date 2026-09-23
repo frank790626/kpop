@@ -10,11 +10,6 @@ permissions:
   contents: write
   actions: write
 
-# 和 Threads 更新錯開，避免同時 push 撞在一起
-concurrency:
-  group: data-update
-  cancel-in-progress: false
-
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -44,7 +39,6 @@ jobs:
             echo "影片清單沒有變化，不需要部署"
           else
             git commit -m "chore: 每日更新影片清單 [skip ci]"
-            git pull --rebase origin main
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi

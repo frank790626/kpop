@@ -93,10 +93,6 @@ export default {
   // 每天會掃這些頻道的 RSS，把標題提到團名的新片補到綜藝清單最前面。
   varietyChannels: [],
 
-  // Threads 熱門討論（選填）：搜尋關鍵字預設是團名；團名太常見時可以指定，例如 'IVE 아이브'
-  threadsQuery: '',
-  threadsAliases: [],   // 貼文內文提到這些名稱也算（預設只認團名與韓文團名）
-
   // 作品年表。最新的三筆會自動出現在「近期發行」區塊（在熱門影片上方）
   releases: [
     {

@@ -98,8 +98,6 @@ function normalizeGroup(raw) {
     releases: [],
     videosUpdatedAt: '',
     varietyUpdatedAt: '',
-    threads: [],
-    threadsUpdatedAt: '',
     ...raw,
     theme: { accent: '#ff3d7f', accent2: '#8b5cf6', ...raw.theme }
   };
@@ -169,12 +167,6 @@ function applyGenerated(group) {
   if (variety?.videos?.length) {
     group.variety = variety.videos.map((v) => ({ ...v, kind: v.kind || v.show || '綜藝' }));
     group.varietyUpdatedAt = variety.updatedAt || '';
-  }
-
-  const threads = generatedFor(group.id, 'threads');
-  if (threads?.posts?.length) {
-    group.threads = threads.posts;
-    group.threadsUpdatedAt = threads.updatedAt || '';
   }
 
   return group;
