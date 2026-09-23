@@ -37,6 +37,86 @@
       "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Winter_at_Incheon_Airport_on_July_10,_2026.png"
     },
+    "babymonster/ahyeon": {
+      "src": "assets/img/babymonster-ahyeon.jpg",
+      "file": "Ahyeon Summer Sonic 2026.jpg",
+      "article": "",
+      "articleUrl": "",
+      "artist": "Farouk Azim",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ahyeon_Summer_Sonic_2026.jpg"
+    },
+    "babymonster/chiquita": {
+      "src": "assets/img/babymonster-chiquita.jpg",
+      "file": "Chiquita at KLIA 20-06-2025.jpg",
+      "article": "",
+      "articleUrl": "",
+      "artist": "Farouk Azim",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Chiquita_at_KLIA_20-06-2025.jpg"
+    },
+    "babymonster/pharita": {
+      "src": "assets/img/babymonster-pharita.jpg",
+      "file": "Pharita Summer Sonic 2026.jpg",
+      "article": "",
+      "articleUrl": "",
+      "artist": "Farouk Azim",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Pharita_Summer_Sonic_2026.jpg"
+    },
+    "babymonster/rora": {
+      "src": "assets/img/babymonster-rora.jpg",
+      "file": "Rora Summer Sonic 2026.jpg",
+      "article": "",
+      "articleUrl": "",
+      "artist": "Farouk Azim",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Rora_Summer_Sonic_2026.jpg"
+    },
+    "babymonster/ruka": {
+      "src": "assets/img/babymonster-ruka.jpg",
+      "file": "Ruka at KLIA 20-06-2025.jpg",
+      "article": "",
+      "articleUrl": "",
+      "artist": "Farouk Azim",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruka_at_KLIA_20-06-2025.jpg"
+    },
+    "illit/iroha": {
+      "src": "assets/img/illit-iroha.jpg",
+      "file": "ILLIT Iroha at Canada Goose Photo Call.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "K-POPIT 케이팝잇",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:ILLIT_Iroha_at_Canada_Goose_Photo_Call.png"
+    },
+    "illit/minju": {
+      "src": "assets/img/illit-minju.jpg",
+      "file": "ILLIT Minju at Canada Goose Photo Call.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "K-POPIT 케이팝잇",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:ILLIT_Minju_at_Canada_Goose_Photo_Call.png"
+    },
+    "illit/moka": {
+      "src": "assets/img/illit-moka.jpg",
+      "file": "ILLIT Moka at Canada Goose Photo Call.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "K-POPIT 케이팝잇",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:ILLIT_Moka_at_Canada_Goose_Photo_Call.png"
+    },
     "illit/wonhee": {
       "src": "assets/img/illit-wonhee.jpg",
       "article": "Wonhee",
@@ -45,6 +125,16 @@
       "license": "CC BY 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:ILLIT_WONHEE_CHANEL_Photo_Call_(cropped).png"
+    },
+    "illit/yunah": {
+      "src": "assets/img/illit-yunah.jpg",
+      "file": "ILLIT Yunah February 2024.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "https://www.youtube.com/@_TV10 티비텐",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:ILLIT_Yunah_February_2024.png"
     },
     "ive/gaeul": {
       "src": "assets/img/ive-gaeul.jpg",
