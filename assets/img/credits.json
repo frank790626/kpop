@@ -47,6 +47,17 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Ahyeon_Summer_Sonic_2026.jpg"
     },
+    "babymonster/asa": {
+      "src": "assets/img/babymonster-asa.jpg",
+      "file": "BABYMONSTER ASA BANILA CO.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "티비텐",
+      "artistUrl": "",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:BABYMONSTER_ASA_BANILA_CO.png"
+    },
     "babymonster/chiquita": {
       "src": "assets/img/babymonster-chiquita.jpg",
       "file": "Chiquita at KLIA 20-06-2025.jpg",
@@ -182,6 +193,17 @@
       "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Jang_Won-young_at_the_Bulgari_Eclettica_event_in_Seoul,_May_12,_2026_(1).png"
     },
+    "ive/yujin": {
+      "src": "assets/img/ive-yujin.jpg",
+      "file": "IVE An Yujin in Marie Claire Korea Feb 23, 2023.jpg",
+      "article": "",
+      "articleUrl": "",
+      "artist": "Marie Claire Korea",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:IVE_An_Yujin_in_Marie_Claire_Korea_Feb_23,_2023.jpg"
+    },
     "lesserafim/chaewon": {
       "src": "assets/img/lesserafim-chaewon.jpg",
       "article": "Kim Chaewon",
@@ -226,6 +248,72 @@
       "license": "CC BY 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Huh_Yunjin_of_Le_Sserafim,_January_10,_2025.png"
+    },
+    "tws/dohoon": {
+      "src": "assets/img/tws-dohoon.jpg",
+      "file": "DOHOON of TWS at Commencement 20240208.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "tenasia (티비텐)",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:DOHOON_of_TWS_at_Commencement_20240208.png"
+    },
+    "tws/hanjin": {
+      "src": "assets/img/tws-hanjin.jpg",
+      "file": "Hanjin of TWS at the 2024 Melon Music Awards.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "TenAsia",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Hanjin_of_TWS_at_the_2024_Melon_Music_Awards.png"
+    },
+    "tws/jihoon": {
+      "src": "assets/img/tws-jihoon.jpg",
+      "file": "Jihoon of TWS at the 2024 Melon Music Awards.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "TenAsia",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Jihoon_of_TWS_at_the_2024_Melon_Music_Awards.png"
+    },
+    "tws/kyungmin": {
+      "src": "assets/img/tws-kyungmin.jpg",
+      "file": "KYUNGMIN of TWS at Music Bank 20240126.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "K-POPIT 케이팝잇",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:KYUNGMIN_of_TWS_at_Music_Bank_20240126.png"
+    },
+    "tws/shinyu": {
+      "src": "assets/img/tws-shinyu.jpg",
+      "file": "Shinyu of TWS at the 2024 Melon Music Awards.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "TenAsia",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Shinyu_of_TWS_at_the_2024_Melon_Music_Awards.png"
+    },
+    "tws/youngjae": {
+      "src": "assets/img/tws-youngjae.jpg",
+      "file": "Youngjae of TWS at the 2024 Melon Music Awards.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "TenAsia",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Youngjae_of_TWS_at_the_2024_Melon_Music_Awards.png"
     }
   }
 }
