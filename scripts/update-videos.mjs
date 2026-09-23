@@ -290,6 +290,11 @@ async function verifyList(list) {
     }
   }
 
+  // 整份清單都被判定下架多半是 YouTube 那邊出狀況（例如 RSS 整批 404 的時候），不要把清單清空
+  if (list.length > 1 && out.length === 0) {
+    warn(`  ! ${list.length} 支影片全部查不到，疑似 YouTube 暫時異常，保留原清單`);
+    return list;
+  }
   return out;
 }
 
@@ -320,15 +325,21 @@ async function main() {
       continue;
     }
 
+    const videosPath = path.join(OUT_DIR, `${group.id}-videos.json`);
     try {
       const videos = await verifyList(apiKey ? await fromApi(group, apiKey) : await fromRss(group));
-      await writeIfChanged(path.join(OUT_DIR, `${group.id}-videos.json`), videos, {
-        groupId: group.id,
-        kind: '影片'
-      });
+      await writeIfChanged(videosPath, videos, { groupId: group.id, kind: '影片' });
     } catch (err) {
       // 單一團體失敗不該讓整個排程掛掉，網站會繼續用上次的清單
       warn(`✗ ${group.id} 影片：${err.message}`);
+      // 新加入的團體還沒有上次的清單：頻道抓不到也先把資料檔手動整理的影片驗證一遍
+      if (!(await readFile(videosPath, 'utf8').catch(() => '')) && group.videos?.length) {
+        try {
+          await writeIfChanged(videosPath, await verifyList(group.videos), { groupId: group.id, kind: '影片（資料檔）' });
+        } catch (err2) {
+          warn(`✗ ${group.id} 影片（資料檔）：${err2.message}`);
+        }
+      }
     }
 
     if (group.varietyChannels?.length) {
