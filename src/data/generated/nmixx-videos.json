@@ -1,0 +1,69 @@
+{
+  "groupId": "nmixx",
+  "updatedAt": "2026-09-23",
+  "videos": [
+    {
+      "title": "O.O",
+      "youtubeId": "3GWscde8rM8",
+      "date": "2022.02.22",
+      "kind": "出道曲 M/V",
+      "note": "《AD MARE》出道主打，MIX POP 的第一步。",
+      "noEmbed": false,
+      "show": "JYP Entertainment"
+    },
+    {
+      "title": "Love Me Like This",
+      "youtubeId": "EDnwWcFpObo",
+      "date": "2023.03.20",
+      "kind": "迷你一輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "JYP Entertainment"
+    },
+    {
+      "title": "DASH",
+      "youtubeId": "7UecFm_bSTU",
+      "date": "2024.01.15",
+      "kind": "迷你二輯主打 M/V",
+      "note": "《Fe3O4: BREAK》主打，人氣起飛的轉捩點。",
+      "noEmbed": false,
+      "show": "JYP Entertainment"
+    },
+    {
+      "title": "별별별 (See that?)",
+      "youtubeId": "_Q8Jskeps9w",
+      "date": "2024.08.19",
+      "kind": "迷你三輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "JYP Entertainment"
+    },
+    {
+      "title": "KNOW ABOUT ME",
+      "youtubeId": "aFrQIJ5cbRc",
+      "date": "2025.03.17",
+      "kind": "迷你四輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "JYP Entertainment"
+    },
+    {
+      "title": "Blue Valentine",
+      "youtubeId": "EmeW6li6bbo",
+      "date": "2025.10.13",
+      "kind": "正規一輯主打 M/V",
+      "note": "首張正規專輯同名曲。",
+      "noEmbed": false,
+      "show": "JYP Entertainment"
+    },
+    {
+      "title": "Heavy Serenade",
+      "youtubeId": "6Ycn9qZK09I",
+      "date": "2026.05.11",
+      "kind": "迷你五輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "JYP Entertainment"
+    }
+  ]
+}
