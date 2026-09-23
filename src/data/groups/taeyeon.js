@@ -25,7 +25,7 @@ export default {
   intro: [
     '太妍（태연，本名金泰耎）是少女時代的隊長兼主唱，2007 年隨團出道；2015 年 10 月以迷你專輯《I》個人出道，主打〈I (feat. Verbal Jint)〉一推出就橫掃各大音源榜。',
     '清亮又有穿透力的嗓音是她的招牌，〈Rain〉、〈Fine〉、〈四季 (Four Seasons)〉、〈INVU〉等歌曲長年霸榜，被譽為韓國最具代表性的女 Solo 歌手之一。也曾是 tvN《驚人的星期六》固定班底，綜藝感一樣出色。',
-    '2025 年 12 月發行個人出道十週年精選輯《Panorama : The Best of TAEYEON》；SM 公布第四張正規專輯預定 2026 年第四季推出。'
+    '2025 年 12 月發行個人出道十週年精選輯《Panorama : The Best of TAEYEON》；2026 年 6 月翻唱日本創作歌手 tuki. 的〈晚餐歌〉推出韓文版〈만찬가〉，發行當天就打進 Melon TOP 100。SM 也公布第四張正規專輯預定 2026 年第四季推出。'
   ],
 
   facts: [
@@ -65,7 +65,8 @@ export default {
     { title: 'INVU', youtubeId: 'AbZH7XWDW_k', date: '2022.02.14', kind: '正規三輯主打 M/V', note: '' },
     { title: 'To. X', youtubeId: '5_n6t9G2TUQ', date: '2023.11.27', kind: '迷你五輯主打 M/V', note: '' },
     { title: 'Letter To Myself', youtubeId: 'wqN1vLPX-no', date: '2024.11.18', kind: '迷你六輯主打 M/V', note: '' },
-    { title: '인사 (Panorama)', youtubeId: 'xGhaNqnjgr4', date: '2025.12.01', kind: '精選輯主打 M/V', note: 'Solo 出道十週年精選輯新歌。' }
+    { title: '인사 (Panorama)', youtubeId: 'xGhaNqnjgr4', date: '2025.12.01', kind: '精選輯主打 M/V', note: 'Solo 出道十週年精選輯新歌。' },
+    { title: '만찬가 (晩餐歌)', youtubeId: 'VVO05mYGFY8', date: '2026.06.29', kind: '翻唱單曲 M/V', note: 'tuki.〈晚餐歌〉韓文版，J-POP REMAKE 第一彈。' }
   ],
 
   variety: [
@@ -105,6 +106,7 @@ export default {
     { date: '2022.02.14', title: 'INVU', type: '正規三輯', note: '主打〈INVU〉', youtubeId: 'AbZH7XWDW_k' },
     { date: '2023.11.27', title: 'To. X', type: '迷你五輯', note: '主打〈To. X〉', youtubeId: '5_n6t9G2TUQ' },
     { date: '2024.11.18', title: 'Letter To Myself', type: '迷你六輯', note: '主打〈Letter To Myself〉', youtubeId: 'wqN1vLPX-no' },
-    { date: '2025.12.01', title: 'Panorama : The Best of TAEYEON', type: '精選輯', note: '新歌〈인사 (Panorama)〉', youtubeId: 'xGhaNqnjgr4' }
+    { date: '2025.12.01', title: 'Panorama : The Best of TAEYEON', type: '精選輯', note: '新歌〈인사 (Panorama)〉', youtubeId: 'xGhaNqnjgr4' },
+    { date: '2026.06.29', title: '만찬가 (晩餐歌)', type: '翻唱單曲', note: 'tuki.〈晚餐歌〉韓文版（J-POP REMAKE Vol.1），發行當天就進 Melon TOP 100', youtubeId: 'VVO05mYGFY8' }
   ]
 };
