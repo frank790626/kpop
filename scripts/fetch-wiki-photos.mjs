@@ -205,24 +205,54 @@ async function groupCategoryFiles(group) {
   return [];
 }
 
+// 比對用：去掉連字號、底線（An Yu-jin ↔ An Yujin、File_name ↔ File name）
+const norm = (str) => String(str || '').replace(/-/g, '').replace(/_/g, ' ');
+
+/** 成員可能出現在檔名裡的寫法：藝名、本名，以及其中 4 個字以上的單字（例：AN YUJIN → YUJIN） */
+function nameKeys(member) {
+  const full = [member.stageName, member.nameEn].filter(Boolean).map(norm);
+  const words = full.flatMap((n) => n.split(/\s+/)).filter((w) => w.length >= 4);
+  return [...new Set([...full, ...words])].filter((n) => n.length >= 3);
+}
+
+/** Commons 檔名搜尋：找檔名同時有成員名與團名的檔案（例：Shinyu of TWS at ...） */
+async function searchCommons(group, member) {
+  const titles = [];
+  for (const key of nameKeys(member)) {
+    const q = `intitle:"${key}" intitle:"${norm(group.name)}"`;
+    const url =
+      'https://commons.wikimedia.org/w/api.php?action=query&format=json&list=search&srnamespace=6&srlimit=10' +
+      `&srsearch=${encodeURIComponent(q)}`;
+    for (const r of (await getJson(url))?.query?.search || []) titles.push({ title: r.title, category: '', searched: true });
+    if (titles.length) break;
+  }
+  return titles;
+}
+
 /**
- * 在團體分類裡找這位成員的個人照：
- * 檔名（或所在子分類名）要有這位成員的名字，且不能出現其他成員的名字。
+ * 在 Commons 找這位成員的個人照（團體分類＋檔名搜尋）：
+ * 檔名（或所在子分類名）要有這位成員的名字，且不能出現其他成員的名字；
+ * 搜尋來的檔案另外要求檔名裡有團名，避免抓到同名的其他人。
  */
 async function findInCommonsCategory(group, member) {
-  const files = await groupCategoryFiles(group);
-  const mine = [member.stageName, member.nameEn].filter((n) => n && n.length >= 3).map(wordRe);
+  const files = [...(await groupCategoryFiles(group)), ...(await searchCommons(group, member))];
+  const mine = nameKeys(member).map(wordRe);
   const others = (group.members || [])
     .filter((m) => m.id !== member.id)
-    .map((m) => m.stageName)
-    .filter((n) => n && n.length >= 3)
+    .flatMap((m) => nameKeys(m))
+    .filter((k) => !nameKeys(member).includes(k))
     .map(wordRe);
+  const groupRe = wordRe(norm(group.name));
 
-  const candidates = files.filter(({ title, category }) => {
-    const base = title.replace(/^File:/, '').replace(/\.[^.]+$/, '').replace(/_/g, ' ');
+  const seen = new Set();
+  const candidates = files.filter(({ title, category, searched }) => {
+    if (seen.has(title)) return false;
+    seen.add(title);
+    const base = norm(title.replace(/^File:/, '').replace(/\.[^.]+$/, ''));
     if (!/\.(jpe?g|png|webp)$/i.test(title)) return false;
     if (/\b(logo|group|members)\b/i.test(base)) return false;
-    const inMemberCategory = mine.some((re) => re.test(category)) && !others.some((re) => re.test(category));
+    if (searched && !groupRe.test(base)) return false;
+    const inMemberCategory = category && mine.some((re) => re.test(norm(category))) && !others.some((re) => re.test(norm(category)));
     const namedInFile = mine.some((re) => re.test(base));
     if (!inMemberCategory && !namedInFile) return false;
     return !others.some((re) => re.test(base)); // 雙人照、團體照不要
@@ -230,8 +260,8 @@ async function findInCommonsCategory(group, member) {
 
   // 成員專屬子分類裡的優先，其次檔名比較新的（檔名常帶日期）
   candidates.sort((a, b) => {
-    const am = mine.some((re) => re.test(a.category)) ? 0 : 1;
-    const bm = mine.some((re) => re.test(b.category)) ? 0 : 1;
+    const am = a.category && mine.some((re) => re.test(norm(a.category))) ? 0 : 1;
+    const bm = b.category && mine.some((re) => re.test(norm(b.category))) ? 0 : 1;
     return am - bm || b.title.localeCompare(a.title);
   });
   return candidates.map((c) => c.title.replace(/^File:/, ''));
@@ -270,10 +300,10 @@ async function main() {
           const img = commonsImage(article);
           tries.push({ fileName: img.fileName, extra: [img.thumb, img.original], via: `條目 ${article.title}`, article });
         }
-        // B. Commons 團體分類裡的個人照
+        // B. Commons 上的個人照（團體分類＋檔名搜尋）
         if (!tries.length) {
           for (const fileName of (await findInCommonsCategory(group, member)).slice(0, 5)) {
-            tries.push({ fileName, extra: [], via: 'Commons 團體分類' });
+            tries.push({ fileName, extra: [], via: 'Commons' });
           }
         }
 
@@ -293,7 +323,7 @@ async function main() {
         }
 
         if (!saved) {
-          console.log(`  - ${member.stageName}：維基條目與 Commons 分類都找不到可用的個人照`);
+          console.log(`  - ${member.stageName}：維基條目與 Commons 都找不到可用的個人照`);
           delete photos[key];
           missing += 1;
           continue;

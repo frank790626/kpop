@@ -13,7 +13,7 @@ export default {
   debut: '2024.01.22',
   debutNote: '出道專輯《Sparkling Blue》，主打歌〈첫 만남은 계획대로 되지 않아〉',
   fandom: '42（SAI）',
-  commonsCategory: 'TWS (group)', // Wikimedia Commons 上的分類名稱，抓成員照片用
+  commonsCategory: 'TWS', // Wikimedia Commons 上的分類名稱，抓成員照片用
   tagline: '團名是 "TWENTY FOUR SEVEN WITH US" 的縮寫——一天 24 小時、一週 7 天都和你在一起。',
 
   theme: { accent: '#3ea8ff', accent2: '#7ee0c0' },
