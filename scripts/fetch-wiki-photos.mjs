@@ -2,12 +2,14 @@
  * 從 Wikipedia／Wikimedia Commons 抓成員照片當頭像
  *
  * 流程（每位成員）：
- *   1. 依序嘗試候選條目：資料檔的 wiki 欄位 → 本名 → 藝名 (singer) → 站內搜尋
- *   2. 用條目摘要確認「真的是這個人」：必須提到團名與成員名、看起來是人物條目、
- *      而且不是團體本身的條目（避免抓到團體合照）
- *   3. 只接受放在 Wikimedia Commons 的圖片（自由授權）；英文維基本地的
- *      「合理使用」非自由圖一律跳過
- *   4. 下載 480px 縮圖到 assets/img/wiki/，並從 Commons 取得作者與授權
+ *   A. 先找英文維基的個人條目，取主圖
+ *      1. 依序嘗試：資料檔的 wiki 欄位 → 本名 → 藝名 (singer) → 站內搜尋
+ *      2. 用條目摘要確認「真的是這個人」：必須提到團名與成員名、是人物條目、
+ *         而且不是團體本身的條目（避免抓到團體合照）
+ *      3. 只接受放在 Wikimedia Commons 的圖（自由授權），英文維基本地的非自由圖一律跳過
+ *   B. 沒有個人條目時，改到 Commons 的團體分類（例：Category:Babymonster）裡找
+ *      檔名只寫著這位成員的照片；檔名同時出現其他成員名字的（雙人照、團體照）一律跳過
+ *   C. 查不到作者或授權就不使用；下載後轉成 400px 寬的 JPEG
  *
  * 產出：assets/img/<團體id>-<成員id>.<副檔名>
  *       assets/img/credits.json（每張照片的作者與授權，網站用來標註出處）
@@ -18,6 +20,7 @@
 import { readdir, readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
+import sharp from 'sharp';
 
 const GROUPS_DIR = 'src/data/groups';
 const IMG_DIR = 'assets/img';
@@ -121,7 +124,13 @@ async function download(urls, dest) {
     if (!res.ok) continue;
     const buf = Buffer.from(await res.arrayBuffer());
     if (!isImage(buf)) continue;
-    await writeFile(dest, buf);
+    // 頭像最大只顯示約 150px，存成 400px 寬的 JPEG 就很夠，檔案小很多
+    const jpg = await sharp(buf)
+      .rotate()
+      .resize({ width: 400, withoutEnlargement: true })
+      .jpeg({ quality: 82, mozjpeg: true })
+      .toBuffer();
+    await writeFile(dest, jpg);
     return true;
   }
   return false;
@@ -156,6 +165,73 @@ async function findArticle(group, member) {
   return null;
 }
 
+const categoryCache = new Map();
+
+/** 列出 Commons 分類裡的檔案（含下一層子分類），同一團體只查一次 */
+async function categoryFiles(category, depth = 1) {
+  if (categoryCache.has(category)) return categoryCache.get(category);
+  const url =
+    'https://commons.wikimedia.org/w/api.php?action=query&format=json&list=categorymembers' +
+    `&cmtype=file|subcat&cmlimit=500&cmtitle=${encodeURIComponent('Category:' + category)}`;
+  const items = (await getJson(url))?.query?.categorymembers || [];
+  const files = items.filter((m) => m.ns === 6).map((m) => ({ title: m.title, category }));
+  if (depth > 0) {
+    for (const sub of items.filter((m) => m.ns === 14)) {
+      files.push(...(await categoryFiles(sub.title.replace(/^Category:/, ''), depth - 1)));
+    }
+  }
+  categoryCache.set(category, files);
+  return files;
+}
+
+/** 找出團體在 Commons 上的分類名稱（大小寫與括號寫法各家不同，逐一試） */
+async function groupCategoryFiles(group) {
+  const variants = [
+    group.commonsCategory,
+    group.name,
+    titleCase(group.name),
+    `${titleCase(group.name)} (group)`,
+    `${titleCase(group.name)} (band)`
+  ].filter(Boolean);
+  for (const name of [...new Set(variants)]) {
+    const files = await categoryFiles(name);
+    if (files.length) return files;
+  }
+  return [];
+}
+
+/**
+ * 在團體分類裡找這位成員的個人照：
+ * 檔名（或所在子分類名）要有這位成員的名字，且不能出現其他成員的名字。
+ */
+async function findInCommonsCategory(group, member) {
+  const files = await groupCategoryFiles(group);
+  const mine = [member.stageName, member.nameEn].filter((n) => n && n.length >= 3).map(wordRe);
+  const others = (group.members || [])
+    .filter((m) => m.id !== member.id)
+    .map((m) => m.stageName)
+    .filter((n) => n && n.length >= 3)
+    .map(wordRe);
+
+  const candidates = files.filter(({ title, category }) => {
+    const base = title.replace(/^File:/, '').replace(/\.[^.]+$/, '').replace(/_/g, ' ');
+    if (!/\.(jpe?g|png|webp)$/i.test(title)) return false;
+    if (/\b(logo|group|members)\b/i.test(base)) return false;
+    const inMemberCategory = mine.some((re) => re.test(category)) && !others.some((re) => re.test(category));
+    const namedInFile = mine.some((re) => re.test(base));
+    if (!inMemberCategory && !namedInFile) return false;
+    return !others.some((re) => re.test(base)); // 雙人照、團體照不要
+  });
+
+  // 成員專屬子分類裡的優先，其次檔名比較新的（檔名常帶日期）
+  candidates.sort((a, b) => {
+    const am = mine.some((re) => re.test(a.category)) ? 0 : 1;
+    const bm = mine.some((re) => re.test(b.category)) ? 0 : 1;
+    return am - bm || b.title.localeCompare(a.title);
+  });
+  return candidates.map((c) => c.title.replace(/^File:/, ''));
+}
+
 async function exists(p) {
   try { await access(p); return true; } catch { return false; }
 }
@@ -182,41 +258,51 @@ async function main() {
       }
 
       try {
+        // A. 維基個人條目的主圖
+        const tries = [];
         const article = await findArticle(group, member);
-        if (!article) {
-          console.log(`  - ${member.stageName}：找不到有自由授權照片的個人條目`);
+        if (article) {
+          const img = commonsImage(article);
+          tries.push({ fileName: img.fileName, extra: [img.thumb, img.original], via: `條目 ${article.title}`, article });
+        }
+        // B. Commons 團體分類裡的個人照
+        if (!tries.length) {
+          for (const fileName of (await findInCommonsCategory(group, member)).slice(0, 5)) {
+            tries.push({ fileName, extra: [], via: 'Commons 團體分類' });
+          }
+        }
+
+        let saved = null;
+        for (const t of tries) {
+          // 先確認拿得到作者與授權：CC 授權必須標註，拿不到就換下一張
+          const credit = await commonsCredit(t.fileName);
+          if (!credit) {
+            console.log(`  ! ${member.stageName}：${t.fileName} 查不到作者或授權，跳過`);
+            continue;
+          }
+          const dest = path.join(IMG_DIR, `${group.id}-${member.id}.jpg`);
+          const filePath = `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(t.fileName)}?width=400`;
+          if (!(await download([filePath, ...t.extra], dest))) continue;
+          saved = { t, credit, dest };
+          break;
+        }
+
+        if (!saved) {
+          console.log(`  - ${member.stageName}：維基條目與 Commons 分類都找不到可用的個人照`);
           delete photos[key];
           missing += 1;
           continue;
         }
 
-        const img = commonsImage(article);
-
-        // 先確認拿得到作者與授權：CC 授權必須標註，拿不到就不使用
-        const credit = await commonsCredit(img.fileName);
-        if (!credit) {
-          console.log(`  ! ${member.stageName}：查不到作者或授權，為了合規不使用（${img.fileName}）`);
-          delete photos[key];
-          missing += 1;
-          continue;
-        }
-
-        const ext = path.extname(img.fileName).toLowerCase().replace('.jpeg', '.jpg');
-        const dest = path.join(IMG_DIR, `${group.id}-${member.id}${ext}`);
-        const filePath = `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(img.fileName)}?width=400`;
-        if (!(await download([filePath, img.thumb, img.original], dest))) {
-          console.log(`  ! ${member.stageName}：圖片下載失敗`);
-          missing += 1;
-          continue;
-        }
-
+        const { t, credit, dest } = saved;
         photos[key] = {
           src: dest.split(path.sep).join('/'),
-          article: article.title,
-          articleUrl: article.content_urls?.desktop?.page || '',
+          file: t.fileName,
+          article: t.article?.title || '',
+          articleUrl: t.article?.content_urls?.desktop?.page || '',
           ...credit
         };
-        console.log(`  ✓ ${member.stageName} ← ${article.title}（${credit.license}，${credit.artist}）`);
+        console.log(`  ✓ ${member.stageName} ← ${t.via}：${t.fileName}（${credit.license}，${credit.artist}）`);
         found += 1;
       } catch (err) {
         console.warn(`  ? ${member.stageName}：${err.message}`);

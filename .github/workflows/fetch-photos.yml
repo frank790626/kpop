@@ -22,6 +22,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+
+      - run: npm ci
 
       - name: 從 Wikipedia／Commons 下載成員照片
         run: node scripts/fetch-wiki-photos.mjs ${{ inputs.refresh && '--refresh' || '' }}

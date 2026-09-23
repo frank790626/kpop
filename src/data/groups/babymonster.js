@@ -17,6 +17,7 @@ export default {
   debut: '2024.04.01',
   debutNote: '出道專輯《BABYMONS7ER》，主打歌〈SHEESH〉',
   fandom: 'MONSTIEZ',
+  commonsCategory: 'Babymonster', // Wikimedia Commons 上的分類名稱，抓成員照片用
   tagline: 'YG 睽違七年推出的新女團，七名成員來自韓國、日本與泰國。',
 
   theme: {
