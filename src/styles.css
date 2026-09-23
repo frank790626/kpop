@@ -435,8 +435,15 @@ code {
   color: var(--text-dim);
 }
 
-.member-name {
+.member-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
   margin: 4px 0 14px;
+}
+.member-name {
+  margin: 0;
   font-size: clamp(1.4rem, 3.4vw, 2rem);
   display: flex;
   align-items: baseline;
@@ -499,6 +506,8 @@ code {
 .btn svg { width: 17px; height: 17px; fill: currentColor; }
 .btn--ig { background: linear-gradient(120deg, #f9ce34, #ee2a7b 45%, #6228d7); color: #fff; }
 .btn--ig span { letter-spacing: 0.01em; }
+.btn--sm { padding: 7px 14px; font-size: 0.8rem; gap: 6px; }
+.btn--sm svg { width: 15px; height: 15px; }
 .btn--ghost { border: 1px solid var(--line); background: var(--surface-2); color: var(--text); }
 
 /* ── 近期發行 ─────────────────────────────────────────── */

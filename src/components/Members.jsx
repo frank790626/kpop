@@ -56,10 +56,17 @@ function MemberCard({ group, member }) {
       </div>
       <div className="member-body">
         <p className="member-eyebrow">{group.type === 'solo' ? 'Solo Artist' : group.name}</p>
-        <h3 className="member-name">
-          {member.stageName}
-          {member.nameZh && <span className="member-name-zh">{member.nameZh}</span>}
-        </h3>
+        {/* IG 按鈕放在名字旁邊：切換成員時位置固定在同一區，不用往下找 */}
+        <div className="member-head">
+          <h3 className="member-name">
+            {member.stageName}
+            {member.nameZh && <span className="member-name-zh">{member.nameZh}</span>}
+          </h3>
+          <a className="btn btn--ig btn--sm" href={igLink} target="_blank" rel="noopener noreferrer">
+            {ICONS.instagram}
+            <span>{igLabel}</span>
+          </a>
+        </div>
 
         {member.roles.length > 0 && (
           <ul className="tag-row">
@@ -95,10 +102,6 @@ function MemberCard({ group, member }) {
         )}
 
         <div className="member-links">
-          <a className="btn btn--ig" href={igLink} target="_blank" rel="noopener noreferrer">
-            {ICONS.instagram}
-            <span>{igLabel}</span>
-          </a>
           {group.links.youtube && (
             <a className="btn btn--ghost" href={group.links.youtube} target="_blank" rel="noopener noreferrer">
               {ICONS.youtube}
