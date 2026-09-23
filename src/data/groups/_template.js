@@ -60,7 +60,7 @@ export default {
       // 頭像優先序：photo → instagram 大頭貼 → 代表色首字母
       photo: 'assets/img/xxx.jpg',   // 本地照片或任何圖片網址；最穩定
       instagram: 'xxx',              // IG 帳號（或完整網址）；填了就自動抓該帳號大頭貼
-      photoFocus: { position: '50% 30%', zoom: 1.3 }, // 選填；照片構圖特殊時調整頭像的焦點與放大倍率
+      photoFocus: { position: '50% 30%', zoom: 1.3, lgZoom: 1 }, // 選填；照片構圖特殊時調整頭像的焦點與放大倍率（lgZoom＝成員卡大頭像）
       bio: '成員介紹文字。',
       facts: ['特色標籤一', '特色標籤二']
     }

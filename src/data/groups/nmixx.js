@@ -47,6 +47,7 @@ export default {
       nationality: '澳洲',
       roles: ['Main Vocalist'],
       color: '#ffb3d1',
+      photoFocus: { position: '54% 22%', zoom: 2.2, lgZoom: 1.8 }, // 照片裡臉比較小，放大對準臉部
       bio: '在澳洲墨爾本長大的韓裔澳洲人，英文是母語。音域寬、爆發力強的高音是 NMIXX 現場的招牌。',
       facts: ['隊內最年長', '高音擔當', '英文母語']
     },
@@ -95,6 +96,7 @@ export default {
       nationality: '韓國',
       roles: ['Rapper', 'Vocalist'],
       color: '#c6f04d',
+      photoFocus: { position: '52% 36%', zoom: 2, lgZoom: 1.7 }, // 照片裡臉比較小，放大對準臉部
       bio: '主要負責 rap，低沉的聲線讓 MIX POP 轉場更有衝擊力，也是團內的氣氛製造機。',
       facts: ['Rap Line', '氣氛製造機']
     },
