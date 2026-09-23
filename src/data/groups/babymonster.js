@@ -61,7 +61,7 @@ export default {
       color: '#ffd23d',
       bio: '以爆發力十足的 rap 與舞台掌控力著稱，是團內舞蹈與 rap 雙線的主力。',
       facts: ['Rap Line', 'Dance Line'],
-      photo: '',
+      photo: 'assets/img/asa.jpg', // 使用者提供的照片（以 Real-ESRGAN 加強畫質）
       instagram: 'asa.babymonster'
     },
     {
