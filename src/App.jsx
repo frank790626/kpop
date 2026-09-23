@@ -9,6 +9,7 @@ import Videos from './components/Videos.jsx';
 import Variety from './components/Variety.jsx';
 import Social from './components/Social.jsx';
 import Timeline from './components/Timeline.jsx';
+import Threads from './components/Threads.jsx';
 
 /**
  * 路由格式（真正的網址路徑，每一頁都有建置時預先產生的 HTML，搜尋引擎抓得到）：
@@ -118,6 +119,7 @@ export default function App() {
             <Variety group={group} />
             <Latest group={group} />
             <Videos group={group} />
+            <Threads group={group} />
             <Social group={group} />
             <Timeline group={group} />
           </>

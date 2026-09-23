@@ -1,16 +1,16 @@
-name: Update videos
+name: Update Threads
 
 on:
   schedule:
-    # 每天台北時間早上 6 點（UTC 22:00）
-    - cron: '0 22 * * *'
+    # 每 6 小時一次（台北時間 02、08、14、20 點）
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
   actions: write
 
-# 和 Threads 更新錯開，避免同時 push 撞在一起
+# 和其他更新流程錯開，避免同時 push 撞在一起
 concurrency:
   group: data-update
   cancel-in-progress: false
@@ -25,13 +25,12 @@ jobs:
         with:
           node-version: 22
 
-      # 有設 YOUTUBE_API_KEY 就抓觀看數並依人氣排序，沒有就用公開 RSS 補新片
-      - name: 抓取影片清單
+      # 需要 Secret：THREADS_ACCESS_TOKEN；沒設就什麼都不做
+      - name: 抓取 Threads 熱門貼文
         env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: node scripts/update-videos.mjs
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+        run: node scripts/update-threads.mjs
 
-      # 前面任一步驟出錯，已經成功產生的部分仍然要 commit
       - name: 有變更才 commit
         if: ${{ !cancelled() }}
         id: commit
@@ -41,9 +40,9 @@ jobs:
           git add src/data/generated
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "影片清單沒有變化，不需要部署"
+            echo "Threads 沒有變化，不需要部署"
           else
-            git commit -m "chore: 每日更新影片清單 [skip ci]"
+            git commit -m "chore: 更新 Threads 熱門貼文 [skip ci]"
             git pull --rebase origin main
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
