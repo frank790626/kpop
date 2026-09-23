@@ -105,11 +105,15 @@ async function commonsCredit(fileName) {
   const info = page?.imageinfo?.[0];
   const meta = info?.extmetadata || {};
   const strip = (html) => String(html || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-  const artist = strip(meta.Artist?.value);
+  const rawArtist = strip(meta.Artist?.value);
   const license = strip(meta.LicenseShortName?.value);
-  if (!artist || !license) return null;
+  if (!rawArtist || !license) return null;
+  // 有些上傳者把來源網址填在作者欄（例：https://www.youtube.com/@_TV10 티비텐），拆成名稱與連結
+  const artistUrl = rawArtist.match(/https?:\/\/\S+/)?.[0] || '';
+  const artist = rawArtist.replace(/https?:\/\/\S+/g, '').trim() || (artistUrl ? new URL(artistUrl).hostname : rawArtist);
   return {
     artist,
+    artistUrl,
     license,
     licenseUrl: meta.LicenseUrl?.value || '',
     source: info?.descriptionurl || `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(fileName)}`
@@ -189,6 +193,7 @@ async function groupCategoryFiles(group) {
   const variants = [
     group.commonsCategory,
     group.name,
+    `${group.name} (group)`,
     titleCase(group.name),
     `${titleCase(group.name)} (group)`,
     `${titleCase(group.name)} (band)`

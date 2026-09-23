@@ -131,10 +131,11 @@
       "file": "ILLIT Yunah February 2024.png",
       "article": "",
       "articleUrl": "",
-      "artist": "https://www.youtube.com/@_TV10 티비텐",
+      "artist": "티비텐",
       "license": "CC BY 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-      "source": "https://commons.wikimedia.org/wiki/File:ILLIT_Yunah_February_2024.png"
+      "source": "https://commons.wikimedia.org/wiki/File:ILLIT_Yunah_February_2024.png",
+      "artistUrl": "https://www.youtube.com/@_TV10"
     },
     "ive/gaeul": {
       "src": "assets/img/ive-gaeul.jpg",

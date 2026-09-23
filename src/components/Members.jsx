@@ -8,7 +8,7 @@ function PhotoCredit({ credit }) {
   return (
     <p className="photo-credit">
       照片：
-      <a href={credit.source} target="_blank" rel="noopener noreferrer">
+      <a href={credit.artistUrl || credit.source} target="_blank" rel="noopener noreferrer">
         {credit.artist}
       </a>
       {credit.license && (
@@ -23,7 +23,10 @@ function PhotoCredit({ credit }) {
           )}
         </>
       )}
-      {' · Wikimedia Commons'}
+      {' · '}
+      <a href={credit.source} target="_blank" rel="noopener noreferrer">
+        Wikimedia Commons
+      </a>
     </p>
   );
 }
