@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-23",
+  "updatedAt": "2026-09-24",
   "photos": {
     "aespa/giselle": {
       "src": "assets/img/aespa-giselle.jpg",
@@ -36,6 +36,94 @@
       "license": "CC BY 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
       "source": "https://commons.wikimedia.org/wiki/File:Winter_at_Incheon_Airport_on_July_10,_2026.png"
+    },
+    "ateez/hongjoong": {
+      "src": "assets/img/ateez-hongjoong.jpg",
+      "file": "Hongjoong_in_2024_(3)_04.jpg",
+      "article": "Hongjoong",
+      "articleUrl": "https://en.wikipedia.org/wiki/Hongjoong",
+      "artist": "K-POPIT 케이팝잇",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Hongjoong_in_2024_(3)_04.jpg"
+    },
+    "ateez/jongho": {
+      "src": "assets/img/ateez-jongho.jpg",
+      "file": "240803_Jongho_(cropped).jpg",
+      "article": "Jongho",
+      "articleUrl": "https://en.wikipedia.org/wiki/Jongho",
+      "artist": "pinkllamanade",
+      "artistUrl": "",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:240803_Jongho_(cropped).jpg"
+    },
+    "ateez/mingi": {
+      "src": "assets/img/ateez-mingi.jpg",
+      "file": "Mingi_(ATEEZ)_in_October_2024.png",
+      "article": "Mingi (rapper)",
+      "articleUrl": "https://en.wikipedia.org/wiki/Mingi_(rapper)",
+      "artist": "Marie Claire Korea",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Mingi_(ATEEZ)_in_October_2024.png"
+    },
+    "ateez/san": {
+      "src": "assets/img/ateez-san.jpg",
+      "file": "260228_ATEEZ_Choi_San_@_Dolce_&_Gabbana_FW_26.27_Show_in_Milan_(cropped).jpg",
+      "article": "San (singer)",
+      "articleUrl": "https://en.wikipedia.org/wiki/San_(singer)",
+      "artist": "sublimitas viii",
+      "artistUrl": "",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:260228_ATEEZ_Choi_San_@_Dolce_%26_Gabbana_FW_26.27_Show_in_Milan_(cropped).jpg"
+    },
+    "ateez/seonghwa": {
+      "src": "assets/img/ateez-seonghwa.jpg",
+      "file": "2026-04-02_Seonghwa_for_Marie_Claire_Korea_02_(cropped).jpg",
+      "article": "Seonghwa",
+      "articleUrl": "https://en.wikipedia.org/wiki/Seonghwa",
+      "artist": "Marie Claire Korea",
+      "artistUrl": "",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:2026-04-02_Seonghwa_for_Marie_Claire_Korea_02_(cropped).jpg"
+    },
+    "ateez/wooyoung": {
+      "src": "assets/img/ateez-wooyoung.jpg",
+      "file": "Wooyoung_(Ateez)_in_February_2026.png",
+      "article": "Jung Wooyoung",
+      "articleUrl": "https://en.wikipedia.org/wiki/Jung_Wooyoung",
+      "artist": "TV10",
+      "artistUrl": "",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Wooyoung_(Ateez)_in_February_2026.png"
+    },
+    "ateez/yeosang": {
+      "src": "assets/img/ateez-yeosang.jpg",
+      "file": "2025-12-12_ATEEZ_at_Gimpo_International_Airport_05_(cropped).jpg",
+      "article": "Yeosang",
+      "articleUrl": "https://en.wikipedia.org/wiki/Yeosang",
+      "artist": "티비텐 TV10",
+      "artistUrl": "",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:2025-12-12_ATEEZ_at_Gimpo_International_Airport_05_(cropped).jpg"
+    },
+    "ateez/yunho": {
+      "src": "assets/img/ateez-yunho.jpg",
+      "file": "Yunho_in_June_2025.png",
+      "article": "Jeong Yun-ho",
+      "articleUrl": "https://en.wikipedia.org/wiki/Jeong_Yun-ho",
+      "artist": "Marie Claire Korea",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Yunho_in_June_2025.png"
     },
     "babymonster/ahyeon": {
       "src": "assets/img/babymonster-ahyeon.jpg",
@@ -325,6 +413,50 @@
       "license": "CC BY 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
       "source": "https://commons.wikimedia.org/wiki/File:Sullyoon_of_NMIXX,_July_23,_2024.png"
+    },
+    "qwer/chodan": {
+      "src": "assets/img/qwer-chodan.jpg",
+      "file": "QWER Chodan (쵸단) 10.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "K-POPIT 케이팝잇",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:QWER_Chodan_(%EC%B5%B8%EB%8B%A8)_10.png"
+    },
+    "qwer/hina": {
+      "src": "assets/img/qwer-hina.jpg",
+      "file": "QWER Hina (히나) 04.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "K-POPIT 케이팝잇",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:QWER_Hina_(%ED%9E%88%EB%82%98)_04.png"
+    },
+    "qwer/magenta": {
+      "src": "assets/img/qwer-magenta.jpg",
+      "file": "QWER Magenta (마젠타).png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "K-POPIT 케이팝잇",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:QWER_Magenta_(%EB%A7%88%EC%A0%A0%ED%83%80).png"
+    },
+    "qwer/siyeon": {
+      "src": "assets/img/qwer-siyeon.jpg",
+      "file": "QWER Lee Siyeon (이시연) 01.png",
+      "article": "",
+      "articleUrl": "",
+      "artist": "K-POPIT 케이팝잇",
+      "artistUrl": "",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:QWER_Lee_Siyeon_(%EC%9D%B4%EC%8B%9C%EC%97%B0)_01.png"
     },
     "taeyeon/taeyeon": {
       "src": "assets/img/taeyeon-taeyeon.jpg",
