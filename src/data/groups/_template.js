@@ -93,6 +93,11 @@ export default {
   // 每天會掃這些頻道的 RSS，把標題提到團名的新片補到綜藝清單最前面。
   varietyChannels: [],
 
+  // MV 不在 links.youtube 那個頻道時（例如放在經紀公司頻道）才需要：UC 開頭的 channelId 或 @handle
+  // mvChannel: 'UCxxxxxxxxxxxxxxxxxxxxxx',
+  // 共用頻道（公司所有藝人的 MV 都放一起）就設 true，每日更新只收標題有提到本團的 MV
+  // sharedChannel: true,
+
   // 作品年表。最新的三筆會自動出現在「近期發行」區塊（在熱門影片上方）
   releases: [
     {

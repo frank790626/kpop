@@ -111,16 +111,27 @@ async function resolveChannelId(channelUrl) {
   return m[1];
 }
 
+/**
+ * MV 放在哪個頻道：預設是 links.youtube；MV 放在經紀公司頻道的團體（例如 ATEEZ → KQ ENTERTAINMENT）
+ * 在資料檔用 mvChannel 指定（UC 開頭的 channelId 或 @handle）
+ */
+function mvChannel(group) {
+  const c = group.mvChannel || group.links?.youtube || '';
+  if (/^UC[\w-]{20,}$/.test(c)) return { id: c };
+  const handle = c.match(/@([^/?#]+)/)?.[1];
+  return handle ? { handle } : null;
+}
+
 /** 模式 1：YouTube Data API，可取得觀看數 */
 async function fromApi(group, apiKey) {
-  const handle = group.links.youtube.match(/@([^/?#]+)/)?.[1];
+  const src = mvChannel(group);
   const base = 'https://www.googleapis.com/youtube/v3';
 
   const ch = await fetchJson(
-    `${base}/channels?part=contentDetails&forHandle=${encodeURIComponent('@' + handle)}&key=${apiKey}`
+    `${base}/channels?part=contentDetails&${src.id ? `id=${src.id}` : `forHandle=${encodeURIComponent('@' + src.handle)}`}&key=${apiKey}`
   );
   const uploads = ch.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
-  if (!uploads) throw new Error(`找不到 @${handle} 的上傳清單`);
+  if (!uploads) throw new Error(`找不到 ${src.id || '@' + src.handle} 的上傳清單`);
 
   // 最多翻 4 頁（200 支），足以涵蓋整個頻道的 M/V
   const ids = [];
@@ -161,7 +172,8 @@ async function fromApi(group, apiKey) {
 
 /** 模式 2：公開 RSS，沒有觀看數，只把新的 M/V 併進原本的清單 */
 async function fromRss(group) {
-  const channelId = await resolveChannelId(group.links.youtube);
+  const src = mvChannel(group);
+  const channelId = src.id || (await resolveChannelId(`https://www.youtube.com/@${src.handle}`));
   const xml = await fetchText(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
 
   const found = [];
@@ -330,8 +342,8 @@ async function main() {
   for (const file of files) {
     const mod = await import(pathToFileURL(path.resolve(GROUPS_DIR, file)).href);
     const group = mod.default;
-    if (!group?.links?.youtube?.includes('youtube.com/@')) {
-      console.log(`- ${file}：沒有 @handle 形式的 YouTube 頻道，略過`);
+    if (!group || !mvChannel(group)) {
+      console.log(`- ${file}：沒有 @handle 或 channelId 形式的 YouTube 頻道，略過`);
       continue;
     }
 
