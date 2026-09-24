@@ -69,11 +69,14 @@ export function sanitizeItems(list) {
   });
 }
 
-/** 合併兩份收藏（同一個 key 以 primary 為準），新收藏的排前面 */
+/**
+ * 合併兩份收藏：保留 primary（雲端）的順序（使用者可能自訂過排序），
+ * 只在 secondary（本機）才有的收藏加到最前面，就像剛收藏的一樣
+ */
 export function mergeItems(primary, secondary) {
-  const map = new Map();
-  for (const x of [...sanitizeItems(secondary), ...sanitizeItems(primary)]) map.set(x.key, x);
-  return [...map.values()].sort((a, b) => String(b.addedAt || '').localeCompare(String(a.addedAt || '')));
+  const main = sanitizeItems(primary);
+  const keys = new Set(main.map((x) => x.key));
+  return [...sanitizeItems(secondary).filter((x) => !keys.has(x.key)), ...main];
 }
 
 export const localItems = () => read();
@@ -121,6 +124,19 @@ export function toggleFavorite(type, key, snapshot) {
   }
 }
 
+/**
+ * 自訂排序：把某一類（團體／成員／影片）的收藏改成 orderedKeys 的順序。
+ * 其他類別的位置不動，所以整份清單的順序就是各類別自己的順序。
+ */
+export function reorderFavorites(type, orderedKeys) {
+  const current = read();
+  const byKey = new Map(current.map((x) => [x.key, x]));
+  const next = orderedKeys.map((k) => byKey.get(k)).filter((x) => x && x.type === type);
+  const rest = current.filter((x) => x.type === type && !orderedKeys.includes(x.key));
+  const queue = [...next, ...rest];
+  write(current.map((x) => (x.type === type ? queue.shift() : x)));
+}
+
 export function removeFavorite(key) {
   write(read().filter((x) => x.key !== key));
 }
@@ -130,5 +146,5 @@ export function useFavorites() {
 
   const has = useCallback((key) => items.some((x) => x.key === key), [items]);
 
-  return { items, has, toggle: toggleFavorite, remove: removeFavorite };
+  return { items, has, toggle: toggleFavorite, remove: removeFavorite, reorder: reorderFavorites };
 }

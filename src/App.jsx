@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react';
 import { groups, getGroup } from './lib/registry.js';
 import { FAVORITES_PATH, pageMeta, pagePath } from './lib/site.js';
 import Header from './components/Header.jsx';
@@ -9,7 +9,8 @@ import Videos from './components/Videos.jsx';
 import Variety from './components/Variety.jsx';
 import Social from './components/Social.jsx';
 import Timeline from './components/Timeline.jsx';
-import Favorites from './components/Favorites.jsx';
+// 收藏頁（含拖曳排序套件）只有進到該頁才載入，不拖慢其他頁
+const Favorites = lazy(() => import('./components/Favorites.jsx'));
 
 /**
  * 路由格式（真正的網址路徑，每一頁都有建置時預先產生的 HTML，搜尋引擎抓得到）：
@@ -117,7 +118,9 @@ export default function App() {
 
       <main id="main" className="app" aria-live="polite">
         {isFavorites ? (
-          <Favorites linkTo={linkTo} />
+          <Suspense fallback={<section className="section"><div className="wrap">載入中…</div></section>}>
+            <Favorites linkTo={linkTo} />
+          </Suspense>
         ) : group ? (
           <>
             <Hero group={group} />

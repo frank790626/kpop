@@ -927,3 +927,47 @@ code {
 .account-photo--letter { display: grid; place-items: center; background: linear-gradient(145deg, var(--accent), var(--accent-2)); font-weight: 800; }
 .btn--google { background: #fff; color: #1f1f1f; }
 .btn--google svg { width: 18px; height: 18px; }
+
+/* 我的最愛：拖曳排序 */
+.drag-handle {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 36px;
+  margin: -4px 0 -4px -6px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--text-dim);
+  cursor: grab;
+  touch-action: none; /* 手機上按住把手就拖，不會變成捲動頁面 */
+}
+.drag-handle svg { width: 18px; height: 18px; fill: currentColor; }
+.drag-handle:hover, .drag-handle:focus-visible { color: var(--text); background: var(--surface-2); }
+.drag-handle:active { cursor: grabbing; }
+.sortable-item { position: relative; }
+.sortable-item.is-dragging {
+  z-index: 5;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  outline: 2px solid color-mix(in srgb, var(--accent) 70%, transparent);
+  border-radius: var(--radius-sm);
+}
+/* 影片卡：把手浮在縮圖左上角 */
+.fav-video .drag-handle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  margin: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(10, 10, 15, 0.72);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+.fav-video.is-dragging { border-radius: var(--radius); }
+.fav-tile-link > span:not(.chip-dot) { min-width: 0; }
+.fav-tile-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

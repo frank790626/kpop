@@ -2,6 +2,7 @@ import Avatar from './Avatar.jsx';
 import AccountPanel from './AccountPanel.jsx';
 import FavButton from './FavButton.jsx';
 import { VideoCard } from './Videos.jsx';
+import SortableGrid from './SortableGrid.jsx';
 import { getGroup } from '../lib/registry.js';
 import { pagePath } from '../lib/site.js';
 import { useFavorites } from '../lib/favorites.js';
@@ -25,11 +26,11 @@ function resolve(item) {
 }
 
 export default function Favorites({ linkTo }) {
-  const { items } = useFavorites();
+  const { items, reorder } = useFavorites();
   const { status } = useAccount();
-  const groups = items.filter((x) => x.type === 'group').map((x) => ({ item: x, ...resolve(x) }));
-  const members = items.filter((x) => x.type === 'member').map((x) => ({ item: x, ...resolve(x) }));
-  const videos = items.filter((x) => x.type === 'video').map((x) => ({ item: x, ...resolve(x) }));
+  const groups = items.filter((x) => x.type === 'group').map((x) => ({ id: x.key, item: x, ...resolve(x) }));
+  const members = items.filter((x) => x.type === 'member').map((x) => ({ id: x.key, item: x, ...resolve(x) }));
+  const videos = items.filter((x) => x.type === 'video').map((x) => ({ id: x.key, item: x, ...resolve(x) }));
 
   return (
     <>
@@ -41,7 +42,7 @@ export default function Favorites({ linkTo }) {
           <h1 className="hero-title">我的最愛</h1>
           <p className="hero-tagline">
             {items.length
-              ? `收藏了 ${groups.length} 個團體、${members.length} 位成員、${videos.length} 支影片。`
+              ? `收藏了 ${groups.length} 個團體、${members.length} 位成員、${videos.length} 支影片。按住每一格左邊的 ⠿ 拖曳，可以自己調整順序。`
               : '還沒有收藏。在團體頁、成員卡或影片旁按愛心，就會出現在這裡。'}
           </p>
           <AccountPanel />
@@ -54,9 +55,13 @@ export default function Favorites({ linkTo }) {
             <header className="section-head">
               <h2>團體・歌手</h2>
             </header>
-            <ul className="fav-grid">
-              {groups.map(({ item, group, name }) => (
-                <li key={item.key} className="fav-tile" style={{ '--m-color': group?.theme.accent || 'var(--accent)' }}>
+            <SortableGrid
+              className="fav-grid"
+              items={groups}
+              onReorder={(keys) => reorder('group', keys)}
+              itemProps={({ group }) => ({ className: 'fav-tile', style: { '--m-color': group?.theme.accent || 'var(--accent)' } })}
+              renderItem={({ item, group, name }) => (
+                <>
                   {group ? (
                     <a className="fav-tile-link" {...linkTo(pagePath(group))}>
                       <span className="chip-dot" style={{ background: group.theme.accent }} />
@@ -70,9 +75,9 @@ export default function Favorites({ linkTo }) {
                     </span>
                   )}
                   <FavButton type="group" favKey={item.key} snapshot={item.snapshot} label={name} variant="icon" />
-                </li>
-              ))}
-            </ul>
+                </>
+              )}
+            />
           </div>
         </section>
       )}
@@ -83,9 +88,13 @@ export default function Favorites({ linkTo }) {
             <header className="section-head">
               <h2>成員</h2>
             </header>
-            <ul className="fav-grid">
-              {members.map(({ item, group, member, groupName }) => (
-                <li key={item.key} className="fav-tile" style={{ '--m-color': member.color }}>
+            <SortableGrid
+              className="fav-grid"
+              items={members}
+              onReorder={(keys) => reorder('member', keys)}
+              itemProps={({ member }) => ({ className: 'fav-tile', style: { '--m-color': member.color } })}
+              renderItem={({ item, group, member, groupName }) => (
+                <>
                   {group ? (
                     <a className="fav-tile-link" {...linkTo(pagePath(group, member))}>
                       <Avatar entity={member} size="sm" />
@@ -107,9 +116,9 @@ export default function Favorites({ linkTo }) {
                     label={`${groupName} ${member.stageName}`}
                     variant="icon"
                   />
-                </li>
-              ))}
-            </ul>
+                </>
+              )}
+            />
           </div>
         </section>
       )}
@@ -121,16 +130,21 @@ export default function Favorites({ linkTo }) {
               <h2>影片</h2>
               <p className="section-sub">點縮圖直接播放。</p>
             </header>
-            <div className="video-grid">
-              {videos.map(({ item, group, video }) => (
+            <SortableGrid
+              as="div"
+              itemAs="div"
+              className="video-grid"
+              items={videos}
+              onReorder={(keys) => reorder('video', keys)}
+              itemProps={() => ({ className: 'fav-video' })}
+              renderItem={({ item, group, video }) => (
                 <VideoCard
-                  key={item.key}
                   video={video}
                   group={group || { id: item.snapshot?.groupId, name: item.snapshot?.groupName }}
                   showGroup
                 />
-              ))}
-            </div>
+              )}
+            />
           </div>
         </section>
       )}
