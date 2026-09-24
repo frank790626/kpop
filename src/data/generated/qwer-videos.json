@@ -1,0 +1,51 @@
+{
+  "groupId": "qwer",
+  "updatedAt": "2026-09-24",
+  "videos": [
+    {
+      "title": "Discord（디스코드）",
+      "youtubeId": "WGm2HmXeeRI",
+      "date": "2023.10.18",
+      "kind": "出道曲 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "QWER"
+    },
+    {
+      "title": "고민중독（T.B.H）",
+      "youtubeId": "ImuWa3SJulY",
+      "date": "2024.04.01",
+      "kind": "迷你一輯主打 M/V",
+      "note": "讓 QWER 爆紅的代表作。",
+      "noEmbed": false,
+      "show": "QWER"
+    },
+    {
+      "title": "내 이름 맑음",
+      "youtubeId": "AlirzLFEHUI",
+      "date": "2024.09.23",
+      "kind": "迷你二輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "QWER"
+    },
+    {
+      "title": "Dear（눈물참기）",
+      "youtubeId": "pifz9JH1Re8",
+      "date": "2025.06.09",
+      "kind": "迷你三輯主打 M/V",
+      "note": "全員參與製作。",
+      "noEmbed": false,
+      "show": "QWER"
+    },
+    {
+      "title": "CEREMONY",
+      "youtubeId": "A8d2Gx91zwk",
+      "date": "2026.04.27",
+      "kind": "迷你四輯主打 M/V",
+      "note": "",
+      "noEmbed": false,
+      "show": "QWER"
+    }
+  ]
+}
