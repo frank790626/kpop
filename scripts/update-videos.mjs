@@ -196,7 +196,17 @@ async function fromRss(group) {
   // 新的排前面，再接上資料檔原本手動整理的清單（保留徽章與說明）
   const existing = group.videos || [];
   const existingIds = new Set(existing.map((v) => v.youtubeId));
-  const merged = [...found.filter((v) => !existingIds.has(v.youtubeId)), ...existing];
+  // 同一首歌常有好幾個上傳（官方 MV、Performance Video、公司頻道重傳），歌名相同就以手動整理的為準
+  const norm = (t) => String(t || '').toLowerCase().replace(/[\s'"‘’“”()（）]/g, '');
+  const existingTitles = new Set(existing.map((v) => norm(v.title)));
+  const seenTitles = new Set();
+  const fresh = found.filter((v) => {
+    const t = norm(v.title);
+    if (existingIds.has(v.youtubeId) || existingTitles.has(t) || seenTitles.has(t)) return false;
+    seenTitles.add(t);
+    return true;
+  });
+  const merged = [...fresh, ...existing];
   return merged.slice(0, MAX_VIDEOS);
 }
 
