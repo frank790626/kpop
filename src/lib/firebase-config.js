@@ -5,10 +5,12 @@
  * apiKey 或 projectId 留空時，同步功能自動關閉，網站照樣用瀏覽器本機的收藏。
  */
 export const firebaseConfig = {
-  apiKey: '',
-  authDomain: '',
-  projectId: '',
-  appId: ''
+  apiKey: 'AIzaSyDv8IrBgGHww7krMLrFqnbKePTDbHVMt5Y',
+  authDomain: 'frank-koop.firebaseapp.com',
+  projectId: 'frank-koop',
+  storageBucket: 'frank-koop.firebasestorage.app',
+  messagingSenderId: '62129079604',
+  appId: '1:62129079604:web:fc92b41b1a815148205161'
 };
 
 export const firebaseEnabled = Boolean(firebaseConfig.apiKey && firebaseConfig.projectId);
