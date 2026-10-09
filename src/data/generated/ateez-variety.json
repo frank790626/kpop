@@ -1,7 +1,37 @@
 {
   "groupId": "ateez",
-  "updatedAt": "2026-09-24",
+  "updatedAt": "2026-10-09",
   "videos": [
+    {
+      "title": "Guerrilla - ATEEZ [2026 뮤직뱅크 인 바르셀로나]",
+      "youtubeId": "pHwIneyoqWc",
+      "show": "KBS Kpop",
+      "kind": "KBS Kpop",
+      "date": "2026.10.07",
+      "badge": "",
+      "note": "",
+      "noEmbed": false
+    },
+    {
+      "title": "WORK - ATEEZ [2026 뮤직뱅크 인 바르셀로나]",
+      "youtubeId": "JaU1y_815Os",
+      "show": "KBS Kpop",
+      "kind": "KBS Kpop",
+      "date": "2026.10.07",
+      "badge": "",
+      "note": "",
+      "noEmbed": false
+    },
+    {
+      "title": "BAD - ATEEZ [2026 뮤직뱅크 인 바르셀로나]",
+      "youtubeId": "bUTk1X2udTw",
+      "show": "KBS Kpop",
+      "kind": "KBS Kpop",
+      "date": "2026.10.07",
+      "badge": "",
+      "note": "",
+      "noEmbed": false
+    },
     {
       "title": "身體搞笑天分爆發的 SAN",
       "youtubeId": "PQQZYDRzwpI",
