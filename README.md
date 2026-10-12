@@ -231,3 +231,24 @@ src/data/generated/             每日自動產生的影片清單（不要手改
 3. Authentication → 登入方式 → 啟用 **Google**；Authentication → 設定 → 授權網域 → 新增 `frank790626.github.io`。
 4. Firestore Database → 建立資料庫（正式版模式，地區選 `asia-east1` 台灣）→ 規則 → 貼上 `firestore.rules` 的內容並發布。
 
+
+## 遠大售票預選區域小幫手（Tampermonkey）
+
+`tools/ticketplus-helper.user.js` 是給 [ticketplus.com.tw](https://ticketplus.com.tw/) 用的瀏覽器使用者腳本：
+
+1. 瀏覽器安裝 [Tampermonkey](https://www.tampermonkey.net/)，新增腳本，把檔案內容貼上並儲存。
+2. 打開任一遠大活動頁，右下角會出現「🎫 預選區域小幫手」面板：
+   - **活動網址**：可以直接換成別的活動，按「儲存並前往」。
+   - **區域名稱**：可以填多個，用逗號或換行分隔，會依序嘗試；已售完的區會略過。
+   - **張數**：選到區域後自動按「+」加到這個張數。
+3. 售票一開放，腳本會自動點「立即售票 / 立即購買」，進入選位頁後展開符合的區域並加好張數。
+   **驗證碼與最後送出請自己操作。**
+
+也可以把設定直接寫在網址 `#` 後面，方便存成書籤：
+
+```
+https://ticketplus.com.tw/activity/b4a291097d613c267c068024b59dfb97#area=VIP,紅2A&qty=2
+```
+
+區域比對會忽略空白與大小寫：開頭相同的優先，其次是名稱包含關鍵字的區域。
+遠大改版後如果抓不到按鈕或區域，請回報當下的頁面結構再調整。
