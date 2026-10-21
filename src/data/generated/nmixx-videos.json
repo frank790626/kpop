@@ -3,16 +3,6 @@
   "updatedAt": "2026-10-21",
   "videos": [
     {
-      "title": "NMIXX(엔믹스) &quot;긴 소원 (Birthday Wish)&quot; Performance Video",
-      "youtubeId": "jPjK8fPCwE4",
-      "date": "2026.10.20",
-      "kind": "M/V",
-      "badge": "",
-      "note": "",
-      "noEmbed": false,
-      "show": "NMIXX"
-    },
-    {
       "title": "O.O",
       "youtubeId": "3GWscde8rM8",
       "date": "2022.02.22",
@@ -74,6 +64,15 @@
       "note": "",
       "noEmbed": false,
       "show": "JYP Entertainment"
+    },
+    {
+      "title": "긴 소원 (Birthday Wish)",
+      "youtubeId": "roHWN9fL2SM",
+      "date": "2026.10.19",
+      "kind": "迷你六輯主打 M/V",
+      "badge": "",
+      "note": "",
+      "noEmbed": false
     }
   ]
 }

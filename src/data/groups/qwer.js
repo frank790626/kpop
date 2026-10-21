@@ -21,7 +21,7 @@ export default {
   intro: [
     'QWER 是 Tamago Production 推出的四人女子樂團，由鼓手兼隊長 CHODAN、貝斯手 MAGENTA、吉他／鍵盤 HINA 與主唱兼吉他 SIYEON 組成，團名取自四位成員的代表字母。2023 年 10 月 18 日以單曲〈Discord〉出道。',
     '2024 年迷你一輯主打〈고민중독（T.B.H）〉在音源榜長紅，讓「偶像樂團」這個路線一炮而紅；之後〈내 이름 맑음〉在音樂節目拿下多冠，2025 年〈Dear（눈물참기）〉由全員參與製作。',
-    '2026 年 4 月 27 日發行迷你四輯《CEREMONY》，並完成首次世界巡演「ROCKATION」；7 月也登上台北 ACON 2026 舞台。'
+    '2026 年 4 月 27 日發行迷你四輯《CEREMONY》，並完成首次世界巡演「ROCKATION」；7 月也登上台北 ACON 2026 舞台。9 月 21 日推出特別單曲《소년만화 & 피카레스크》，主打歌〈소년만화（Dreamer）〉由粉絲投票選出。'
   ],
 
   facts: [
@@ -91,7 +91,8 @@ export default {
     { title: '고민중독（T.B.H）', youtubeId: 'ImuWa3SJulY', date: '2024.04.01', kind: '迷你一輯主打 M/V', note: '讓 QWER 爆紅的代表作。' },
     { title: '내 이름 맑음', youtubeId: 'AlirzLFEHUI', date: '2024.09.23', kind: '迷你二輯主打 M/V', note: '' },
     { title: 'Dear（눈물참기）', youtubeId: 'pifz9JH1Re8', date: '2025.06.09', kind: '迷你三輯主打 M/V', note: '全員參與製作。' },
-    { title: 'CEREMONY', youtubeId: 'A8d2Gx91zwk', date: '2026.04.27', kind: '迷你四輯主打 M/V', note: '' }
+    { title: 'CEREMONY', youtubeId: 'A8d2Gx91zwk', date: '2026.04.27', kind: '迷你四輯主打 M/V', note: '' },
+    { title: '소년만화 (Dreamer)', youtubeId: '91YrsgWQcEo', date: '2026.09.21', kind: 'Special Clip', note: '粉絲投票選出的主打歌。' }
   ],
 
   variety: [],
@@ -107,6 +108,7 @@ export default {
     { date: '2024.04.01', title: 'MANITO', type: '迷你一輯', note: '主打〈고민중독〉', youtubeId: 'ImuWa3SJulY' },
     { date: '2024.09.23', title: "Algorithm's Blossom", type: '迷你二輯', note: '主打〈내 이름 맑음〉', youtubeId: 'AlirzLFEHUI' },
     { date: '2025.06.09', title: '난 네 편이야, 온 세상이 불협일지라도', type: '迷你三輯', note: '主打〈Dear（눈물참기）〉', youtubeId: 'pifz9JH1Re8' },
-    { date: '2026.04.27', title: 'CEREMONY', type: '迷你四輯', note: '主打〈CEREMONY〉', youtubeId: 'A8d2Gx91zwk' }
+    { date: '2026.04.27', title: 'CEREMONY', type: '迷你四輯', note: '主打〈CEREMONY〉', youtubeId: 'A8d2Gx91zwk' },
+    { date: '2026.09.21', title: '소년만화 & 피카레스크', type: '特別單曲', note: '主打〈소년만화 (Dreamer)〉', youtubeId: '91YrsgWQcEo' }
   ]
 };

@@ -52,6 +52,18 @@ function formatDate(iso) {
   return `${d.getFullYear()}.${p(d.getMonth() + 1)}.${p(d.getDate())}`;
 }
 
+/** RSS 裡的標題是 XML 跳脫過的（&quot; &amp; &#39;…），先還原成一般文字 */
+function decodeEntities(text) {
+  return String(text || '')
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&');
+}
+
 /** 把 M/V 標題整理成好看的歌名："BABYMONSTER - 'SHEESH' M/V" → SHEESH */
 function cleanTitle(raw, groupName) {
   let t = raw;
@@ -179,7 +191,7 @@ async function fromRss(group) {
   const found = [];
   for (const entry of xml.split('<entry>').slice(1)) {
     const id = entry.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1];
-    const title = entry.match(/<title>([^<]+)<\/title>/)?.[1];
+    const title = decodeEntities(entry.match(/<title>([^<]+)<\/title>/)?.[1]);
     const published = entry.match(/<published>([^<]+)<\/published>/)?.[1];
     if (!id || !title) continue;
     if (!IS_MV.test(title) || EXCLUDE.test(title) || !belongsTo(group, title)) continue;
@@ -187,7 +199,7 @@ async function fromRss(group) {
       title: cleanTitle(title, group.name),
       youtubeId: id,
       date: formatDate(published),
-      kind: 'M/V',
+      kind: /PERFORMANCE VIDEO/i.test(title) ? 'Performance Video' : 'M/V',
       badge: '',
       note: ''
     });
@@ -200,6 +212,8 @@ async function fromRss(group) {
   const norm = (t) => String(t || '').toLowerCase().replace(/[\s'"‘’“”()（）]/g, '');
   const existingTitles = new Set(existing.map((v) => norm(v.title)));
   const seenTitles = new Set();
+  // 正式 M/V 優先於 Performance Video（同一首歌只留一支）
+  found.sort((a, b) => (a.kind === 'Performance Video') - (b.kind === 'Performance Video'));
   const fresh = found.filter((v) => {
     const t = norm(v.title);
     if (existingIds.has(v.youtubeId) || existingTitles.has(t) || seenTitles.has(t)) return false;
@@ -217,10 +231,10 @@ function trimShowTitle(raw) {
 
 /** 解析 RSS 的 entry */
 function parseFeed(xml) {
-  const author = xml.match(/<author>\s*<name>([^<]+)<\/name>/)?.[1]?.trim() || '';
+  const author = decodeEntities(xml.match(/<author>\s*<name>([^<]+)<\/name>/)?.[1]?.trim());
   const entries = xml.split('<entry>').slice(1).map((entry) => ({
     youtubeId: entry.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1] || '',
-    title: entry.match(/<title>([^<]+)<\/title>/)?.[1] || '',
+    title: decodeEntities(entry.match(/<title>([^<]+)<\/title>/)?.[1]),
     published: entry.match(/<published>([^<]+)<\/published>/)?.[1] || ''
   }));
   return { author, entries };

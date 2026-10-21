@@ -20,7 +20,7 @@ export default {
   intro: [
     'ILLIT（아일릿）是 HYBE 旗下 BELIFT LAB 於 2024 年推出的五人女團，成員由選秀節目《R U Next?》選出，團名結合 "I WILL" 與 "IT"，意思是「我會成為那個 IT」。',
     '2024 年 3 月 25 日以《SUPER REAL ME》出道，主打歌〈Magnetic〉憑藉輕盈的 easy listening 曲風迅速走紅，成為出道即衝上國際排行榜的話題新人。',
-    '之後〈Cherish (My Love)〉、〈Tick-Tack〉、〈Do the Dance〉、〈jellyous〉延續清新路線；2026 年 4 月的迷你四輯《Mamihlapinatapai》以〈It’s Me〉轉向電子曲風，第五張迷你專輯《Break even》預計 2026 年 10 月 26 日發行。'
+    '之後〈Cherish (My Love)〉、〈Tick-Tack〉、〈Do the Dance〉、〈jellyous〉延續清新路線；2026 年 4 月的迷你四輯《Mamihlapinatapai》以〈It’s Me〉轉向電子曲風，第五張迷你專輯《BREAK EVEN》預定 2026 年 10 月 26 日發行，主打歌〈체포하겠어（You’re Under Arrest）〉（MOKA 暫停活動未參與）。'
   ],
 
   facts: [

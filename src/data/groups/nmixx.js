@@ -21,7 +21,7 @@ export default {
   intro: [
     'NMIXX（엔믹스）是 JYP Entertainment 繼 ITZY 之後推出的女團，2022 年 2 月 22 日以〈O.O〉出道。團名結合代表「新組合」的 N 與「混合」的 MIX，象徵多元的個性與可能性。',
     '招牌是自創的「MIX POP」：一首歌裡突然換曲風、換節奏，一開始評價兩極，靠著紮實的現場唱功慢慢打開口碑。〈Love Me Like This〉、〈DASH〉、〈별별별（See that?）〉、〈KNOW ABOUT ME〉一路累積人氣，2025 年 10 月發行首張正規專輯《Blue Valentine》。',
-    '2026 年 5 月發行迷你五輯《Heavy Serenade》，9 月在 THE FACT MUSIC AWARDS 拿下出道後第一個大賞；迷你六輯《Strange Muse》（主打〈Birthday Wish〉）預定 10 月 19 日發行。'
+    '2026 年 5 月發行迷你五輯《Heavy Serenade》，9 月在 THE FACT MUSIC AWARDS 拿下出道後第一個大賞；10 月 19 日發行迷你六輯《Strange Muse》，主打歌〈긴 소원（Birthday Wish）〉，並首次收錄小分隊歌曲。'
   ],
 
   facts: [
@@ -121,7 +121,8 @@ export default {
     { title: '별별별 (See that?)', youtubeId: '_Q8Jskeps9w', date: '2024.08.19', kind: '迷你三輯主打 M/V', note: '' },
     { title: 'KNOW ABOUT ME', youtubeId: 'aFrQIJ5cbRc', date: '2025.03.17', kind: '迷你四輯主打 M/V', note: '' },
     { title: 'Blue Valentine', youtubeId: 'EmeW6li6bbo', date: '2025.10.13', kind: '正規一輯主打 M/V', note: '首張正規專輯同名曲。' },
-    { title: 'Heavy Serenade', youtubeId: '6Ycn9qZK09I', date: '2026.05.11', kind: '迷你五輯主打 M/V', note: '' }
+    { title: 'Heavy Serenade', youtubeId: '6Ycn9qZK09I', date: '2026.05.11', kind: '迷你五輯主打 M/V', note: '' },
+    { title: '긴 소원 (Birthday Wish)', youtubeId: 'roHWN9fL2SM', date: '2026.10.19', kind: '迷你六輯主打 M/V', note: '' }
   ],
 
   variety: [
@@ -154,6 +155,7 @@ export default {
     { date: '2024.08.19', title: 'Fe3O4: STICK OUT', type: '迷你三輯', note: '主打〈별별별 (See that?)〉', youtubeId: '_Q8Jskeps9w' },
     { date: '2025.03.17', title: 'Fe3O4: FORWARD', type: '迷你四輯', note: '主打〈KNOW ABOUT ME〉', youtubeId: 'aFrQIJ5cbRc' },
     { date: '2025.10.13', title: 'Blue Valentine', type: '正規一輯', note: '主打〈Blue Valentine〉', youtubeId: 'EmeW6li6bbo' },
-    { date: '2026.05.11', title: 'Heavy Serenade', type: '迷你五輯', note: '主打〈Heavy Serenade〉', youtubeId: '6Ycn9qZK09I' }
+    { date: '2026.05.11', title: 'Heavy Serenade', type: '迷你五輯', note: '主打〈Heavy Serenade〉', youtubeId: '6Ycn9qZK09I' },
+    { date: '2026.10.19', title: 'Strange Muse', type: '迷你六輯', note: '主打〈긴 소원 (Birthday Wish)〉', youtubeId: 'roHWN9fL2SM' }
   ]
 };

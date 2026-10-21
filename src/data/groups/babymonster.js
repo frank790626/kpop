@@ -29,7 +29,7 @@ export default {
     'BABYMONSTER（베이비몬스터）是 YG Entertainment 在 BLACKPINK 之後推出的新女團，由生存實境節目《BABYMONSTERS》選出，成員橫跨韓國、日本與泰國三個國籍。',
     '2023 年 11 月 27 日以先行單曲〈BATTER UP〉出道前亮相，2024 年 4 月 1 日帶著首張迷你專輯《BABYMONS7ER》與主打歌〈SHEESH〉正式出道；〈SHEESH〉MV 上線 10 天即突破 1 億觀看，創下 K-POP 女團出道曲的最快紀錄。',
     '2024 年 11 月推出首張正規專輯《DRIP》，李彩英（AHYEON）回歸後完整七人體制登場；2025 年 10 月的第二張迷你專輯《WE GO UP》與後續 B-side MV〈PSYCHO〉再次刷新團體成績。',
-    '2026 年 5 月 4 日發行第三張迷你專輯《CHOOM》，主打歌〈춤 (CHOOM)〉MV 僅花 14 天破 1 億觀看，是 2026 年最快達標的 K-POP MV，也是團體第 11 支破億 MV。'
+    '2026 年 5 月 4 日發行第三張迷你專輯《CHOOM》，主打歌〈춤 (CHOOM)〉MV 僅花 14 天破 1 億觀看，是 2026 年最快達標的 K-POP MV，也是團體第 11 支破億 MV。6 月 8 日接著推出數位單曲〈SUGAR HONEY ICE TEA〉，MV 同樣破億；10 月 23 日將再發行數位單曲〈DESERVE〉。'
   ],
 
   facts: [
@@ -221,7 +221,8 @@ export default {
       kind: '先行單曲 M/V',
       badge: '',
       note: '夏日感十足的先行曲。'
-    }
+    },
+    { title: 'SUGAR HONEY ICE TEA', youtubeId: 'naoGk-Zjc1s', date: '2026.06.08', kind: '數位單曲 M/V', note: 'MV 已突破 1 億觀看。' }
   ],
 
   // ─── 綜藝節目片段 ─────────────────────────────────────
@@ -279,6 +280,7 @@ export default {
     { date: '2024.07.01', title: 'FOREVER', type: '先行單曲', note: '正規一輯先行曲', youtubeId: 'eJCHKjt0MPw' },
     { date: '2024.11.01', title: 'DRIP', type: '正規一輯', note: '主打〈DRIP〉、〈CLIK CLAK〉', youtubeId: 'Zp-Jhuhq0bQ' },
     { date: '2025.10.10', title: 'WE GO UP', type: '迷你二輯', note: '主打〈WE GO UP〉，B-side〈PSYCHO〉MV 於 11.19 公開', youtubeId: 'wlHwjkYpSr0' },
-    { date: '2026.05.04', title: 'CHOOM', type: '迷你三輯', note: '主打歌〈춤 (CHOOM)〉，MV 14 天破 1 億觀看', youtubeId: 'x3eqqoZPV_E' }
+    { date: '2026.05.04', title: 'CHOOM', type: '迷你三輯', note: '主打歌〈춤 (CHOOM)〉，MV 14 天破 1 億觀看', youtubeId: 'x3eqqoZPV_E' },
+    { date: '2026.06.08', title: 'SUGAR HONEY ICE TEA', type: '數位單曲', note: 'RAMI 因健康因素暫停活動未參與', youtubeId: 'naoGk-Zjc1s' }
   ]
 };

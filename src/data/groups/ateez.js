@@ -24,7 +24,7 @@ export default {
   intro: [
     'ATEEZ（에이티즈）是 KQ Entertainment 推出的八人男團，團名是 "A TEEnager Z" 的縮寫，意思是「從 A 到 Z，包含所有青春的樣貌」。2018 年 10 月 24 日出道，以「海盜」世界觀與高強度的表演打響名號。',
     '〈WONDERLAND〉、〈BOUNCY (K-HOT CHILLI PEPPERS)〉、〈WORK〉、〈Ice On My Teeth〉等歌曲讓他們在海外人氣飆升，多次拿下美國 Billboard 200 專輯榜冠軍，也站上 Coachella 舞台，是第四代男團中全球巡演最強的團體之一。',
-    '2026 年接連發行《GOLDEN HOUR : Part.4》（主打〈Adrenaline〉）與 6 月的《GOLDEN HOUR : Part.5》（主打〈BAD〉）。'
+    '2026 年接連發行《GOLDEN HOUR : Part.4》（主打〈Adrenaline〉）與 6 月的《GOLDEN HOUR : Part.5》（主打〈BAD〉）；《GOLDEN HOUR : Part.6》預定 11 月 13 日發行。'
   ],
 
   facts: [

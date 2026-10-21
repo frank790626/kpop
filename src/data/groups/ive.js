@@ -20,7 +20,7 @@ export default {
   intro: [
     'IVE（아이브）是 Starship Entertainment 於 2021 年底推出的六人女團，團名源自 "I HAVE"，主題一貫圍繞「我擁有的、我展現的自信」。',
     '成員安兪真與張員瑛出身於《PRODUCE 48》與 IZ*ONE，出道曲〈ELEVEN〉即打開知名度；隨後〈LOVE DIVE〉、〈After LIKE〉連續成為年度代表曲，奠定「IVE 式自信」的風格。',
-    '2026 年 2 月 23 日發行第二張正規專輯《REVIVE+》，採雙主打〈BANG BANG〉與〈BLACKHOLE〉，其中〈BANG BANG〉於 2 月 9 日先行公開。'
+    '2026 年 2 月 23 日發行第二張正規專輯《REVIVE+》，採雙主打〈BANG BANG〉與〈BLACKHOLE〉，其中〈BANG BANG〉於 2 月 9 日先行公開。10 月 19 日先行公開新曲〈Looks Can Kill〉，以「Girl Hero」為概念的同名迷你專輯預定 10 月 26 日發行。'
   ],
 
   facts: [
@@ -123,7 +123,8 @@ export default {
     { title: 'Baddie', youtubeId: 'Da4P2uT4mVc', date: '2023.10.13', kind: '改版專輯主打 M/V', note: '' },
     { title: 'REBEL HEART', youtubeId: 'g36q0ZLvygQ', date: '2025', kind: '正規專輯主打 M/V', note: '' },
     { title: 'BLACKHOLE', youtubeId: '1Lmy7qwmSMc', date: '2026.02.23', kind: '正規二輯主打 M/V', note: '《REVIVE+》雙主打之一。' },
-    { title: 'BANG BANG', youtubeId: '9qkpcLK422o', date: '2026.02.09', kind: '先行曲 M/V', note: '《REVIVE+》先行公開。' }
+    { title: 'BANG BANG', youtubeId: '9qkpcLK422o', date: '2026.02.09', kind: '先行曲 M/V', note: '《REVIVE+》先行公開。' },
+    { title: 'Looks Can Kill', youtubeId: 'rsNhWkC4neE', date: '2026.10.19', kind: '先行曲 M/V', note: '「Girl Hero」新概念。' }
   ],
 
   variety: [
@@ -175,6 +176,7 @@ export default {
     { date: '2022.08.22', title: 'After LIKE', type: '單曲三輯', note: '主打〈After LIKE〉', youtubeId: 'F0B7HDiY-10' },
     { date: '2023.10.13', title: 'IVE SWITCH／改版', type: '改版專輯', note: '主打〈Baddie〉', youtubeId: 'Da4P2uT4mVc' },
     { date: '2025', title: 'IVE EMPATHY', type: '正規專輯', note: '主打〈REBEL HEART〉', youtubeId: 'g36q0ZLvygQ' },
-    { date: '2026.02.23', title: 'REVIVE+', type: '正規二輯', note: '雙主打〈BANG BANG〉、〈BLACKHOLE〉', youtubeId: '1Lmy7qwmSMc' }
+    { date: '2026.02.23', title: 'REVIVE+', type: '正規二輯', note: '雙主打〈BANG BANG〉、〈BLACKHOLE〉', youtubeId: '1Lmy7qwmSMc' },
+    { date: '2026.10.19', title: 'Looks Can Kill', type: '先行曲', note: '同名迷你專輯預定 10.26 發行', youtubeId: 'rsNhWkC4neE' }
   ]
 };
