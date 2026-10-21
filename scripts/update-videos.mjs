@@ -261,7 +261,7 @@ async function varietyFromChannels(group) {
 
       for (const e of entries) {
         if (!e.youtubeId || !nameRe.test(e.title)) continue;
-        if (/직캠|FANCAM/i.test(e.title)) continue;
+        if (/직캠|FANCAM|TEASER|티저|예고|#shorts/i.test(e.title)) continue; // 直拍、預告、短影音不算綜藝片段
         found.push({
           title: trimShowTitle(e.title),
           youtubeId: e.youtubeId,
