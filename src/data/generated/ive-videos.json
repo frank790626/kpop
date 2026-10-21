@@ -1,16 +1,7 @@
 {
   "groupId": "ive",
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-10-21",
   "videos": [
-    {
-      "title": "Looks Can Kill",
-      "youtubeId": "rsNhWkC4neE",
-      "date": "2026.10.19",
-      "kind": "先行曲 M/V",
-      "note": "「Girl Hero」新概念。",
-      "badge": "",
-      "noEmbed": false
-    },
     {
       "title": "LOVE DIVE",
       "youtubeId": "Y8JFxS1HlDo",
@@ -62,6 +53,15 @@
       "date": "2026.02.09",
       "kind": "先行曲 M/V",
       "note": "《REVIVE+》先行公開。",
+      "noEmbed": false,
+      "show": "STARSHIP"
+    },
+    {
+      "title": "Looks Can Kill",
+      "youtubeId": "rsNhWkC4neE",
+      "date": "2026.10.19",
+      "kind": "先行曲 M/V",
+      "note": "「Girl Hero」新概念。",
       "noEmbed": false,
       "show": "STARSHIP"
     }

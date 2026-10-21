@@ -1,16 +1,7 @@
 {
   "groupId": "qwer",
-  "updatedAt": "2026-09-24",
+  "updatedAt": "2026-10-21",
   "videos": [
-    {
-      "title": "소년만화 (Dreamer)",
-      "youtubeId": "91YrsgWQcEo",
-      "date": "2026.09.21",
-      "kind": "Special Clip",
-      "note": "粉絲投票選出的主打歌。",
-      "badge": "",
-      "noEmbed": false
-    },
     {
       "title": "Discord（디스코드）",
       "youtubeId": "WGm2HmXeeRI",
@@ -53,6 +44,15 @@
       "date": "2026.04.27",
       "kind": "迷你四輯主打 M/V",
       "note": "",
+      "noEmbed": false,
+      "show": "QWER"
+    },
+    {
+      "title": "소년만화 (Dreamer)",
+      "youtubeId": "91YrsgWQcEo",
+      "date": "2026.09.21",
+      "kind": "Special Clip",
+      "note": "粉絲投票選出的主打歌。",
       "noEmbed": false,
       "show": "QWER"
     }

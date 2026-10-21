@@ -1,16 +1,7 @@
 {
   "groupId": "babymonster",
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-10-21",
   "videos": [
-    {
-      "title": "SUGAR HONEY ICE TEA",
-      "youtubeId": "naoGk-Zjc1s",
-      "date": "2026.06.08",
-      "kind": "數位單曲 M/V",
-      "note": "MV 已突破 1 億觀看。",
-      "badge": "",
-      "noEmbed": false
-    },
     {
       "title": "SHEESH",
       "youtubeId": "2wA_b6YHjqQ",
@@ -88,6 +79,15 @@
       "kind": "先行單曲 M/V",
       "badge": "",
       "note": "夏日感十足的先行曲。",
+      "noEmbed": false,
+      "show": "BABYMONSTER"
+    },
+    {
+      "title": "SUGAR HONEY ICE TEA",
+      "youtubeId": "naoGk-Zjc1s",
+      "date": "2026.06.08",
+      "kind": "數位單曲 M/V",
+      "note": "MV 已突破 1 億觀看。",
       "noEmbed": false,
       "show": "BABYMONSTER"
     }
