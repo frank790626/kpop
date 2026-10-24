@@ -1,7 +1,17 @@
 {
   "groupId": "ateez",
-  "updatedAt": "2026-09-24",
+  "updatedAt": "2026-10-24",
   "videos": [
+    {
+      "title": "Drip",
+      "youtubeId": "iqQWCYMlMw0",
+      "date": "2026.10.23",
+      "kind": "M/V",
+      "badge": "",
+      "note": "",
+      "noEmbed": false,
+      "show": "KQ ENTERTAINMENT"
+    },
     {
       "title": "ENOuGH",
       "youtubeId": "Q53TqpuiCqU",
