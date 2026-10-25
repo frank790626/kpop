@@ -1,53 +1,13 @@
 {
   "groupId": "ive",
-  "updatedAt": "2026-10-24",
+  "updatedAt": "2026-10-25",
   "videos": [
     {
-      "title": "[세로] 리즈(IVE)X성시경 - 어떻게 이별까지 사랑하겠어, 널 사랑하는 거지 (리즈 CAM) [더 시즌즈-성시경의 고막남친]",
-      "youtubeId": "bRiKIPufdZk",
+      "title": "[하이라이트] 리즈(IVE) - 꽃길 (Prod. By ZICO) [더 시즌즈-성시경의 고막남친]",
+      "youtubeId": "GeD6wVp2SVc",
       "show": "KBS Kpop",
       "kind": "KBS Kpop",
-      "date": "2026.10.23",
-      "badge": "",
-      "note": "",
-      "noEmbed": false
-    },
-    {
-      "title": "[세로] 리즈(IVE) - 꽃길 (Prod. By ZICO) [더 시즌즈-성시경의 고막남친]",
-      "youtubeId": "WgrrSx4aVGk",
-      "show": "KBS Kpop",
-      "kind": "KBS Kpop",
-      "date": "2026.10.23",
-      "badge": "",
-      "note": "",
-      "noEmbed": false
-    },
-    {
-      "title": "[가로] 리즈(IVE)X성시경 - 어떻게 이별까지 사랑하겠어, 널 사랑하는 거지 [더 시즌즈-성시경의 고막남친]",
-      "youtubeId": "ll9VvWnNL1c",
-      "show": "KBS Kpop",
-      "kind": "KBS Kpop",
-      "date": "2026.10.23",
-      "badge": "",
-      "note": "",
-      "noEmbed": false
-    },
-    {
-      "title": "[세로] 리즈(IVE)X성시경 - 어떻게 이별까지 사랑하겠어, 널 사랑하는 거지 (시경 CAM) [더 시즌즈-성시경의 고막남친]",
-      "youtubeId": "xhnH5VsN34Q",
-      "show": "KBS Kpop",
-      "kind": "KBS Kpop",
-      "date": "2026.10.23",
-      "badge": "",
-      "note": "",
-      "noEmbed": false
-    },
-    {
-      "title": "(엔딩 요정❌ 동태⭕) 아이브 따라잡다 눈 뒤집힌 이수근",
-      "youtubeId": "UkjJD6uvLN4",
-      "show": "아는형님 Knowingbros",
-      "kind": "아는형님 Knowingbros",
-      "date": "2026.10.21",
+      "date": "2026.10.24",
       "badge": "",
       "note": "",
       "noEmbed": false
@@ -76,6 +36,24 @@
       "show": "아는 형님",
       "date": "2022.08.27",
       "note": "REI 活躍片段",
+      "kind": "아는 형님",
+      "noEmbed": false
+    },
+    {
+      "title": "毫不留情的爆料大會",
+      "youtubeId": "d0GgXSrrIjA",
+      "show": "아는 형님",
+      "date": "2023.04.15",
+      "note": "아형 하이라이트",
+      "kind": "아는 형님",
+      "noEmbed": false
+    },
+    {
+      "title": "什麼都偷看過的張員瑛",
+      "youtubeId": "S29S7vyPgbc",
+      "show": "아는 형님",
+      "date": "2022.08.29",
+      "note": "",
       "kind": "아는 형님",
       "noEmbed": false
     }
