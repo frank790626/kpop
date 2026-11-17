@@ -1,7 +1,17 @@
 {
   "groupId": "ateez",
-  "updatedAt": "2026-11-11",
+  "updatedAt": "2026-11-17",
   "videos": [
+    {
+      "title": "UP",
+      "youtubeId": "SGovymtCzvA",
+      "date": "2026.11.13",
+      "kind": "M/V",
+      "badge": "",
+      "note": "",
+      "noEmbed": false,
+      "show": "KQ ENTERTAINMENT"
+    },
     {
       "title": "Drip",
       "youtubeId": "iqQWCYMlMw0",

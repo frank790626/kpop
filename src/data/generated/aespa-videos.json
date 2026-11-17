@@ -1,17 +1,7 @@
 {
   "groupId": "aespa",
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-17",
   "videos": [
-    {
-      "title": "Love Riot",
-      "youtubeId": "cU8BEe99RzM",
-      "date": "2026.10.30",
-      "kind": "M/V",
-      "badge": "",
-      "note": "",
-      "noEmbed": false,
-      "show": "aespa"
-    },
     {
       "title": "Supernova",
       "youtubeId": "phuiiNCxRMg",
