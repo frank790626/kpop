@@ -1,47 +1,7 @@
 {
   "groupId": "ateez",
-  "updatedAt": "2026-11-18",
+  "updatedAt": "2026-11-20",
   "videos": [
-    {
-      "title": "한 번 더 UP 하러 이갈고 나온 에이티즈 [더 시즌즈-성시경의 고막남친]",
-      "youtubeId": "-bo0Zhdq7ic",
-      "show": "KBS Kpop",
-      "kind": "KBS Kpop",
-      "date": "2026.11.17",
-      "badge": "",
-      "note": "",
-      "noEmbed": false
-    },
-    {
-      "title": "에이티즈 신곡 나오면 방문 잠근다는 소문이 있음 [더 시즌즈-성시경의 고막남친]",
-      "youtubeId": "-kRl3ae0Jrk",
-      "show": "KBS Kpop",
-      "kind": "KBS Kpop",
-      "date": "2026.11.17",
-      "badge": "",
-      "note": "",
-      "noEmbed": false
-    },
-    {
-      "title": "성시경이 극찬한 에이티즈 종호 보컬 실력 [더 시즌즈-성시경의 고막남친]",
-      "youtubeId": "Y6eIrxt5mfY",
-      "show": "KBS Kpop",
-      "kind": "KBS Kpop",
-      "date": "2026.11.17",
-      "badge": "",
-      "note": "",
-      "noEmbed": false
-    },
-    {
-      "title": "성시경 ‘잘 자요~’ 에이티즈 8명 버전 몰아보기 [더 시즌즈-성시경의 고막남친]",
-      "youtubeId": "56RE0ZkR2oQ",
-      "show": "KBS Kpop",
-      "kind": "KBS Kpop",
-      "date": "2026.11.17",
-      "badge": "",
-      "note": "",
-      "noEmbed": false
-    },
     {
       "title": "에이티즈의 성공을 예언한 이상민",
       "youtubeId": "2a-oUVwaxjE",
@@ -80,6 +40,15 @@
       "date": "2026.11.14",
       "badge": "",
       "note": "",
+      "noEmbed": false
+    },
+    {
+      "title": "身體搞笑天分爆發的 SAN",
+      "youtubeId": "PQQZYDRzwpI",
+      "show": "Running Man",
+      "date": "",
+      "note": "SAN 與韓志恩一起出演",
+      "kind": "Running Man",
       "noEmbed": false
     }
   ]
